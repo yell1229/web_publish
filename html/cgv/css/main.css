@@ -1,0 +1,161 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap");
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+ul, li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+.inner {
+  width: 991px;
+  margin: 0 auto;
+}
+
+header .header_area {
+  border-bottom: 1px solid #eee;
+}
+header .header_area .inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 0;
+}
+header .header_area .inner .logo {
+  display: flex;
+  align-items: end;
+}
+header .header_area .inner .logo h1 {
+  width: 117px;
+}
+header .header_area .inner .logo h1 img {
+  width: 100%;
+}
+header .header_area .inner .logo h1 + span {
+  font-size: 16px;
+  color: #222;
+  letter-spacing: 0.5em;
+}
+header .header_area .inner .info_menu {
+  display: flex;
+  align-items: center;
+}
+header .header_area .inner .info_menu ul {
+  display: flex;
+}
+header .header_area .inner .info_menu ul li {
+  flex: 1;
+  width: 36px;
+  margin-left: 44px;
+}
+header .header_area .inner .info_menu ul li a {
+  position: relative;
+  display: block;
+  padding-bottom: 19px;
+}
+header .header_area .inner .info_menu ul li a img {
+  width: 100%;
+}
+header .header_area .inner .info_menu ul li a span {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 13px;
+  color: #666;
+  white-space: nowrap;
+}
+header .nav_area > .inner {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding: 13px 0;
+}
+header .nav_area > .inner .nav {
+  display: flex;
+  justify-content: center;
+}
+header .nav_area > .inner .nav li a {
+  display: block;
+  margin-right: 40px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #000;
+}
+header .nav_area > .inner .search_area {
+  position: relative;
+  width: 243px;
+  height: 24px;
+  padding: 0 10px;
+  border-left: 1px solid #cacaca;
+  border-right: 1px solid #cacaca;
+}
+header .nav_area > .inner .search_area input {
+  height: 24px;
+  line-height: 24px;
+  border: 1px solid transparent;
+}
+header .nav_area > .inner .search_area input:focus {
+  border-color: #000;
+}
+header .nav_area > .inner .search_area span {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  width: 26px;
+  cursor: pointer;
+}
+header .nav_area > .inner .search_area span img {
+  width: 100%;
+}
+header .nav_area .nav_detail {
+  position: relative;
+  border: 1px solid #000;
+  width: 100%;
+  background: #eee;
+}
+header .nav_area .nav_detail .inner {
+  display: flex;
+}
+header .nav_area .nav_detail .inner ul {
+  flex: 1;
+  border-right: 1px solid #ccc;
+  padding: 25px 0;
+  padding-left: 10px;
+}
+header .nav_area .nav_detail .inner ul li a {
+  color: #555;
+  font-size: 14px;
+}
+header .nav_area .nav_detail .inner ul li:first-child {
+  margin-bottom: 10px;
+}
+header .nav_area .nav_detail .inner ul li:first-child a {
+  font-weight: 500;
+  color: #000;
+  font-size: 16px;
+}
+header .nav_area .nav_detail .inner ul:first-child {
+  padding-left: 0;
+}
+header .nav_area .nav_detail .inner ul:last-child {
+  border: none;
+}
+header .nav_area .nav_detail:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #fb4357;
+}
