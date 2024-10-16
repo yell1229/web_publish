@@ -5,100 +5,264 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CGV</title>
     <link rel="stylesheet" href="css/main.css">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </head>
 <body>
-    <header>
-        <div class="header_area">
+    <div class="wrap">
+        <div class="top_ban_area" style="background-color:#271E17;">
             <div class="inner">
-                <div class="logo">
-                    <h1><a href="/"><img src="img/logoRed.png" alt="CGV"></a></h1>
-                    <span>DEEP DIVE SPACE</span>
-                </div>
-                <div class="info_menu">
-                    <div class="ban"><a href=""><img src="img/16758461047540.png" alt=""></a></div>
-                    <ul>
-                        <li>
-                            <a href=""><img src="img/loginPassword.png" alt="">
-                            <span>로그인</span>
-                        </a>
-                        </li>
-                        <li>
-                            <a href=""><img src="img/loginJoin.png" alt="">
-                            <span>회원가입</span>
-                        </a>
-                        </li>
-                        <li>
-                            <a href=""><img src="img/loginMember.png" alt="">
-                            <span>MY CGV</span>
-                        </a>
-                        </li>
-                        <li>
-                            <a href=""><img src="img/loginCustomer.png" alt="">
-                            <span>고객센터</span>
-                        </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+                <a href=""><img src="img/1010_980x80.jpg" alt=""></a>
+                <div class="btn_x"><img src="img/btn_ad_close.png" alt="배너 닫기"></div>
+            </div>  
         </div>
-        <div class="nav_area">
-            <div class="inner">
-                <ul class="nav">
-                    <li><a href="">영화</a></li>
-                    <li><a href="">극장</a></li>
-                    <li><a href="">예매</a></li>
-                    <li><a href="">스토어</a></li>
-                    <li><a href="">이벤트</a></li>
-                    <li><a href="">혜택</a></li>
-                </ul>
-                <div class="search_area">
-                    <input type="text">
-                    <span><img src="img/search.png" alt="검색"></span>
-                </div>
-            </div>
-            <!-- detail nav -->
-            <div class="nav_detail">
+        <header>
+            <div class="header_area">
                 <div class="inner">
-                    <ul>
-                        <li><a href="">영화</a></li>
-                        <li><a href="">menu</a></li>
-                        <li><a href="">menu</a></li>
-                        <li><a href="">menu</a></li>
-                    </ul>
-                    <ul>
-                        <li><a href="">극장</a></li>
-                        <li><a href="">menu</a></li>
-                        <li><a href="">menu</a></li>
-                        <li><a href="">menu</a></li>
-                    </ul>
-                    <ul>
-                        <li><a href="">예매</a></li>
-                        <li><a href="">menu</a></li>
-                        <li><a href="">menu</a></li>
-                        <li><a href="">menu</a></li>
-                    </ul>
-                    <ul>
-                        <li><a href="">스토어</a></li>
-                        <li><a href="">menu</a></li>
-                        <li><a href="">menu</a></li>
-                        <li><a href="">menu</a></li>
-                    </ul>
-                    <ul>
-                        <li><a href="">이벤트</a></li>
-                        <li><a href="">menu</a></li>
-                        <li><a href="">menu</a></li>
-                        <li><a href="">menu</a></li>
-                    </ul>
-                    <ul>
-                        <li><a href="">혜택</a></li>
-                        <li><a href="">menu</a></li>
-                        <li><a href="">menu</a></li>
-                        <li><a href="">menu</a></li>
-                    </ul>
+                    <div class="logo">
+                        <h1><a href="/"><img src="img/logoRed.png" alt="CGV"></a></h1>
+                        <span>DEEP DIVE SPACE</span>
+                    </div>
+                    <div class="info_menu">
+                        <div class="ban"><a href=""><img src="img/16758461047540.png" alt=""></a></div>
+                        <ul>
+                            <li>
+                                <a href=""><img src="img/loginPassword.png" alt="">
+                                <span>로그인</span>
+                            </a>
+                            </li>
+                            <li>
+                                <a href=""><img src="img/loginJoin.png" alt="">
+                                <span>회원가입</span>
+                            </a>
+                            </li>
+                            <li>
+                                <a href=""><img src="img/loginMember.png" alt="">
+                                <span>MY CGV</span>
+                            </a>
+                            </li>
+                            <li>
+                                <a href=""><img src="img/loginCustomer.png" alt="">
+                                <span>고객센터</span>
+                            </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-            <!-- // detail nav -->
+            <div class="nav_area">
+                <div class="inner">
+                    <ul class="nav">
+                        <li class="logo"><a href=""><img src="img/logoWhite.png" alt="CGV"></a></li>
+                        <li><a href="">영화</a></li>
+                        <li><a href="">극장</a></li>
+                        <li><a href="">예매</a></li>
+                        <li><a href="">스토어</a></li>
+                        <li><a href="">이벤트</a></li>
+                        <li><a href="">혜택</a></li>
+                    </ul>
+                    <div class="search_area">
+                        <input type="text">
+                        <span>검색</span>
+                    </div>
+                </div>
+                <!-- detail nav -->
+                <div class="nav_detail">
+                    <div class="inner">
+                        <ul>
+                            <li><a href="">영화</a></li>
+                            <li><a href="">무비차트</a></li>
+                            <li><a href="">아트하우스</a></li>
+                            <li><a href="">ICECON</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="">극장</a></li>
+                            <li><a href="">CGV 극장</a></li>
+                            <li><a href="">특별관</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="">예매</a></li>
+                            <li><a href="">빠른예매</a></li>
+                            <li><a href="">상영스케줄</a></li>
+                            <li><a href="">English Ticketing</a></li>
+                            <li><a href="">English Schedule</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="">스토어</a></li>
+                            <li><a href="">패키지</a></li>
+                            <li><a href="">영화관람권</a></li>
+                            <li><a href="">기프트카드</a></li>
+                            <li><a href="">콤보</a></li>
+                            <li><a href="">팝콘</a></li>
+                            <li><a href="">음료</a></li>
+                            <li><a href="">스낵</a></li>
+                            <li><a href="">플레이존</a></li>
+                            <li><a href="">씨네샵</a></li> 
+                        </ul>
+                        <ul>
+                            <li><a href="">이벤트</a></li>
+                            <li><a href="">SPECIAL</a></li>
+                            <li><a href="">영화/예매</a></li>
+                            <li><a href="">멤버십/CLUB</a></li>
+                            <li><a href="">CGV 극장별</a></li>
+                            <li><a href="">제휴할인</a></li>
+                            <li><a href="">당첨자 발표</a></li>
+                            <li><a href="">종료된 이벤트</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="">혜택</a></li>
+                            <li><a href="">CGV 할인정보</a></li>
+                            <li><a href="">CLUB 서비스</a></li>
+                            <li><a href="">VIP 라운지</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- // detail nav -->
+            </div>
+        </header>
+        <!-- contents -->
+        <div class="contents_area">
+            <div class="inner">
+                <div class="movie_chart">
+                    <div class="tit_area">
+                        <a href="" data-target=".movie">무비차트</a>
+                        <a href="" data-target=".pre_movie">상영예정작</a>
+                        <div class="btn_list">전체보기</div>
+                    </div>
+                    <div class="list_area">
+                        <!-- slide 1 -->
+                        <div class="slide_area movie">
+                            <div class="swiper">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <div class="thumb">
+                                            <img src="img/88738_320.jpg" alt="">
+                                            <div class="dim">
+                                                <a href="">상세보기</a>
+                                                <a href="">예매하기</a>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <strong>보통의 가족1</strong>
+                                            <div>
+                                                <span>98%</span>
+                                                <span>예매율 17.0%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-button-prev"></div>
+                            <div class="swiper-button-next"></div>
+                        </div>
+                        <script>
+                            var swiper = new Swiper(".movie .swiper", {
+                                slidesPerView: 5,
+                                spaceBetween: 32,
+                                slidesPerGroup: 5,
+                                navigation: {
+                                    nextEl: ".swiper-button-next",
+                                    prevEl: ".swiper-button-prev",
+                                },
+                                });
+                        </script>
+                        <!-- // slide 1 -->
+                        <div class="slide_area pre_movie"></div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </header>
+        <!-- // contents -->
+        <footer>
+            <div class="inner">
+                <div class="btm_q_nav">
+                    <ul>
+                        <li><a href="">회사소개</a></li>
+                        <li><a href="">지속가능경영</a></li>
+                        <li><a href="">IR</a></li>
+                        <li><a href="">채용정보</a></li>
+                        <li><a href="">광고/제휴/출점문의</a></li>
+                        <li><a href="">이용약관</a></li>
+                        <li><a href="">편성기준</a></li>
+                        <li class="strong"><a href="">개인정보처리방침</a></li>
+                        <li><a href="">법적고지</a></li>
+                        <li><a href="">이메일주소무단수집거부</a></li>
+                        <li><a href="">윤리경영</a></li>
+                        <li><a href="">사이버감사실</a></li>
+                    </ul>      
+                </div>
+                <div class="company_info_wrap">
+                    <div class="company_info">
+                        <address>(04377)서울특별시 용산구 한강대로 23길 55, 아이파크몰 6층(한강로동)</address>
+                        <dl>
+                            <dt>대표이사</dt>
+                            <dd>허민회</dd>
+                            <dt>사업자등록번호</dt>
+                            <dd104-81-45690></dd104-81-45690>
+                            <dt>통신판매업신고번호</dt>
+                            <dd>2017-서울용산-0662 사업자정보확인</dd>
+                        </dl>
+                        <dl>
+                            <dt>호스팅사업자</dt>
+                            <dd>CJ올리브네트웍스</dd>
+                            <dt>대표이메일</dt>
+                            <dd>cjcgvmaster@cj.net</dd>
+                        </dl>
+                        <div class="copyright">© CJ CGV. All Rights Reserved</div>
+                    </div>
+                    <div class="familysite">
+                        <select name="" id="">
+                            <option value="">familysite</option>
+                            <option value="">familysite</option>
+                            <option value="">familysite</option>
+                            <option value="">familysite</option>
+                            <option value="">familysite</option>
+                            <option value="">familysite</option>
+                            <option value="">familysite</option>
+                            <option value="">familysite</option>
+                        </select>
+                        <span>GO</span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <div class="q_nav_area">
+            <a class="btn_go">예매하기</a>
+            <div class="btn_top"><img src="img/gotoTop.png" alt=""></div>
+        </div>
+    </div>
+    <script>
+        $fix_nav = $('.nav_area').offset().top;
+        $(window).on('scroll',function(){
+            console.log($fix_nav , $(window).scrollTop());
+            if($fix_nav < $(window).scrollTop()){
+                $('.nav_area').addClass('fixed');
+            }else{
+                $('.nav_area').removeClass('fixed');
+            }
+        });
+
+
+        $('.top_ban_area .btn_x').on('click',function(){
+            $(this).parents('.top_ban_area').hide();
+        });
+        $('header .nav_area .nav').on('mouseenter',function(){
+            $target_nav = $('header .nav_area').hasClass('active');
+            if(!$target_nav){
+                $('header .nav_detail').slideDown();
+                $('header .nav_area').addClass('active');
+            }
+        });
+        $('header .nav_area').on('mouseleave',function(){  
+            if($(this).hasClass('active')){
+                $('header .nav_detail').slideUp();
+                $('header .nav_area').removeClass('active');
+            }
+        });
+        $('.q_nav_area .btn_top').on('click',function(){
+            $('html, body').animate({scrollTop:0},300);
+        });
+    </script>
 </body>
 </html>
