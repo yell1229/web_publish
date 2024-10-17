@@ -8,6 +8,7 @@
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="js/custom.js"></script>
 </head>
 <body>
     <div class="wrap">
@@ -17,6 +18,7 @@
                 <div class="btn_x"><img src="img/btn_ad_close.png" alt="배너 닫기"></div>
             </div>  
         </div>
+        <!-- header -->
         <header>
             <div class="header_area">
                 <div class="inner">
@@ -121,14 +123,22 @@
                 <!-- // detail nav -->
             </div>
         </header>
+        <!-- // header -->
         <!-- contents -->
         <div class="contents_area">
+            <div class="movie_area">
+                <div class="inner">
+                    <iframe width="991" height="498" src="https://www.youtube.com/embed/EFxeA5-hIF0" title="[위키드] 1차 예고편" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
             <div class="inner">
                 <div class="movie_chart">
                     <div class="tit_area">
-                        <a href="" data-target=".movie">무비차트</a>
-                        <a href="" data-target=".pre_movie">상영예정작</a>
-                        <div class="btn_list">전체보기</div>
+                        <div>
+                            <strong><a href="" data-target=".movie">무비차트</a></strong>
+                            <a href="" data-target=".pre_movie">상영예정작</a>
+                        </div>
+                        <a href="" class="btn_list">전체보기</a>
                     </div>
                     <div class="list_area">
                         <!-- slide 1 -->
@@ -156,19 +166,156 @@
                             <div class="swiper-button-prev"></div>
                             <div class="swiper-button-next"></div>
                         </div>
-                        <script>
-                            var swiper = new Swiper(".movie .swiper", {
-                                slidesPerView: 5,
-                                spaceBetween: 32,
-                                slidesPerGroup: 5,
-                                navigation: {
-                                    nextEl: ".swiper-button-next",
-                                    prevEl: ".swiper-button-prev",
-                                },
-                                });
-                        </script>
                         <!-- // slide 1 -->
                         <div class="slide_area pre_movie"></div>
+                    </div>
+                </div>
+                <div class="special">
+                    <div class="tit_area">
+                        <div>
+                            <strong>특별관</strong>
+                        </div>
+                        <a href="" class="btn_list">전체보기</a>
+                    </div>
+                    <div class="info_area">
+                        <ul>
+                            <li class="active"><img src="img/16382612660240.png" alt=""></li>
+                            <li><img src="img/16382612660560.png" alt=""></li>
+                            <li><img src="img/16390080561620.png" alt=""></li>
+                            <li><img src="img/16553622935690.png" alt=""></li>
+                        </ul>
+                        <div class="img_list">
+                            <div class="active"><a href=""><strong>SUITE CINEMA</strong><span>#호텔 컨셉의 프리미엄관</span></a></div>
+                            <div><a href=""><strong>CINE & LIVINGROOM</strong><span>#신개념 소셜 상영관</span></a></div>
+                            <div><a href=""><strong>4DX</strong><span>#모션시트 #오감체험</span></a></div>
+                            <div><a href=""><strong>CINE de CHEF</strong><span>#쉐프가 있는 영화관</span></a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gift_area">
+                    <div class="box">
+                        <div class="box_tit">
+                            <strong>패키지</strong>
+                            <a href="">더보기</a>
+                        </div>
+                        <ul class="list">
+                            <li><a href="">
+                                <div class="img"><img src="img/17170520996180.jpg" alt=""></div>
+                                <div class="cont">
+                                    <strong>우리 패키지</strong>
+                                    <span>62,000원</span>
+                                </div></a>
+                            </li>
+                            <li><a href="">
+                                <div class="img"><img src="img/17170520996180.jpg" alt=""></div>
+                                <div class="cont">
+                                    <strong>우리 패키지</strong>
+                                    <span>62,000원</span>
+                                </div></a>
+                            </li>
+                            <li><a href="">
+                                <div class="img"><img src="img/17170520996180.jpg" alt=""></div>
+                                <div class="cont">
+                                    <strong>우리 패키지</strong>
+                                    <span>62,000원</span>
+                                </div></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="box">
+                        <div class="box_tit">
+                            <strong>영화관람권</strong>
+                            <a href="">더보기</a>
+                        </div>
+                        <ul class="list">
+                            <li><a href="">
+                                <div class="img"><img src="img/17170520996180.jpg" alt=""></div>
+                                <div class="cont">
+                                    <strong>우리 패키지</strong>
+                                    <span>62,000원</span>
+                                </div></a>
+                            </li>
+                            <li><a href="">
+                                <div class="img"><img src="img/17170520996180.jpg" alt=""></div>
+                                <div class="cont">
+                                    <strong>우리 패키지</strong>
+                                    <span>62,000원</span>
+                                </div></a>
+                            </li>
+                            <li><a href="">
+                                <div class="img"><img src="img/17170520996180.jpg" alt=""></div>
+                                <div class="cont">
+                                    <strong>우리 패키지</strong>
+                                    <span>62,000원</span>
+                                </div></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="box">
+                        <div class="box_tit">
+                            <strong>기프트카드</strong>
+                            <a href="">더보기</a>
+                        </div>
+                        <ul class="list">
+                            <li><a href="">
+                                <div class="img"><img src="img/17170520996180.jpg" alt=""></div>
+                                <div class="cont">
+                                    <strong>우리 패키지</strong>
+                                    <span>62,000원</span>
+                                </div></a>
+                            </li>
+                            <li><a href="">
+                                <div class="img"><img src="img/17170520996180.jpg" alt=""></div>
+                                <div class="cont">
+                                    <strong>우리 패키지</strong>
+                                    <span>62,000원</span>
+                                </div></a>
+                            </li>
+                            <li><a href="">
+                                <div class="img"><img src="img/17170520996180.jpg" alt=""></div>
+                                <div class="cont">
+                                    <strong>우리 패키지</strong>
+                                    <span>62,000원</span>
+                                </div></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="notice_area">
+                    <div class="notice_box">
+                        <div class="info_list">
+                            <div class="top_noti">
+                                <strong>공지사항</strong>
+                                <div>[시스템 점검]iOS 18 업데이트 관련 예매 서비스 이용 안내</div>
+                                <a href="">더보기</a>
+                            </div>
+                            <dl>
+                                <dt>고객센터</dt>
+                                <dd>
+                                    <strong>1544-1122</strong><br>
+                                    고객센터 운영시간 (평일 09:00~18:00)<br>
+                                    업무시간 외 자동응답 안내 가능합니다.
+                                </dd>
+                                
+                            </dl>
+                            <div class="btns">
+                                <a href="">FAQ</a>
+                                <a href="">1:1 문의</a>
+                                <a href="">대관/단체 문의</a>
+                            </div>
+                        </div>
+                        <div class="qr">
+                            <div>
+                                <strong>앱 다운로드</strong>CGV앱에서 더 편리하게 이용하세요
+                            </div>
+                            <img src="img/img_qrcode.gif" alt="">
+                            <span>
+                                QR코드를 스캔하고<br>앱설치 페이지로 바로 이동하세요
+                            </span>
+                        </div>
+                    </div>
+                    <div class="ban_area">
+                        <a href=""><img src="img/226x259.png" alt=""></a>
                     </div>
                 </div>
             </div>
@@ -232,37 +379,5 @@
             <div class="btn_top"><img src="img/gotoTop.png" alt=""></div>
         </div>
     </div>
-    <script>
-        $fix_nav = $('.nav_area').offset().top;
-        $(window).on('scroll',function(){
-            console.log($fix_nav , $(window).scrollTop());
-            if($fix_nav < $(window).scrollTop()){
-                $('.nav_area').addClass('fixed');
-            }else{
-                $('.nav_area').removeClass('fixed');
-            }
-        });
-
-
-        $('.top_ban_area .btn_x').on('click',function(){
-            $(this).parents('.top_ban_area').hide();
-        });
-        $('header .nav_area .nav').on('mouseenter',function(){
-            $target_nav = $('header .nav_area').hasClass('active');
-            if(!$target_nav){
-                $('header .nav_detail').slideDown();
-                $('header .nav_area').addClass('active');
-            }
-        });
-        $('header .nav_area').on('mouseleave',function(){  
-            if($(this).hasClass('active')){
-                $('header .nav_detail').slideUp();
-                $('header .nav_area').removeClass('active');
-            }
-        });
-        $('.q_nav_area .btn_top').on('click',function(){
-            $('html, body').animate({scrollTop:0},300);
-        });
-    </script>
 </body>
 </html>
