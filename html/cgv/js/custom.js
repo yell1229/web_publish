@@ -1,4 +1,7 @@
 $(document).ready(function(){
+    // load file
+    // $('header').load('../header.html'); 
+
     $fix_nav = $('.nav_area').offset().top;
     $(window).on('scroll',function(){
         if($fix_nav < $(window).scrollTop()){
@@ -35,14 +38,32 @@ $(document).ready(function(){
     $('.q_nav_area .btn_top').on('click',function(){
         $('html, body').animate({scrollTop:0},300);
     });
+    // slide area
+    $('.movie_chart .tit_area a').on('click',function(e){
+        e.preventDefault();
+        $('.movie_chart .tit_area a').removeClass('active');
+        $(this).addClass('active');
+        var $target_s = $(this).attr('data-target');
+        $('.movie_chart .slide_area').removeClass('active');
+        $($target_s).addClass('active');
+    });
 
     var swiper = new Swiper(".movie .swiper", {
         slidesPerView: 5,
         spaceBetween: 32,
         slidesPerGroup: 5,
         navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
+            nextEl: ".movie .swiper-button-next",
+            prevEl: ".movie .swiper-button-prev",
+        },
+    });
+    var swiper = new Swiper(".pre_movie .swiper", {
+        slidesPerView: 5,
+        spaceBetween: 32,
+        slidesPerGroup: 5,
+        navigation: {
+            nextEl: ".pre_movie .swiper-button-next",
+            prevEl: ".pre_movie .swiper-button-prev",
         },
     });
 
