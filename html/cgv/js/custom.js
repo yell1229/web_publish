@@ -1,8 +1,9 @@
 $(document).ready(function(){
     // load file
-    // $('header').load('../header.html'); 
+    $('header').load('header.html'); 
+    $('footer').load('footer.html'); 
 
-    $fix_nav = $('.nav_area').offset().top;
+    $fix_nav = $('.q_nav_area').offset().top;
     $(window).on('scroll',function(){
         if($fix_nav < $(window).scrollTop()){
             $('.nav_area').addClass('fixed');
