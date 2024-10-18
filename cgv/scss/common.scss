@@ -1,13 +1,25 @@
 @charset "utf-8";
 
+// 변수
+$main-color: #fb4357;
+
+// minin
+@mixin flex-between{
+    display:flex;
+    justify-content:space-between;
+}
+@mixin flex-a-center{
+    display:flex;
+    align-items: center;
+}
+
 // header
 header{
     z-index:100;
     .header_area{
         border-bottom:1px solid #eee;
         .inner{
-            display:flex;
-            justify-content:space-between;
+            @include flex-between;
             align-items: center;
             padding:30px 0;
             .logo{

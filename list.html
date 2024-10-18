@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding LIST</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+        html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td{
+            box-sizing:border-box;
+            margin:0;
+            padding:0;
+            font-family: "Noto Sans KR", sans-serif;
+            word-break: break-all;
+            font-weight: normal;
+        }
+        body{display:flex;height:100vh;justify-content: center;align-items: center;}
+        table{width:1000px;border-spacing:0;border-collapse:collapse;}
+        th, td{padding:5px 0;border:1px solid #ccc;font-size:13px;}
+        td{text-align:left;padding-left:10px;}
+        tbody th + td{padding-left:0;text-align:center}
+        tbody tr:nth-child(odd){background-color:#eee}
+    </style>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>no.</th>
+                <th>page</th>
+                <th>github</th>
+                <th>memo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th></th>
+                <td>CGV</td>
+                <td><a href="https://github.com/yell1229/web_publish">web_publish</a></td>
+                <td>SCSS</td>
+            </tr>
+            <tr>
+                <th></th>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th></th>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th></th>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th></th>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        $('table tbody tr').each(function(i){
+            $(this).children('th').text(i+1);
+        });
+    </script>
+</body>
+</html>

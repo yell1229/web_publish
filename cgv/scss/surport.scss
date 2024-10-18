@@ -4,8 +4,7 @@
 .surport{
     min-height:1000px;
     .inner{
-        display:flex;
-        justify-content: space-between;
+        @include flex-between;
         padding-top: 25px;
         .side_nav{
             width:160px;
@@ -22,7 +21,7 @@
                         line-height: 34px;
                         &:hover, &.active{
                             width:170px;
-                            background-color: #fb4357;
+                            background-color: $main-color;
                             color: #fdfcf0;
                         }
                     }
@@ -42,9 +41,8 @@
                 display:flex;
                 .box{
                     flex:1;
-                    display:flex;
+                    @include flex-a-center;
                     flex-direction: column;
-                    justify-content: center;
                     height: 260px;
                     border-right: 1px solid #dedace;
                     font-size: 12px;
@@ -71,7 +69,7 @@
                         margin-top:11px;
                     }
                     &:first-child{
-                        background:#fb4357;
+                        background:$main-color;
                         strong{
                             color:#fff;
                         }
@@ -113,8 +111,7 @@
                 }
             }
             .notice_area{
-                display:flex;
-                justify-content: space-between;
+                @include flex-between;
                 margin-top:36px;
                 .tit{
                     margin-bottom:15px;
@@ -125,18 +122,16 @@
                 .service_area{
                     width:267px;
                     ul{
-                        display:flex;
+                        @include flex-between;
                         flex-wrap:wrap;
-                        justify-content: space-between;
                         li{
                             position:relative;
                             border:2px solid #999;
                             border-radius: 5px;
                             margin:5px 0;
                             a{  
-                                display:flex;
+                                @include flex-a-center;
                                 padding-left:20px;
-                                align-items: center;
                                 width: 125px;
                                 height: 81px;
                                 color: #222;
@@ -159,8 +154,7 @@
                     width:473px;
                     ul{
                         li{
-                            display:flex;
-                            justify-content: space-between;
+                            @include flex-between;
                             a{
                                 display:block;
                                 overflow: hidden;
@@ -178,8 +172,7 @@
                         }
                     }
                     .bans{
-                        display:flex;
-                        justify-content: space-between;
+                        @include flex-between;
                         margin-top:15px;
                         a{
                             display: block;

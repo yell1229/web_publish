@@ -21,8 +21,7 @@
     .contents_area{
         //  title 
         .tit_area{
-            display:flex;
-            justify-content: space-between;
+            @include flex-between;
             margin-bottom:20px;
             strong{
                 font-weight: 700;
@@ -157,7 +156,7 @@
                                         opacity: .7;
                                     }
                                     &:last-child{
-                                        background-color: #fb4357;
+                                        background-color: $main-color;
                                         color:#fff;
                                     }
                                 }
@@ -198,8 +197,7 @@
         }
         .special{
             .info_area{  
-                display:flex;
-                justify-content: space-between;
+                @include flex-between;
                 ul{
                     position:relative;
                     width:500px;
@@ -222,8 +220,7 @@
                         border: 1px solid transparent;
                         border-top: 1px solid #e9e9e9;
                         a{
-                            display:flex;
-                            justify-content: space-between;
+                            @include flex-between;
                             align-items: center;
                             padding: 19px 25px 19px 19px;
                             strong{
@@ -255,8 +252,7 @@
             
         }
         .gift_area{
-            display:flex;
-            justify-content: space-between;
+            @include flex-between;
             margin-top:60px;
             .box{
                 width: 300px;
@@ -264,8 +260,7 @@
                 border: 1px solid #e4e4e4;
                 border-radius: 10px;
                 .box_tit{
-                    display:flex;
-                    justify-content: space-between;
+                    @include flex-between;
                     font-weight: 500;
                     font-size: 20px;
                     color: #222;
@@ -282,8 +277,7 @@
                 .list{
                     li{
                         a{
-                            display:flex;
-                            align-items: center;
+                            @include flex-a-center;
                             margin-top: 27px;
                             .img{
                                 width: 75px;
@@ -307,12 +301,10 @@
             }
         }
         .notice_area{
-            display:flex;
-            justify-content: space-between;
+            @include flex-between;
             padding: 30px 0 120px;
             .notice_box{
-                display:flex;
-                justify-content: space-between;
+                @include flex-between;
                 width: 738px;
                 height: 238px;
                 border: 1px solid #e4e4e4;
