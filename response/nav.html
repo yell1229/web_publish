@@ -33,7 +33,7 @@
         <div class="swiper-button-prev"></div>
       </div>
       <script>
-        let listWidth = 500;
+        let listWidth = 500 /2 ;
         let boxH;
         var swiper = new Swiper(".mySwiper", {
           slidesPerView: 'auto',
@@ -51,12 +51,19 @@
             muCenter(target);
         });
         function muCenter(target){
+					console.log('click nav');
             var snbwrap = $('.swiper-wrapper');
-            var targetPos = target.position();
-            console.log(targetPos);
+            var targetPos = target.position().left;
+            console.log('position',targetPos);
             var ulWidth = snbwrap.width();
-            console.log(ulWidth);
+            console.log('체크: ', targetPos > listWidth);
+						if(targetPos > listWidth){
+							setTimeout(function(){
+										$('.swiper-wrapper').animate({left:'-250px'},300)
+					}, 200);
+						}
         }
+				
       </script>
 </body>
 </html>

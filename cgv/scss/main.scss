@@ -436,7 +436,7 @@
                     line-height:30px;
                     padding-left:10px;
                     &:focus::placeholder{
-                        display:none;
+                        color:transparent
                     }
                 }
             }
