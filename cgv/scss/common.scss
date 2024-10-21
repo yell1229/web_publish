@@ -40,7 +40,6 @@ header{
             .info_menu{
                 display: flex;
                 align-items: center;
-                .ban{}
                 ul{
                     display:flex;
                     li{
@@ -135,6 +134,7 @@ header{
             background:#fff;
             box-shadow:0 5px 10px rgba(0,0,0, .2);
             z-index:100;
+            border-bottom:2px solid $main-color;
             .inner{
                 display:flex;
                 ul{
@@ -176,7 +176,7 @@ header{
             left:0;
             width:100%;
             height:2px;
-            background-color:#fb4357;
+            background-color:$main-color;
         }
         &.fixed{
             position:fixed;
@@ -347,3 +347,4 @@ footer{
         }
     }
 }
+
