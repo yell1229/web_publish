@@ -4,8 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>css Unit</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
     <style>
-        *{font-family:'나눔고딕';background-color: aquamarine;padding:0;margin:0;}
+        *{ 
+            font-family: "Open Sans", sans-serif;
+            font-optical-sizing: auto;
+            font-weight:300;
+            padding:0;margin:0;
+        }
     .lorem{
         width:500px;
         font-size:1.2em;/* 부모 폰트 사이즈 기준 */
@@ -13,6 +21,16 @@
     strong{
         font-size:2rem; /* 16px * 3 */
     }
+    hr{margin:50px 0;}
+    ul{list-style-type: none;}
+    li{padding:10px;}
+    label{position:relative;}
+    label input:checked:before{content:'';display:block;position:absolute;top:0;left:0;border:1px solid red;width:100%;height:100%;background:pink;z-index:-1}
+    label input[type=radio]:checked:before{background:green;}
+    button:disabled{color:red;background-color: aquamarine;}
+    .no-selector li:not(:last-child){background-color: aqua;}
+    .bold{color:tomato;}
+    .font_sans{font-family: "Open Sans", sans-serif;font-weight: 500;}
     </style>
 </head>
 <body>
@@ -21,8 +39,39 @@
     <p class="lorem">
         <h3>Sub title</h3>
         <strong>Lorem</strong> ipsum dolor sit, 
-        amet consectetur adipisicing elit. Eveniet, corporis recusandae accusamus sit nihil autem fugit, nesciunt vero nulla doloremque quam eum enim nostrum voluptas id sunt, minus harum quisquam?
+        <b class="bold">amet consectetur adipisicing elit.</b> Eveniet, corporis recusandae accusamus sit nihil autem fugit, nesciunt vero nulla doloremque quam eum enim nostrum voluptas id sunt, minus harum quisquam?
     </p>
-
+    <hr>
+    <h1>Status selectors</h1>
+    <form action="">
+        <ul>
+            <li>
+                <label><input type="radio" name="city">서울</label>
+                <label><input type="radio" name="city">부산</label>
+                <label><input type="radio" name="city">인천</label>
+            </li>
+            <li>
+                <label><input type="checkbox" name="subject">HTML</label>
+                <label><input type="checkbox" name="subject">CSS</label>
+                <label><input type="checkbox" name="subject">Javascript</label>           
+            </li>
+            <li>
+                <button>사용가능</button>
+                <button disabled>사용불가</button>
+            </li>
+            <li>
+                <ul class="no-selector">
+                    <li>list item</li>
+                    <li>list item</li>
+                    <li>list item</li>
+                    <li>list item</li>
+                    <li>list item</li>
+                </ul>
+            </li>
+        </ul>
+    </form>
+    <hr>
+    <h2>google font open sans</h2>
+    <p class="font_sans">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Expedita consequatur sint sunt possimus voluptatem, deserunt dignissimos tenetur vitae quos. Voluptatem odio aliquid quisquam nam quasi quidem, porro unde aliquam aut!</p>
 </body>
 </html>
