@@ -3,7 +3,8 @@
 // 변수
 $main-color: #fb4357;
 $main-gra-color:linear-gradient(to right, rgb(215, 67, 87), rgb(241, 79, 58) 59%, rgb(239, 100, 47));
-// minin
+$img-url:'../img/';
+// mixin
 @mixin flex-between{
     display:flex;
     justify-content:space-between;
@@ -118,7 +119,7 @@ header{
                     right:10px;
                     width:26px;
                     cursor: pointer;
-                    background:url(../img/search.png) no-repeat 50% 50%;
+                    background:url($img-url+'search.png') no-repeat 50% 50%;
                     background-size:26px;
                     overflow:hidden;
                     text-indent: -999em;
@@ -202,7 +203,7 @@ header{
                 }
                 .search_area{
                     span{
-                        background:url(../img/search_w.png) no-repeat 50% 50%;
+                        background:url($img-url+'search_w.png') no-repeat 50% 50%;
                         background-size: 26px;
                     }
                 }

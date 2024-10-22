@@ -36,7 +36,7 @@
                 font-size: 14px;
                 color: #222;
                 line-height: 30px;
-                background: transparent url(../img/arrowR_8x13.png) calc(100% - 7px) center / 8px 13px scroll no-repeat;
+                background: transparent url($img-url+'arrowR_8x13.png') calc(100% - 7px) center / 8px 13px scroll no-repeat;
                 border: 1px solid #e2e2e2;
                 border-radius: 15px;
                 box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.05);
@@ -174,7 +174,7 @@
                         width:40px;
                         height:40px;
                         border-radius: 50%;
-                        background:rgba(255, 255, 255, 0.5) url(../img/arrowL.png) no-repeat center;
+                        background:rgba(255, 255, 255, 0.5) url($img-url+'arrowL.png') no-repeat center;
                         background-size:9px 13px;
                         box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.5);
                         &:after{

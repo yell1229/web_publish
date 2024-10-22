@@ -93,7 +93,7 @@
                                 right:0;
                                 width:30px;
                                 height: 30px;
-                                background:url(../img/search.png) no-repeat 50% 50%;
+                                background:url($img-url+'search.png') no-repeat 50% 50%;
                                 background-size:24px;
                                 overflow:hidden;
                                 text-indent: -999em;
@@ -178,7 +178,7 @@
                             display: block;
                             width: 231px;
                             height: 95px;
-                            background: url(../img/bg_c_main.png) no-repeat 0 -163px;
+                            background: url($img-url+'bg_c_main.png') no-repeat 0 -163px;
                             text-indent: -999px;
                             overflow: hidden;
                             &:last-child{
