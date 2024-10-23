@@ -357,7 +357,7 @@
                             }
                             div{
                                 overflow: visible;
-                                max-width: autp;
+                                max-width: auto;
                                 padding-left:0;
                                 font-size: 14px;
                                 color: #222;
@@ -389,14 +389,13 @@
                             }
                         }
                         .btns{
+                            display:flex;
+                            justify-content: center;
                             a{
-                                display: inline-block;
                                 padding: 7px 14px;
                                 font-size: 14px;
                                 color: #222;
                                 line-height: 1.429em;
-                                background-color: #f6f6f6;
-                                border-radius: 5px;
                             }
                         }
                     }
