@@ -103,7 +103,6 @@ header{
                     &.logo{
                         display:none;
                     }
-                    &.btn_m{display:none}
                 }
             }
             .search_area{
@@ -135,7 +134,8 @@ header{
                 }
             }
         }   
-        .nav_detail{
+        .nav_detail,
+        .nav_detail_mo{
             display:none;
             position:absolute;
             top:100%;
@@ -145,12 +145,6 @@ header{
             box-shadow:0 5px 10px rgba(0,0,0, .2);
             z-index:100;
             border-bottom:2px solid $main-color;
-            .btn_x{
-                display:none;
-            }
-            .search_area{
-                display:none;
-            }
             .inner{
                 display:flex;
                 ul{

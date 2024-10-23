@@ -96,15 +96,17 @@ $(function() {
         $(this).parents('.login_pop_area').removeClass('on');
     });
 
-    // left nav
-    $('.btn_m').on('click',function(){
-        $('header .nav_detail').animate({left:0},300);
+    // mobile left nav
+    $('.info_menu .menu').on('click',function(e){
+        e.preventDefault();
+        $('header .nav_detail_mo').animate({left:0},300);
         $('body').addClass('noscroll');
     });
-    $('.nav_detail .btn_x').on('click',function(){
-        $('header .nav_detail').animate({left:'-65%'},300);
+    $('.nav_detail_mo .btn_x').on('click',function(){
+        $('header .nav_detail_mo').animate({left:'-65%'},300);
         $('body').removeClass('noscroll');
     });
+    
 });
 
 
