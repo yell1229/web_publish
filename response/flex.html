@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flex</title>
+    <style>
+        .parent{
+            display:flex;
+            flex-direction: row;
+            flex-wrap:wrap;
+            justify-content: space-between;
+            height:300px;
+            border:1px solid #000;
+            align-items: center;
+        }
+        .parent div{
+            background-color: blanchedalmond;
+            border:1px solid red;
+            padding:10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <div>flex item1</div>
+        <div>flex item2</div>
+        <div>flex item3</div>
+        <div>flex item4</div>
+        <div>flex item5</div>
+        <div>flex item6</div>
+    </div>
+</body>
+</html>

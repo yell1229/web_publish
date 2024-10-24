@@ -88,11 +88,11 @@ $(function() {
             // mobile left nav
             $('.info_menu .menu').on('click',function(e){
                 e.preventDefault();
-                $('header .nav_detail_mo').animate({left:0},300);
+                $('header .nav_detail_mo').stop().animate({left:0},300);
                 $('body').addClass('noscroll');
             });
             $('.nav_detail_mo .btn_x').on('click',function(){
-                $('header .nav_detail_mo').animate({left:'-65%'},300);
+                $('header .nav_detail_mo').stop().animate({left:'-65%'},300);
                 $('body').removeClass('noscroll');
             });
         }else if($(window).width() > 768){
