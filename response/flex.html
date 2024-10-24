@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>flex</title>
     <style>
+        :root{
+            /* color list */
+            --color-primary:rgb(77,77,77);
+            --color-black:rgb(45, 44, 44);
+            --color-white:rgb(255,255,255);
+            --color-border:tomato;
+        }
         .parent{
             display:flex;
             flex-direction: row;
@@ -13,6 +20,7 @@
             height:300px;
             border:1px solid #000;
             align-items: center;
+            border:1px solid var(--color-black);
         }
         .parent div{
             background-color: blanchedalmond;
