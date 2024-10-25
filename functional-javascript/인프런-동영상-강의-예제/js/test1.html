@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    var users = [
+    { id: 1, name: 'ID', age: 36 },
+    { id: 2, name: 'BJ', age: 32 },
+    { id: 3, name: 'JM', age: 32 },
+    { id: 4, name: 'PJ', age: 27 },
+    { id: 5, name: 'HA', age: 25 },
+    { id: 6, name: 'JE', age: 26 },
+    { id: 7, name: 'JI', age: 31 },
+    { id: 8, name: 'MP', age: 23 },
+    { id: 8, name: 'MO', age: 30 }
+    ];
+    // 30세 이상 & 30세 미만 유저를 수집
+    var users_age = [];
+    var user_downage = [];
+    for(let i=0; i< users.length; i++){
+        if(users[i].age >= 30){
+            users_age.push(users[i]);
+        }else if(users[i].age <30){
+            user_downage.push(users[i]);
+        }
+    }
+    console.log(users_age);
+    console.log(user_downage);
+
+    // 30세 이상 유저의 이름 & 30세 미만 유저의 이름을 수집
+    var users_name=[];
+    var user_downname = [];
+    for(let i=0; i< users.length; i++){
+        if(users[i].age >= 30){
+            users_name.push(users[i].name);
+        }else if(users[i].age < 30){
+            user_downname.push(users[i].name);
+        }
+    }
+    console.log(users_name);
+    console.log(user_downname);
+ // filter
+ function filter(users,predi){
+    var new_list = [];
+    for(let i=0; i< users.length; i++){
+        if(predi(users[i])){ // 추상화의 단위를 함수로.
+            new_list.push(users[i]);
+        }
+    }
+    return new_list;
+ }
+ console.log('filter',
+    filter(users,function(user){return user.age >= 30})
+ );
+ console.log('filter',
+    filter(users,function(user){return user.age < 30})
+ );
+</script>
+</body>
+</html>
