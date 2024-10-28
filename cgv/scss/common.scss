@@ -239,6 +239,18 @@ footer{
     font-size:13px;
     color:#666;
     padding-bottom:30px;
+    .btm_ban{
+        position:relative;
+        width:100%;
+        background-color: #F29124;
+        height:180px;
+        a{
+            position:absolute;
+            bottom:0;
+            left:50%;
+            transform:translateX(-50%);
+        }
+    }
     .inner{
         .btm_q_nav{
             ul{
