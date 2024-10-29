@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    
+    
+    <style>
+        /* Clear out these styles to start fresh or use this as a base! */
+
+@import url(https://fonts.googleapis.com/css?family=Kanit:600);
+
+@import url(https://fonts.googleapis.com/css?family=Kanit:600);
+
+body { 
+	height: 100vh; 
+	display: grid;
+	place-items: center;
+	margin: auto; 
+	background: indigo;
+}
+h1 {
+	color: gold;
+	font: normal 600 10vw/1.25 Kanit, sans-serif;
+	text-align: center;
+	filter: drop-shadow(4px 4px 10px black);
+}
+
+.splitting .char {
+	animation: slide-in .75s cubic-bezier(.5, 0, .5, 1) both;
+	animation-delay: calc(.25s + (120ms * var(--char-index)));
+}
+
+@keyframes slide-in {
+	from {
+	transform: translateX(-3em) translateY(-1.5em) rotate(-135deg) scale(0.5);
+	opacity: 0;
+	}
+}
+    </style>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/plugin/splitting.min.js"></script>
+    <script src="js/script.js"></script>
+</head>
+<body>
+    <h1 data-splitting>Well hello there Splitting.js!</h1>
+</body>
+</html>

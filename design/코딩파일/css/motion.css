@@ -1,0 +1,164 @@
+@charset "utf-8";
+
+.wrap{
+    position:relative;
+    margin:0 auto;
+    overflow: hidden;
+    background-color: #000;
+    color:#fff;
+    margin-bottom:3000px;
+}
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    display:flex;
+    justify-content:space-between;
+    width:100%;
+    z-index:100;
+    padding:30px 60px;
+    background-color: rgba(0,0,0, .5);
+}
+header.active{
+    transform:translateY(-100%);
+}
+.wrap header .logo{
+    color:#fff;
+}
+.gnb ul{
+    display:flex;
+    justify-content: space-between;
+    gap:70px;
+}
+.gnb ul li a{
+    display:block;
+}
+.gnb ul li a .char{
+    position:relative;
+    display:inline-block;
+    color:transparent;
+    overflow:hidden;
+}
+
+.gnb ul li a .char:before,
+.gnb ul li a .char:after{
+    position:absolute;
+    top:0;
+    left:0;
+    content:attr(data-char);
+    opacity: 0.6;
+    color:#fff;
+    transition:transform 0.35ms;
+    animation-delay: calc(30ms * var(--char-index));
+}
+.gnb ul li a .char:before{
+    transform:translateY(100%);
+}
+.gnb ul li a:hover .char:before{ 
+    transform:translateY(0); 
+    opacity: 1;
+}
+.gnb ul li a:hover .char:after{
+    transform:translateY(-100%);
+}
+header .menuOpen{
+    display:none;
+    transition: .3s;
+}
+/* visual */
+.visual{
+    position:relative;
+    width:100%;
+    height:100vh;
+    padding-top:125px;
+    letter-spacing:-1px;
+}
+.mainText{
+    display:inline-block;
+    margin:0 0 150px 60px; 
+    font-size:140px;
+    line-height:1.2;
+    font-weight:400;
+}
+.mainText p{
+    overflow: hidden;
+}
+.subText{
+    margin-left:20%;
+}
+.scroll{
+    position:fixed;
+    left:60px;
+    bottom:40px;
+}
+.svgAni{
+    position:absolute;
+    top:9%;
+    right:-2%;
+    width:55%;
+    transform:rotate(-10deg);
+}
+/* motion */
+.visual.motion .mainText{
+    transform: translate3d(0,0,0) skewY(0deg);
+    /* overflow: hidden; */
+}
+.visual.motion .mainText p span{
+    display:block;
+    animation-name: textAni;
+    animation-duration: 1.8s;
+}
+.visual.motion .mainText p:nth-child(2) span{
+    animation-duration: 1.7s;
+}
+.visual.motion .mainText p:nth-child(3) span{
+    animation-duration: 1.5s;
+}
+@keyframes textAni {
+    0%{opacity: 0;}
+    30%{opacity: 0;transform: translate3d(0,-90px,0) skewY(-10deg);transform-origin:top left;}
+}
+@keyframes textani2 {
+    0%{opacity: 0;}
+    30%{opacity: 0;}
+}
+.visual.motion .subText{
+    animation-name: textani2; animation-duration: 2.3s;
+}
+/* motion */
+.visual.motion #svgAni01{
+    stroke-dasharray: 673;
+    stroke-dashoffset: 673;
+    animation: ani1 .5s linear 2s forwards;
+}
+.visual.motion #svgAni03{
+    stroke-dasharray: 3059;
+    stroke-dashoffset: -3059;
+    animation: ani3 2s linear 0.1s forwards;
+}
+.visual.motion #svgAni04{
+    stroke-dasharray: 66;
+    stroke-dashoffset: -66;
+    animation: ani4 0.2s linear 2s forwards;
+}
+.visual.motion #svgAni05{
+    stroke-dasharray: 55;
+    stroke-dashoffset: -55;
+    animation: ani5 0.1s linear 2s forwards;
+}
+@keyframes ani1 {
+    0%{stroke-dashoffset: 673;}
+    100%{stroke-dashoffset: 0;}
+}
+@keyframes ani3 {
+    0%{stroke-dashoffset: 3059;}
+    100%{stroke-dashoffset: 0;}
+}
+@keyframes ani4 {
+    0%{stroke-dashoffset: 64;}
+    100%{stroke-dashoffset: 0;}
+}
+@keyframes ani5 {
+    0%{stroke-dashoffset: 55;}
+    100%{stroke-dashoffset: 0;}
+}
