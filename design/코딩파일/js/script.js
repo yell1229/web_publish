@@ -26,4 +26,6 @@ $(function(){
         // alert(length);
     });
 
+    // var getIdPath = document.getElementById('svgAni01').getTotalLength();
+    // console.log(getIdPath);
 });

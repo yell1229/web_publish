@@ -48,8 +48,8 @@ header.active{
     content:attr(data-char);
     opacity: 0.6;
     color:#fff;
-    transition:transform 0.35ms;
-    animation-delay: calc(30ms * var(--char-index));
+    transition:transform 0.35s;
+    transition-delay: calc(30ms * var(--char-index));
 }
 .gnb ul li a .char:before{
     transform:translateY(100%);
