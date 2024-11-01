@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSAP CARD</title>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/ScrollTrigger.min.js"></script>
+    <style>
+        *{margin:0;padding:0;}
+        li{list-style:none;}
+        section{height:100vh;background:#23282a;color:#fff;display:flex;justify-content: center;align-items: center;border:1px solid red;}
+        .cont01 .tit{font-size:120px;text-transform: uppercase;}
+        .cont01 .tit span{display:block;-webkit-text-stroke: 1px #b1dd40;color:transparent;line-height:1.1;}
+        .cont02 ul{display:flex;width:70%;justify-content: space-between;align-items: center; color:#23282a;}
+        .cont02 ul li{display:flex;justify-content: center;align-items: center;width:22%;background:yellow;height:300px;border-radius: 20px;}
+        .cont03{position:relative;overflow:hidden;}
+        .cont03 .conttitle{-webkit-text-stroke: 2px #b1dd40;color:transparent;font-size:100px;}
+        .cont03 span{display:flex;justify-content: center;align-items: center; width:250px;height:350px;background-color: antiquewhite;position:absolute;top:50%;left:50%;transform:translate(-50%, -50%);border-radius:20px;color:#333;font-size:28px;font-weight: bold;}
+        .cont03 span.a{transform:translate(-50%, -50%) rotate(deg);}
+        .cont03 span.b{background-color:#ffbbcc; transform:translate(-50%, -50%) rotate(12deg);}
+        .cont03 span.c{background-color:#efffbb;transform:translate(-50%, -50%) rotate(-15deg);}
+        .cont03 span.d{background-color:#ffd3bb;transform:translate(-50%, -50%) rotate(18deg);}
+        .cont03 span.e{background-color:#fa97bb;transform:translate(-50%, -50%) rotate(3deg);}
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <section class="cont01">
+            <h2 class="tit"><span>gsap</span>ScrollTrigger</h2>
+        </section>
+        <section class="cont02">
+            <ul>
+                <li>card1</li>
+                <li>card2</li>
+                <li>card3</li>
+                <li>card4</li>
+            </ul>
+        </section>
+        <section class="cont03">
+            <h2 class="conttitle">section03</h2>
+            <span class="a">card1</span>
+            <span class="b">card2</span>
+            <span class="c">card3</span>
+            <span class="d">card4</span>
+            <span class="e">card5</span>
+        </section>
+    </div>
+    <script>
+        gsap.
+    </script>
+</body>
+</html>

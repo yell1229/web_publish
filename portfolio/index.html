@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>welcome yells page</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.1/ScrollToPlugin.min.js"></script>
+    <script src="https://unpkg.com/splitting/dist/splitting.min.js"></script>
+    <script src="js/custom.js"></script>
+</head>
+<body>
+    <div class="wrap">
+        <!-- nav -->
+        <div class="nav-area">
+            <h1 class="en">yellsdesign</h1>
+            <nav>
+                <ul>
+                    <li><a href="#home" data-splitting>Home</a></li>
+                    <li><a href="#about" data-splitting>About</a></li>
+                    <li><a href="#skills" data-splitting>Skills</a></li>
+                    <li><a href="#works" data-splitting>Works</a></li>
+                    <li><a href="#testimonial" data-splitting>Testimonial</a></li>
+                    <li><a href="#contact" data-splitting>Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+        <!-- // nav -->
+        <div class="box home" id="home">
+            <div class="main-img"><img src="img/cupcake.png" alt=""></div>
+            <div class="txt">
+                <p>Hello</p>
+                <p>my name is yeri</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt eligendi fuga veritatis rerum praesentium adipisci ad, quos nostrum tempore perspiciatis corrupti, soluta laborum amet. Ipsum cupiditate ullam laboriosam pariatur obcaecati.</p>
+            </div>
+            <div class="btn" data-target="#contact">Contact me</div>
+        </div>
+        <!-- about -->
+        <div class="box about" id="about">
+            <div class="tit">About Me</div>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum ducimus distinctio expedita eveniet accusantium nostrum non inventore illo aliquam nam blanditiis minima assumenda deleniti, alias quisquam, a mollitia, consequatur reprehenderit?
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum doloribus repellendus molestias, cupiditate at explicabo soluta nisi molestiae tenetur, error fugit quaerat quibusdam rem quasi adipisci asperiores? Vero, aliquam eos.
+            </p>
+            <ul>
+                <li><div><i class="bi bi-star-fill"></i></div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel ad enim quaerat aspernatur dolorum magnam ipsam quidem odio exercitationem rem. Autem dolorem rerum voluptas aut eaque delectus fuga, tempora sapiente!</li>
+                <li><div><i class="bi bi-tablet-fill"></i></div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel ad enim quaerat aspernatur dolorum magnam ipsam quidem odio exercitationem rem. Autem dolorem rerum voluptas aut eaque delectus fuga, tempora sapiente!</li>
+                <li><div><i class="bi bi-emoji-sunglasses"></i></div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel ad enim quaerat aspernatur dolorum magnam ipsam quidem odio exercitationem rem. Autem dolorem rerum voluptas aut eaque delectus fuga, tempora sapiente!</li>
+            </ul>
+        </div>
+        <!-- about -->
+        <!-- skills -->
+        <div class="box skills" id="skills">
+            <div class="tit">My skills</div>
+            <div class="txt">
+                <p>Skills & Attributes</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis minus assumenda, laboriosam aut fugit expedita eius provident dolorem illum ipsum aliquam temporibus similique dicta sint, perferendis accusamus iusto natus? Quaerat. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis minus assumenda, laboriosam aut fugit expedita eius provident dolorem illum ipsum aliquam temporibus similique dicta sint, perferendis accusamus iusto natus? Quaerat.</p>
+            </div>
+            <div class="cont-area">
+                <div class="skill_box">
+                    <div class="sub_tit">Coding Skills</div>
+                    <div class="line">
+                        <strong>HTML</strong>
+                        <div class="bar_area">
+                            <div class="bar" style="width:90%"></div>
+                        </div>
+                    </div>
+                    <div class="line">
+                        <strong>CSS</strong>
+                        <div class="bar_area">
+                            <div class="bar" style="width:90%"></div>
+                        </div>
+                    </div>
+                    <div class="line">
+                        <strong>SCSS</strong>
+                        <div class="bar_area">
+                            <div class="bar" style="width:90%"></div>
+                        </div>
+                    </div>
+                    <div class="line">
+                        <strong>jQuery</strong>
+                        <div class="bar_area">
+                            <div class="bar" style="width:90%"></div>
+                        </div>
+                    </div>
+                    <div class="line">
+                        <strong>Javascript</strong>
+                        <div class="bar_area">
+                            <div class="bar" style="width:90%"></div>
+                        </div>
+                    </div>
+                    <div class="line">
+                        <strong>React</strong>
+                        <div class="bar_area">
+                            <div class="bar" style="width:90%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tool_box">
+                    <div class="sub_tit">Tools</div>
+                    <ul>
+                        <li>Visual Studio Code</li>
+                        <li>Figma</li>
+                        <li>Git</li>
+                        <li>Photoshop</li>
+                        <li>illustrator</li>
+                    </ul>
+                </div>
+            </div>        
+        </div>
+        <!-- skills -->
+         <!-- works -->
+         <div class="box mywork" id="works">
+            <div class="tit">My Work</div>
+            <ul>
+                <li><a href="//gong.conects.com/" target="_blank" data-name="공단기"><img src="img/gong.png" alt=""></a></li>
+                <li><a href="//ja.conects.com/" target="_blank" data-name="자단기"><img src="img/jadangi.png" alt=""></a></li>
+                <li><a href="//beauty.dangi.co.kr/main.asp" target="_blank" data-name="MBC아카데미뷰티"><img src="img/beauty.png" alt=""></a></li>
+                <li><a href="//md.conects.com/" target="_blank" data-name="MD단기"><img src="img/mddangi.png" alt=""></a></li>
+                <li><a href="//sobang.conects.com/" target="_blank" data-name="소방단기"><img src="img/sobang.png" alt=""></a></li>
+                <li><a href="//tech.conects.com/" target="_blank" data-name="기술단기"><img src="img/gisul.png" alt=""></a></li>
+                <li><a href="//public.conects.com/" target="_blank" data-name="공기업단기"><img src="img/gonggi.png" alt=""></a></li>
+                <li><a href="//bupmu.conects.com/" target="_blank" data-name="법무사단기"><img src="img/bupmu.png" alt=""></a></li>
+                <li><a href="//eng.conects.com/" target="_blank" data-name="영단기"><img src="img/eng.png" alt=""></a></li>
+                <li><a data-name="요기요 X 배달통 서비스종료"><img src="img/yogiyo.png" alt=""></a></li>
+                <li><a href="" target="_blank" data-name="..."><i class="bi bi-three-dots"></i></a></li>
+                <li><a href="" target="_blank" data-name="..."><i class="bi bi-three-dots"></i></a></li>
+            </ul>
+        </div> 
+         <!-- // works -->
+        <div class="box testimonial" id="testimonial">
+            <div class="tit">Testimonial</div>
+            <p>See what they say about me</p>
+            <ul>
+                <li>
+                    <span class="thumb"><i class="bi bi-person-fill"></i></span>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus pariatur eius, architecto, quis distinctio tenetur ipsam eos facilis facere consequuntur vero. Aliquid quaerat nemo, tempore enim impedit ab sequi omnis.</p>
+                </li>
+                <li>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus pariatur eius, architecto, quis distinctio tenetur ipsam eos facilis facere consequuntur vero. Aliquid quaerat nemo, tempore enim impedit ab sequi omnis.</p>
+                    <span class="thumb"><i class="bi bi-person-fill"></i></span>
+                </li>
+                <li>
+                    <span class="thumb"><i class="bi bi-person-fill"></i></span>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi earum debitis error rerum, in unde, laboriosam veniam tempore molestias, exercitationem nulla ipsa culpa. Repellendus tempora voluptas atque laboriosam illo perferendis? Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus pariatur eius, architecto, quis distinctio tenetur ipsam eos facilis facere consequuntur vero. Aliquid quaerat nemo, tempore enim impedit ab sequi omnis.</p>
+                </li>
+                <li>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus pariatur eius, architecto, quis distinctio tenetur ipsam eos facilis facere consequuntur vero. Aliquid quaerat nemo, tempore enim impedit ab sequi omnis.</p>
+                    <span class="thumb"><i class="bi bi-person-fill"></i></span>
+                </li>
+            </ul>
+        </div>
+        <div class="box contact" id="contact">
+            <div>yellsdesign@naver.com</div>
+            <ul>
+                <li><a target="_blank" href="https://github.com/yell1229/web_publish"><i class="bi bi-github"></i></a></li>
+                <li><a target="_blank" href="https://www.instagram.com/yellsdesign"><i class="bi bi-instagram"></i></a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
