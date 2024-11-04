@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSAP CARD</title>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/ScrollTrigger.min.js"></script>
+    <style>
+        *{margin:0;padding:0;}
+        li{list-style:none;}
+        section{display:flex; justify-content: center;align-items: center;height:100vh;}
+        h2{font-size:140px;text-transform: uppercase;color:#000;line-height:1}
+        .cont01 h2 span{display:block;-webkit-text-stroke:2px  #f45b40;color:transparent;}
+        .cont02{position:relative;height:1200px;background:pink;overflow:hidden;}
+        .cont02 .circle{display:block;position:absolute;top:40%;left:50%;width:2500px;height:2500px;transform: translateX(-50%);border-radius:50%;background-color: #000;}
+        .cont02 .textBox{position:absolute;top:50%;left:50%;;transform: translateX(-50%);color:#fff;text-align:center;}
+        .cont02 .textBox p{font-size:64px;font-weight: bold;letter-spacing: -5px;line-height:1;}
+        .cont03{background: #000;}
+        .cont03 h2{color:#888}
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <section class="cont01">
+            <h2 class="tit"><span>gsap</span>ScrollTrigger</h2>
+        </section>
+        <section class="cont02">
+            <span class="circle"></span>
+            <div class="textBox">
+                <p>
+                    OUT RELEASES<br>
+                    GET A FEELING<br>
+                    FOR THE LASTEST<br>
+                    SELECTED SOUND
+                </p>
+            </div>
+        </section>
+        <section class="cont03">
+            <h2>ScrollTrigger</h2>
+        </section>
+    </div>
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+        $(function(){
+            gsap.timeline({
+                scrollTrigger:{
+                    trigger:'.cont02',
+                    start:'0% 50%',
+                    end:'30% 0%',
+                    scrub:1,
+                    //markers:true
+                }
+            })
+            .fromTo('.cont02 .circle',{'width':'0','height':'0','top':'3%','duration':'10','ease':'elastic'},{'width':'2500px','height':'2500px','top':'30%'},0)
+        
+            gsap.timeline({
+                scrollTrigger:{
+                    trigger:'.cont02 .textBox',
+                    start:'0 80%',
+                    end:'100% 80%',
+                    scrub:1,
+                    //markers:true
+                }
+            })
+            .fromTo('.textBox',{'top':'50%','duration':'5','opacity':'0','ease':'elastic'},{'duration':'5','ease':'none','opacity':'1','top':'40%'},0)
+        });
+    </script>
+</body>
+</html>
