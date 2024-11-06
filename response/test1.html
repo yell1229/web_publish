@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #wrapper{
+            background-color: #ebebeb;
+            width:960px;
+            margin:0 auto;
+        }
+        section::after{
+            content:'';
+            display: block;
+            clear: both;
+        }
+        aside{
+            width:350px;
+            background-color: green;
+            height:200px;
+            float:left;
+            margin-bottom:20px;
+            color:#fff;
+        }
+        article{
+            width:550px;
+            height:200px;
+            background-color: green;
+            float:right;
+            color:#fff;
+        }
+        @media screen and (max-width:960px){
+            #wrapper{
+                width:100%;
+            }
+            aside{
+                width: calc((350/960) * 100%);
+            }
+            article{
+                width: calc((550/960) * 100%);
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Responsive Page</h1>
+    <div id="wrapper">
+        <header>
+            <h1>Header</h1>
+        </header>
+        <section>
+            <h1>Section</h1>
+            <aside>
+                <h1>snb</h1>
+            </aside>
+            <article>
+                <h1>article</h1>
+            </article>
+        </section>
+        <footer>
+            <h1>Footer</h1>
+        </footer>
+    </div>
+</body>
+</html>
