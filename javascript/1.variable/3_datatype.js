@@ -24,8 +24,8 @@ let ageList = ['홍길동','홍길순','홍길남'];
 console.log(ageList[0]);
 
 //primitive, reference  데이터 타입 초기화
-let address = undefined; // primitive / 객체를 가리키는 주소가 없는 경우?? 정의되지 않음
-let addressList = null;  //reference / 데이터가 안담기거나 에러일 경우??
+let address = undefined; // primitive / Primitive의 값이 정의되지 않음
+let addressList = null;  //reference / Reference의 값이 안담기거나 아무런 값도 가지지 않는 값.
 
 //boolean
 let flag = true; // !(not)
