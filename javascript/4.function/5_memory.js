@@ -6,7 +6,7 @@ function add(a,b){ // 힙에 있는 주소의 이름이 add.
 }
 
 console.log('add',add);
-let sum = add;
+let sum = add; // call by reference
 console.log('sum',sum);
 
 add(1,2);
