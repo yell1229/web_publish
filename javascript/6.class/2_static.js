@@ -1,7 +1,7 @@
 // static 메소드 : class의 객체를 생성하지 않고, 클래스명.메소드 형식으로 호출이 가능함.
 
 class Fruit{
-    static MAX_SIZE = 100; // static 키워드가 있는 것 끼리 호출이 가능하다. 같은 장소의 힙에 저장이 되기 때문이다.
+    static MAX_SIZE = 100; // static 키워드가 있는 것 끼리 호출이 가능하다. static만 모아서 다른 장소의 힙에 저장이 되기 때문이다.
 
     // field
     constructor(name, color, emoji){

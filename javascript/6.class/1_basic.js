@@ -2,7 +2,7 @@
 /*
     class 클래스명 {
         // constructor(생성자) 함수
-        constructor(){
+        constructor(){ // 메모리에 저장
             // field
             this.필드명 = 값;
         }
