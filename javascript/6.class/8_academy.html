@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        #student, #professor, #parent, #employee{display:none}
-        .on{display:block !important}
+        #professor, #parent, #employee{display:none;}
     </style>
     <script src="./8_academic.js"></script>
 
@@ -21,93 +20,98 @@
             <label><input type="radio" name="type" onchange="display('4');" value="4"><span>직원</span></label>
         </li>
     </ul>
-    <ul id="student" class="on">
-        <li>
-            <span>학번</span>
-            <input type="text" id="sno">
-        </li>
-        <li>
-            <span>학생명</span>
-            <input type="text" id="name">
-        </li>
-        <li>
-            <span>나이</span>
-            <input type="text" id="age">
-        </li>
-        <li>
-            <span>주소</span>
-            <input type="text" id="address">
-        </li>
-        <li>
-            <button type="button" onclick="signupCheck();">signup</button>
-            <button type="reset">cancle</button>
-        </li>
-    </ul>
-    <ul id="professor">
-        <li>
-            <span>학번</span>
-            <input type="text" id="sno">
-        </li>
-        <li>
-            <span>학생명</span>
-            <input type="text" id="name">
-        </li>
-        <li>
-            <span>나이</span>
-            <input type="text" id="age">
-        </li>
-        <li>
-            <span>주소</span>
-            <input type="text" id="address">
-        </li>
-        <li>
-            <button type="button" onclick="signupCheck();">signup</button>
-            <button type="reset">cancle</button>
-        </li>
-    </ul>
-    <ul id="parent">
-        <li>
-            <span>학번</span>
-            <input type="text" id="sno">
-        </li>
-        <li>
-            <span>학생명</span>
-            <input type="text" id="name">
-        </li>
-        <li>
-            <span>나이</span>
-            <input type="text" id="age">
-        </li>
-        <li>
-            <span>주소</span>
-            <input type="text" id="address">
-        </li>
-        <li>
-            <button type="button" onclick="signupCheck();">signup</button>
-            <button type="reset">cancle</button>
-        </li>
-    </ul>
-    <ul id="employee">
-        <li>
-            <span>학번</span>
-            <input type="text" id="sno">
-        </li>
-        <li>
-            <span>학생명</span>
-            <input type="text" id="name">
-        </li>
-        <li>
-            <span>나이</span>
-            <input type="text" id="age">
-        </li>
-        <li>
-            <span>주소</span>
-            <input type="text" id="address">
-        </li>
-        <li>
-            <button type="button" onclick="signupCheck();">signup</button>
-            <button type="reset">cancle</button>
-        </li>
-    </ul>
+    <div class="box">
+        <ul id="student">
+            <li>
+                <span>학번</span>
+                <input type="text" id="sno">
+            </li>
+            <li>
+                <span>학생명</span>
+                <input type="text" id="name">
+            </li>
+            <li>
+                <span>나이</span>
+                <input type="text" id="age">
+            </li>
+            <li>
+                <span>주소</span>
+                <input type="text" id="address">
+            </li>
+            <li>
+                <button type="button" onclick="signupCheck();">signup</button>
+                <button type="reset">cancle</button>
+            </li>
+        </ul>
+        <ul id="professor">
+            <li>
+                <span>교수명</span>
+                <input type="text" id="name">
+            </li>
+            <li>
+                <span>나이</span>
+                <input type="text" id="age">
+            </li>
+            <li>
+                <span>주소</span>
+                <input type="text" id="address">
+            </li>
+            <li>
+                <span>강의과목</span>
+                <input type="text" id="subject">
+            </li>
+            <li>
+                <button type="button" onclick="signupCheck();">signup</button>
+                <button type="reset">cancle</button>
+            </li>
+        </ul>
+        <ul id="parent">
+            <li>
+                <span>성명</span>
+                <input type="text" id="name">
+            </li>
+            <li>
+                <span>나이</span>
+                <input type="text" id="age">
+            </li>
+            <li>
+                <span>주소</span>
+                <input type="text" id="address">
+            </li>
+            <li>
+                <span>자녀이름</span>
+                <input type="text" id="cname">
+            </li>
+            <li>
+                <button type="button" onclick="signupCheck();">signup</button>
+                <button type="reset">cancle</button>
+            </li>
+        </ul>
+        <ul id="employee">
+            <li>
+                <span>성명</span>
+                <input type="text" id="name">
+            </li>
+            <li>
+                <span>나이</span>
+                <input type="text" id="age">
+            </li>
+            <li>
+                <span>주소</span>
+                <input type="text" id="address">
+            </li>
+            <li>
+                <span>부서명</span>
+                <input type="text" id="department">
+            </li>
+            <li>
+                <button type="button" onclick="signupCheck();">signup</button>
+                <button type="reset">cancle</button>
+            </li>
+        </ul>
+    </div>
+    <!-- 입력정보 출력 -->
+    <div id="result"></div>
+    <!-- // 입력정보 출력 -->
 </body>
 </html>

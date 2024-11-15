@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .date_box{font-size:15px;font-weight: 400;}
+        li{list-style:none;}
+        .form_area ul{display:none;}
+        .form_area .on{display:block;}
+        .form_area span{display:inline-block;width:100px;}
+    </style>
+    <script src="./9_test.js"></script>
+</head>
+<body onload="todate();">
+    <h1>회원가입 <span class="date_box"></span></h1>
+    
+    <div class="check">
+        <label><input type="radio" onchange="display('1')" value="1" name="type" checked>학생</label>
+        <label><input type="radio" onchange="display('2')" value="2" name="type">선생님</label>
+        <label><input type="radio" onchange="display('3')" value="3" name="type">학부모</label>
+        <label><input type="radio" onchange="display('4')" value="4" name="type">직원</label>
+    </div>
+    <div class="form_area">
+        <ul id="student" class="on">
+            <li><span>학생명: </span><input type="text" class="name"></li>
+            <li><span>나이: </span><input type="text" class="age"></li>
+            <li><span>집주소: </span><input type="text" class="address"></li>
+            <li><span>학번: </span><input type="text" class="cno"></li>
+        </ul>
+        <ul id="professor">
+            <li><span>교수이름: </span><input type="text" class="name"></li>
+            <li><span>나이: </span><input type="text" class="age"></li>
+            <li><span>집주소: </span><input type="text" class="address"></li>
+            <li><span>담당과목: </span><input type="text" class="subject"></li>
+        </ul>
+        <ul id="parent">
+            <li><span>부모이름: </span><input type="text" class="name"></li>
+            <li><span>나이: </span><input type="text" class="age"></li>
+            <li><span>집주소: </span><input type="text" class="address"></li>
+            <li><span>자녀이름: </span><input type="text" class="cname"></li>
+        </ul>
+        <ul id="employee">
+            <li><span>이름: </span><input type="text" class="name"></li>
+            <li><span>나이: </span><input type="text" class="age"></li>
+            <li><span>집주소: </span><input type="text" class="address"></li>
+            <li><span>담당부서: </span><input type="text" class="department"></li>
+        </ul>
+    </div>
+    <div class="btns">
+        <button type="button" onclick="signupCheck();">전송</button>
+        <button type="reset">취소</button>
+    </div>
+    <div id="result">result</div>
+</body>
+</html>
