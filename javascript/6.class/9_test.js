@@ -23,6 +23,7 @@ class Student extends Member{
         this.#cno = cno;
     }
     get cno(){return this.#cno}
+    get value(){return [this.name, this.age, this.address, this.cno]}
 }
 class Professor extends Member{
     #subject;
@@ -31,6 +32,7 @@ class Professor extends Member{
         this.#subject = subject;
     }
     get subject() {return this.#subject; }
+    get value(){return [this.name, this.age, this.address, this.subject]}
 }
 class Parent extends Member{
     #cname;
@@ -39,6 +41,7 @@ class Parent extends Member{
         this.#cname = cname;
     }
     get cname() { return this.#cname; }
+    get value(){return [this.name, this.age, this.address, this.cname]}
 }
 class Employee extends Member{
     #department;
@@ -47,6 +50,7 @@ class Employee extends Member{
         this.#department = department;
     }
     get department(){return this.#department;}
+    get value(){return [this.name, this.age, this.address, this.department]}
 }
 
 
@@ -77,9 +81,17 @@ const signupCheck = () => {
         member = new Employee(name.value, age.value, address.value, department.value);
                 break;
     }
+    console.log('test',member.name , member.age, member.address, member.cno);
+    console.log('test',member.value);
+    let list = '';
+    member.value.forEach((item) =>list += `<li>${item}</li>`);
+    let output = list;
+    // 선택된 정보 전송 시 하단에 result 출력
+    let result = document.querySelector('#result');
+    result.innerHTML = `<ul>${output}</ul>`;
 }
 
-// 선택된 정보 전송 시 하단에 result 출력
+
 
 // display : 라디오버튼 선택시 화면을 전환시키는 함수
 const display = (type) => {

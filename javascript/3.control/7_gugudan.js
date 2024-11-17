@@ -7,30 +7,37 @@
 //     }
     
 // }
-for(let i=1; i<=1; i++){
-    let rows ='';
-    for(let j=2; j<=9; j++){
-        rows += `--  ${j}단 --  \t`;
-    }
-    console.log(rows);
+// for(let i=1; i<=1; i++){
+//     let rows ='';
+//     for(let j=2; j<=9; j++){
+//         rows += `--  ${j}단 --  \t`;
+//     }
+//     console.log(rows);
     
-}
+// }
 
-for(let i=1; i<=9; i++){
-    let rows ='';
-    for(let j=2; j<=9; j++){
-        rows += `${j} * ${i} = ${j *i} \t`;
-    }
-    console.log(rows);
-}
-console.clear();
+// for(let i=1; i<=9; i++){
+//     let rows ='';
+//     for(let j=2; j<=9; j++){
+//         rows += `${j} * ${i} = ${j *i} \t`;
+//     }
+//     console.log(rows);
+// }
+// console.clear();
 
 // 5행 5열 별찍기 ★
 console.log('5행 5열 별찍기 ★');
 
-for(let i=5; i>0; i--){
+// for(let i=5; i>0; i--){
+//     let star = '';
+//     for(let j=i; j>=1; j--){
+//         star += `★`;
+//     }
+//     console.log(star);
+// }
+for(let i=0; i<5; i++){
     let star = '';
-    for(let j=i; j>=1; j--){
+    for(let j=i; j<=5; j++){
         star += `★`;
     }
     console.log(star);

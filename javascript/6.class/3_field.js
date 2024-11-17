@@ -17,11 +17,11 @@ class Fruit {
 
 const apple = new Fruit('apple','red','🍎');
 apple.display();
-console.log('외부에서 접근이 가능한가? :',apple.name); // 외부에서 field 접근이 가능
-console.log(apple.emoji); // 외부에서 field 접근이 가능
+console.log('외부에서 접근이 가능한가? :',apple.name); // 외부에서 field 접근이 가능? undefined
+console.log('외부에서 emoji 접근이 가능한가? :',apple.emoji); // 외부에서 field 접근이 가능.
 
 
-console.clear();
+
 // 사번(#), 사원명, 부서명 , info() 호출시 모든 정보 출력
 class Employee {
     #empno; //private
@@ -40,6 +40,7 @@ class Employee {
 let man = new Employee('123','홍길동','개발파트');
 man.info();
 console.log(man.empno); //private 접근 불가.
+console.log('name 접근가능?',man.name);
 
 
 

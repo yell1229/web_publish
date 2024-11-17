@@ -17,7 +17,7 @@ console.log(a, typeof a);
 console.log(parseInt(a), typeof parseInt(a));
 console.log(a + 100); // 접합연산자
 console.log(parseInt(a) + 100);
-// console.log(Number(a) + 100);
+console.log('Number : ',Number(a) + 100);// wrapper 객체
 
 
 //parseInt

@@ -7,13 +7,14 @@
     <style>
         .date_box{font-size:15px;font-weight: 400;}
         li{list-style:none;}
+        #result li{list-style:square}
         .form_area ul{display:none;}
         .form_area .on{display:block;}
         .form_area span{display:inline-block;width:100px;}
     </style>
-    <script src="./9_test.js"></script>
+    <script src="./9_test2.js"></script>
 </head>
-<body onload="todate();">
+<body>
     <h1>회원가입 <span class="date_box"></span></h1>
     
     <div class="check">
@@ -24,28 +25,28 @@
     </div>
     <div class="form_area">
         <ul id="student" class="on">
-            <li><span>학생명: </span><input type="text" class="name"></li>
-            <li><span>나이: </span><input type="text" class="age"></li>
-            <li><span>집주소: </span><input type="text" class="address"></li>
-            <li><span>학번: </span><input type="text" class="cno"></li>
+            <li><span>학생명: </span><input type="text" class="name" data-text="이름을 입력해주세요."></li>
+            <li><span>나이: </span><input type="text" class="age" data-text="나이를 입력해주세요."></li>
+            <li><span>집주소: </span><input type="text" class="address" data-text="주소를 입력해주세요."></li>
+            <li><span>학번: </span><input type="text" class="cno" data-text="학번을 입력해주세요."></li>
         </ul>
         <ul id="professor">
-            <li><span>교수이름: </span><input type="text" class="name"></li>
-            <li><span>나이: </span><input type="text" class="age"></li>
-            <li><span>집주소: </span><input type="text" class="address"></li>
-            <li><span>담당과목: </span><input type="text" class="subject"></li>
+            <li><span>교수이름: </span><input type="text" class="name" data-text="이름을 입력해주세요."></li>
+            <li><span>나이: </span><input type="text" class="age" data-text="나이를 입력해주세요."></li>
+            <li><span>집주소: </span><input type="text" class="address" data-text="주소를 입력해주세요."></li>
+            <li><span>담당과목: </span><input type="text" class="subject" data-text="담당과목을 입력해주세요."></li>
         </ul>
         <ul id="parent">
-            <li><span>부모이름: </span><input type="text" class="name"></li>
-            <li><span>나이: </span><input type="text" class="age"></li>
-            <li><span>집주소: </span><input type="text" class="address"></li>
-            <li><span>자녀이름: </span><input type="text" class="cname"></li>
+            <li><span>부모이름: </span><input type="text" class="name" data-text="이름을 입력해주세요."></li>
+            <li><span>나이: </span><input type="text" class="age" data-text="나이를 입력해주세요."></li>
+            <li><span>집주소: </span><input type="text" class="address" data-text="주소를 입력해주세요."></li>
+            <li><span>자녀이름: </span><input type="text" class="cname" data-text="자녀이름을 입력해주세요."></li>
         </ul>
         <ul id="employee">
-            <li><span>이름: </span><input type="text" class="name"></li>
-            <li><span>나이: </span><input type="text" class="age"></li>
-            <li><span>집주소: </span><input type="text" class="address"></li>
-            <li><span>담당부서: </span><input type="text" class="department"></li>
+            <li><span>이름: </span><input type="text" class="name" data-text="이름을 입력해주세요."></li>
+            <li><span>나이: </span><input type="text" class="age" data-text="나이를 입력해주세요."></li>
+            <li><span>집주소: </span><input type="text" class="address" data-text="주소를 입력해주세요."></li>
+            <li><span>담당부서: </span><input type="text" class="department" data-text="담당부서를 입력해주세요."></li>
         </ul>
     </div>
     <div class="btns">
@@ -53,5 +54,6 @@
         <button type="reset">취소</button>
     </div>
     <div id="result">result</div>
+    <div class="time"></div>
 </body>
 </html>

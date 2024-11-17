@@ -12,6 +12,7 @@ let num = 123000;
 console.log(num.toLocaleString()); // 넘버객체가 아니지만,  엔진이 알아서 기본형태로 받아도 사용가능하게 만든다.
 let num2 = new Number(123000); //이렇게 사용하는게 맞음.
 console.log(num2.toLocaleString());
+console.log('num과 num2비교 : ', num === num2); // false
 
 // MAX_VALUE, MIN_VALUE ...  ex) Number.MAX_VALUE
 console.log(Number.MAX_VALUE);

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .date_box{font-size:15px;font-weight: 400;}
+        li{list-style:none;}
+        #result li{list-style:square}
+        .form_area ul{display:none;}
+        .form_area .on{display:block;}
+        .form_area label{display:inline-block;width:100px;}
+        .form_area input + span{display:none;color:red;padding-left:10px;}
+        .form_area input + span.on{display:inline-block;}
+    </style>
+    <script defer src="./10_test.js"></script>
+</head>
+<body>
+    <h1>회원가입 <span class="date_box"></span></h1>
+    
+    <div class="check">
+        <label><input type="radio" onchange="display('1')" value="1" name="type" checked>학생</label>
+        <label><input type="radio" onchange="display('2')" value="2" name="type">선생님</label>
+        <label><input type="radio" onchange="display('3')" value="3" name="type">학부모</label>
+        <label><input type="radio" onchange="display('4')" value="4" name="type">직원</label>
+    </div>
+    <div class="form_area">
+        <ul id="student" class="on">
+            <li><label>학생명: </label><input type="text" class="name"><span>이름을 입력해주세요.</span></li>
+            <li><label>나이: </label><input type="text" class="age"><span>나이를 입력해주세요.</span></li>
+            <li><label>집주소: </label><input type="text" class="address"><span>주소를 입력해주세요.</span></li>
+            <li><label>학번: </label><input type="text" class="cno"><span>학번을 입력해주세요.</span></li>
+        </ul>
+        <ul id="professor">
+            <li><label>교수이름: </label><input type="text" class="name"><span>이름을 입력해주세요.</span></li>
+            <li><label>나이: </label><input type="text" class="age"><span>나이를 입력해주세요.</span></li>
+            <li><label>집주소: </label><input type="text" class="address"><span>주소를 입력해주세요.</span></li>
+            <li><label>담당과목: </label><input type="text" class="subject"><span>담당과목을 입력해주세요.</span></li>
+        </ul>
+        <ul id="parent">
+            <li><label>부모이름: </label><input type="text" class="name"><span>이름을 입력해주세요.</span></li>
+            <li><label>나이: </label><input type="text" class="age"><span>나이를 입력해주세요.</span></li>
+            <li><label>집주소: </label><input type="text" class="address"><span>주소를 입력해주세요.</span></li>
+            <li><label>자녀이름: </label><input type="text" class="cname"><span>자녀이름을 입력해주세요.</span></li>
+        </ul>
+        <ul id="employee">
+            <li><label>이름: </label><input type="text" class="name"><span>이름을 입력해주세요.</span></li>
+            <li><label>나이: </label><input type="text" class="age"><span>나이를 입력해주세요.</span></li>
+            <li><label>집주소: </label><input type="text" class="address"><span>주소를 입력해주세요.</span></li>
+            <li><label>담당부서: </label><input type="text" class="department"><span>담당부서를 입력해주세요.</span></li>
+        </ul>
+    </div>
+    <div class="btns">
+        <button type="button" onclick="signupCheck();">전송</button>
+        <button type="reset" onclick="reset();">취소</button>
+    </div>
+    <div id="result">result</div>
+    <div class="time"></div>
+</body>
+</html>

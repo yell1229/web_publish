@@ -6,7 +6,7 @@
 let a = '100.10';
 // a = parseInt(a); // 정수
 a = parseFloat(a); // 실수
-console.log(typeof a);
+console.log('typeof a : ',typeof a);
 console.log(a);
 
 // uri 인코딩 : ex) http://www.naver.com/
