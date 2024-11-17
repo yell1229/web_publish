@@ -27,7 +27,7 @@ function add4(a,b, ...datas){
     // datas는 object
     console.log(a);
     console.log(b);
-    console.log(datas);  
+    console.log(Array.isArray(datas));  //array인지 확인
 }
 
 add4(1,2,3,4,5,6,7,8);
