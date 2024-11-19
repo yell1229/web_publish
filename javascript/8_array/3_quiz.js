@@ -31,3 +31,5 @@ let replaceArray2 = (array, oldValue, newValue) => {
 let names = ['hong','kim','park','hong'];
 let resultObj = replaceArray2(names,'hong','gong');
 console.log('resultObj : ',resultObj);
+
+

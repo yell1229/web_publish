@@ -97,7 +97,7 @@ console.log('fnumbers flat: ',fnumbers.flat(2)); // 2 level 중첩 해제
 
 */
 
-// 배열의 문자요쇼를 하나의 string 문자열로 반환 : join()
+// 배열의 문자요소를 하나의 string 문자열로 반환 : join()
 let textList = ['a','b','c'];
 console.log(textList); // 배열
 console.log(textList.join()); // a,b,c

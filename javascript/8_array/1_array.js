@@ -1,8 +1,4 @@
 /*
-
-
-
-
 let array1 = new Array(10) // 빈칸 10개의 array class 생성
 let arrya2 = [1,2,3,4];
 let arrya3 = ['1','2','3'];
