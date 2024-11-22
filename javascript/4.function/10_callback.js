@@ -32,6 +32,6 @@ job2(100, 200, printSum);
 
 
 // setTimeout 함수호출
-console.clear();
+// console.clear();
 // 이름없이 1번만 실행하고 끝. let a = () => {} // 1번 실행이라서, let 사용 안함.
 setTimeout((sec) => console.log(`${sec}초 후 실행!`), 1000 , 1); // 1000초 동안 web API에 있다가 호출됨.
