@@ -38,6 +38,14 @@ function initForm(){
         }else if(searchDt.value === ''){
             alert('날짜를 입력해주세요');
             searchDt.focus();
+        }else if(typeof parseInt(searchDt.value) == 'number' || typeof parseInt(searchDt.value) == 'NaN'){
+            console.log(parseInt(searchDt.value));
+            
+            alert('숫자를 입력해주세요.')
+            searchDt.focus();
+        }else if(searchDt.value.length !== 8){
+            alert('8자리를 맞춰 입력해주세요.')
+            searchDt.focus();
         }else{
             kobisBoxOffice(type.value, searchDt.value);
         }
@@ -50,7 +58,6 @@ function initForm(){
 async function kobisBoxOffice(operType, searchDt){
     const key = `e6cc18e742adf7189da38b34bb5ad8b9`;
     let url = `http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/search${operType}BoxOfficeList.json?key=${key}&targetDt=${searchDt}`;
-    console.log(url);
 
     let kobis = await fetch(url);
     let data = await kobis.json();
@@ -90,6 +97,7 @@ async function kobisBoxOffice(operType, searchDt){
         </table>
     `;
     document.querySelector('#result').innerHTML = output;
+    document.querySelector('h1').innerHTML =  data.boxOfficeResult.boxofficeType;
 
 } // end of kobisBoxOffice
 
