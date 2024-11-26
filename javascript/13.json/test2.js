@@ -45,7 +45,7 @@ async function movieList(searchMovie){
 // kobis 영화 정보 상세 호출 함수
 async function kobisMovieDetail(searchMovie){
     let movieMatchingCd = movieList(searchMovie);
-    console.log('num',searchMovie);
+    console.log('num',movieMatchingCd);
     
     let key = `e6cc18e742adf7189da38b34bb5ad8b9`;
     let url = `http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?key=${key}&movieCd=${movieMatchingCd}`; 
