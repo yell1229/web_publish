@@ -1,0 +1,9 @@
+.container{
+    background-color: #ccc;
+    display:flex;
+    justify-content: center;
+    gap:10px;
+}
+.title{
+    color:tomato;
+}
