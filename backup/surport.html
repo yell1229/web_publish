@@ -8,7 +8,8 @@
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="js/custom.js"></script>
+    <!-- <script src="js/custom.js"></script> -->
+    <script src="./js/surport.js"></script>
 </head>
 <body>
     <div class="wrap">
@@ -79,11 +80,14 @@
                         <div class="news_area">
                             <div class="tit">공지/뉴스</div>
                             <ul>
-                                <li><a href="">[시스템점검] iOS 18 업데이트 관련 예매 서비스 이용 안내[시스템점검] iOS 18 업데이트 관련 예매 서비스 이용 안내</a><span>2024.10.11</span></li>
-                                <li><a href="">[시스템점검] iOS 18 업데이트 관련 예매 서비스 이용 안내[시스템점검] iOS 18 업데이트 관련 예매 서비스 이용 안내</a><span>2024.10.11</span></li>
-                                <li><a href="">[시스템점검] iOS 18 업데이트 관련 예매 서비스 이용 안내[시스템점검] iOS 18 업데이트 관련 예매 서비스 이용 안내</a><span>2024.10.11</span></li>
-                                <li><a href="">[시스템점검] iOS 18 업데이트 관련 예매 서비스 이용 안내[시스템점검] iOS 18 업데이트 관련 예매 서비스 이용 안내</a><span>2024.10.11</span></li>
-                                <li><a href="">[시스템점검] iOS 18 업데이트 관련 예매 서비스 이용 안내[시스템점검] iOS 18 업데이트 관련 예매 서비스 이용 안내</a><span>2024.10.11</span></li>
+                                <li onclick="onChangeNoticeList('total')">전체</li>
+                                <li onclick="onChangeNoticeList('system')">시스템점검</li>
+                                <li>극장</li>
+                                <li>행사/이벤트</li>
+                                <li>제휴이벤트</li>
+                                <li>기타</li>
+                            </ul>
+                            <ul class="data-list">
                             </ul>
                             <div class="bans">
                                 <a href="">CGV PREVIEW 시사회/무대인사</a>

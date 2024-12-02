@@ -10,6 +10,7 @@
         <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
         <!-- <script src="js/custom.js"></script> -->
         <script src="./js/cgvForm.js"></script>
+        <!-- oninput: https://developer.mozilla.org/ko/docs/Web/API/Element/input_event  -->
     </head>
 <body>
     <div class="wrap">
@@ -125,12 +126,12 @@
                     <div class="tit">아이디 비밀번호를 입력하신 후,<br>로그인 버튼을 클릭해 주세요.</div>
                     <form action="">
                         <div>
-                            <input type="text" placeholder="아이디를 입력해주세요" id="id">
+                            <input type="text" placeholder="아이디를 입력해주세요" id="id" oninput="handleChange(event)">
                             <strong class="error-msg-id"></strong>
                         </div>
                         <div>
-                            <input type="password" placeholder="비밀번호를 입력해주세요" id="pwd">
-                            <strong class="error-msg-id"></strong>
+                            <input type="password" placeholder="비밀번호를 입력해주세요" id="pwd" oninput="handleChange(event)">
+                            <strong class="error-msg-pwd"></strong>
                         </div>
                         <div class="btn_login"><span onclick="loginFormCheck()">로그인</span></div>
                         <div class="btns">
