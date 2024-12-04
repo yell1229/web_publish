@@ -1,0 +1,6 @@
+button{    position: relative;
+    color: #000;
+    padding: 0.5rem 3rem;
+    border: 1px solid #03e8f9;
+    border-radius: 4px;
+    font-size: 1.1rem;}

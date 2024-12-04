@@ -1,0 +1,15 @@
+.btn-container{margin:30px;display:flex;justify-content:center;gap:10px;}
+button{padding:5px 10px;border:2px solid transparent;background-color:#fc1970;border-radius:4px;cursor: pointer;}
+button:hover{border-color:#fc1970;background-color:transparent;}
+
+.avatar-container{display:flex;justify-content: center;}
+.avatar{display:inline-block;width:170px;border:1px solid #ccc;padding:10px;text-align:center}
+.avatar img{border-radius: 100%;width:150px;}
+
+.nav-container{display:flex;justify-content: flex-end;}
+a{display:inline-block;margin:10px;color:#333;text-decoration: none;}
+a:hover{color:#fc1970;text-decoration: underline;}
+
+.text-box{padding:20px;border-radius:10px;background:rgba(0,0,0,.2);flex:1;}
+
+.box-list{display:flex;margin:10px;gap:15px;}

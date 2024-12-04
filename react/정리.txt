@@ -20,13 +20,13 @@ https://reactjs.org/
 - 높은 상태 관리 복잡도 : React Hooks를 통한 상태 관리
 
 4. React 프로젝트 생성 및 실행
-1) nodejs 설치가 선행되어져야 한다.(LTS version)
-2) npm 커뮤니티를 통해 React 앱(project)을 생성함
-3) React 앱 생성
-    - npx create-react-app [생성할 앱 이름: snake type의 이름 사용]
-    예) npx create-react-app my-app
-4) React 앱 실행
-    - my-app 으로 이동 후 > npm start
+    ) nodejs 설치가 선행되어져야 한다.(LTS version)
+    2) npm 커뮤니티를 통해 React 앱(project)을 생성함
+    3) React 앱 생성
+        - npx create-react-app [생성할 앱 이름: snake type의 이름 사용]
+        예) npx create-react-app my-app
+    4) React 앱 실행
+        - my-app 으로 이동 후 > npm start
 
 5. React 실행 순서
     - npm start > src/index.js > App.js(컴포넌트의 첫글자는 대문자)
@@ -38,3 +38,8 @@ https://reactjs.org/
     - return 되는 컴포넌트는 반드시 하나의 테그로 그룹핑되어 리턴된다.
       예) <div>, <> : 그룹핑만을 위한 테그
     - 로직을 실행하는 코드는 {} 묶어서 반환코드에 추가한다.
+
+7. 터미널 프로그램 다운로드 및 설치
+    1) 윈도우 : cmder
+    2) mac : iterm2
+
