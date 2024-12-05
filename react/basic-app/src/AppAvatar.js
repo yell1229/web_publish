@@ -5,19 +5,26 @@ import AvatarImage from './components/AvatarImage.jsx';
 import AvatarImageList from './components/AvatarImageList.jsx';
 import AvatarList from './components/AvatarList.jsx';
 import Menu from './components/Menu.jsx';
-
+import {useEffect, useState} from 'react';
 
 export default function App() {
-  const imgList = [
-    {"img" : "/images/people1.webp"},
-    {"img" : "/images/people2.webp"},
-    {"img" : "/images/people3.webp"}
-  ];
-  const avatarList = [
-    {"img" : "/images/people1.webp" , "name" : "Smith"},
-    {"img" : "/images/people2.webp" , "name" : "James"},
-    {"img" : "/images/people3.webp" , "name" : "Jain"}
-  ];
+  const [imgList, setImgList] = useState([]);
+  const [avatarList, setAvatarList] = useState([]);
+
+    useEffect(() => {
+      fetch('/data/avatar.json')
+        .then((result) => result.json())
+        .then(jsonData => { // return 은 바로 화면에 출력 할 때 사용. 그게 아닌 경우 쓰지 않아도 된다.
+          setImgList(jsonData.imageList);
+          setAvatarList(jsonData.avatarList);
+        })
+        .catch(error => console.log('error'))
+    },[]);
+  
+console.log(`imgList => ${imgList}`);
+console.log(`avatarList => ${avatarList}`);
+
+
   // const nav = [
   //   {"text" : ""},
   //   {"text" : ""},

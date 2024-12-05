@@ -1,0 +1,31 @@
+
+[
+            {
+                "img":"/images/people1.webp",
+                "id":"@smith",
+                "name":"Smith", 
+                "date":"2024-12-01", 
+                "content":" Eaque eligendi laborum numquam voluptas, dicta accusantium reiciendis atque quam repellat? Facere officiis quae reiciendis minima fugit maxime quod voluptas re"
+            },
+            {
+                "img":"/images/people2.webp",
+                "id":"@james",
+                "name":"James", 
+                "date":"2024-12-03", 
+                "content":"Eaque eligendi labotas re"
+            },
+            {
+                "img":"/images/people3.webp",
+                "id":"@jain", 
+                "name":"Jain", 
+                "date":"2024-12-04", 
+                "content":"Eaque eligendi lare officiis quae reiciendis minima fugit"
+            },
+            {
+                "img":"/images/people1.webp",
+                "id":"@jain", 
+                "name":"KKKK", 
+                "date":"2024-12-04", 
+                "content":"Eaque eligendi lare officiis quae fugit"
+            }
+        ]
