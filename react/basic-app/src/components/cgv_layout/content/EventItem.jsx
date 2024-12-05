@@ -1,10 +1,10 @@
 
-export default function EventItem({src, title, date}){
+export default function EventItem({href, src, title, date}){
     return (
-        <>
-            <div><img src={src} alt="" /></div>
-            <p>{title}</p>
-            <p>{date}</p>
-        </>
+        <a href={href}>
+            <div className="img"><img src={src} alt="" /></div>
+            <strong>{title}</strong>
+            <span>{date}</span>
+        </a>
     );
 }

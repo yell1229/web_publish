@@ -1,0 +1,23 @@
+[
+    {
+        "img":"/images/people1.webp",
+        "name":"Smith",
+        "id" :"@smith",
+        "date" :"2024.12.01",
+        "text" :"loremLorem ipsum dolor sit amet consectetur adipisicing elit. Provident amet nisi eos rem sit autem quae error hic unde asperiores, excepturi debitis nostrum magni laudantium ea, laboriosam dolorem voluptatum assumenda!"
+    },
+    {
+        "img":"/images/people2.webp",
+        "name":"James",
+        "id" :"@james",
+        "date" :"2024.12.03",
+        "text" :"loremLorem ipsum do autem quae error hic unde asperiores, excepturi debitis nostrum magni laudantium ea, laboriosam dolorem voluptatum assumenda!"
+    },
+    {
+        "img":"/images/people3.webp",
+        "name":"Lora",
+        "id" :"@lara",
+        "date" :"2024.12.04",
+        "text" :"loremLorem ipsum dolor sit ametent amet nisi eos rem sit autem quae error hic unde asperiores, excepturi debitis nostrum magni laudantium ea, laboriosam dolorem voluptatum assumenda!"
+    }
+]

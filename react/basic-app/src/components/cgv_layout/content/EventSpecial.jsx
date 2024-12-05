@@ -4,8 +4,10 @@ import Special from './Special.jsx';
 export default function EventSpecial(){
     return (
         <div className="special">
-            <Event />
-            <Special />
+            <div className="inner">
+                <Event />
+                <Special />
+            </div>
         </div>      
     )
 }
