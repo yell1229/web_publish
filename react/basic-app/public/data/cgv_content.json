@@ -1,0 +1,39 @@
+{
+    "specialList" : [
+            {"text1":"SUITE CINEMA", "text2":"#호텔 컨셉의 프리미엄관"},
+            {"text1":"CINE & LIVINGROOM", "text2":"#신개념 소셜 상영관"},
+            {"text1":"4DX", "text2":"#모션시트 #오감체험"},
+            {"text1":"CINE de CHEF", "text2":"#쉐프가 있는 영화관"}
+        ],
+    "packageList" : [
+            {
+                "title":"패키지", "link":"#" , "linktext":"패키지 더보기" ,  
+                "list" : [
+                    {"href":"#" , "src":"img/17170520996180.jpg" , "alt":"패키지" , "text":"우리 패키지" , "price":22000},
+                    {"href":"#" , "src":"img/17170520996180.jpg" , "alt":"패키지" , "text":"나랑 너 패키지" , "price":35000},
+                    {"href":"#" , "src":"img/17170520996180.jpg" , "alt":"패키지" , "text":"좋은 날 패키지" , "price":18000}
+                ]
+            },
+            {
+                "title":"영화관람권", "link":"#" , "linktext":"더보기" ,
+                "list" : [
+                    {"href":"#" , "src":"img/17170520996180.jpg" , "alt":"영화관람권" , "text":"CGV 영화관람권" , "price":13000},
+                    {"href":"#" , "src":"img/17170520996180.jpg" , "alt":"영화관람권" , "text":"CGV 영화관람권" , "price":14000},
+                    {"href":"#" , "src":"img/17170520996180.jpg" , "alt":"영화관람권" , "text":"CGV 영화관람권" , "price":15000}
+                ]
+            },
+            {
+                "title":"기프트카드", "link":"#" , "linktext":"기프트카드 더보기" ,
+                "list" : [
+                    {"href":"#" , "src":"img/17170520996180.jpg" , "alt":"기프트카드" , "text":"PACONNIE A형" , "price": 62000},
+                    {"href":"#" , "src":"img/17170520996180.jpg" , "alt":"기프트카드" , "text":"PACONNIE B형" , "price": 62000},
+                    {"href":"#" , "src":"img/17170520996180.jpg" , "alt":"기프트카드" , "text":"PACONNIE C형" , "price": 62000}
+                ]
+            }
+    ],
+    "eventList" : [
+        {"href":"#" , "src":"img/17332152020130.jpg","title":"2025 CGV 짱구는 못말려 캘린더 출시!","date":"2024.11.29 ~ 2024.12.31"},
+        {"href":"#" , "src":"img/17332152020130.jpg","title":"[2025] CGV 짱구는 못말려 캘린더 출시!","date":"2024.11.29 ~ 2024.12.31"},
+        {"href":"#" , "src":"img/17332152020130.jpg","title":"[2025] CGV 짱구는 못말려 캘린더 출시!","date":"2024.11.29 ~ 2024.12.31"}
+    ]
+}

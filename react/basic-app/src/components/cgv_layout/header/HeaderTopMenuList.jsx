@@ -1,17 +1,20 @@
 import HeaderTopMenu from "./HeaderTopMenu.jsx";
+import {useState, useEffect} from 'react';
 
 export default function HeaderTopMenuList(){
-    const list = [
-        {"href":"#" , "className" :"login" , "src" :"img/loginPassword.png", "text":"로그인"},
-        {"href":"#" , "className" :"" , "src" :"img/loginJoin.png", "text":"회원가입"},
-        {"href":"#" , "className" :"" , "src" :"img/loginMember.png", "text":"My CGV"},
-        {"href":"#" , "className" :"" , "src" :"img/loginCustomer.png", "text":"고객센터"}
-    ];
+    const [list, setList ] = useState([]);
+
+    useEffect(()=>{
+        fetch('/data/cgv_header.json')
+            .then(data => data.json())
+            .then(jsonData => setList(jsonData.topMenuList))
+            .catch(error => console.log('error'))
+    },[]);
 
     return (
         <ul>
             {
-                list.map((menu) => <HeaderTopMenu href={menu.href} className={menu.className} src={menu.src} text={menu.text} />)
+                list && list.map((menu) => <HeaderTopMenu href={menu.href} className={menu.className} src={menu.src} text={menu.text} />)
             }
             
         </ul>

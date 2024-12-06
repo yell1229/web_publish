@@ -1,19 +1,23 @@
 import HeaderBottomMenu from './HeaderBottomMenu.jsx';
+import {useState, useEffect} from 'react';
+import {fetchJSON} from '../js/commons.js';
 
 export default function HeaderBottomMenuList(){
-    const names = [
-        {"name" : "영화" , "href" : "#"},
-        {"name" : "극장" , "href" : "#"},
-        {"name" : "예매" , "href" : "#"},
-        {"name" : "스토어" , "href" : "#"},
-        {"name" : "이벤트" , "href" : "#"},
-        {"name" : "혜택" , "href" : "#"},
-    ];
+    const [names, setNames] = useState();
+    useEffect(() =>{
+        // fetch('/data/cgv_header.json')
+        //     .then(data => data.json())
+        //     .then(jsonData => setNames(jsonData.names))
+        //     .catch(error => console.log('error'))
+        fetchJSON('/data/cgv_header.json')
+            .then(result =>  setNames(result.names))
+            .catch(error => console.log('error'));
+    },[]);
     return (
         <ul class="nav">
             <li class="logo"><a href=""><img src="img/logoWhite.png" alt="CGV" /></a></li>
             {
-                names.map(item =>
+                names && names.map(item =>
                 <li>
                     <HeaderBottomMenu name={item.name} href={item.href} />
                 </li>
