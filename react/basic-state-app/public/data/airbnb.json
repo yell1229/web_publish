@@ -1,0 +1,58 @@
+{
+    "list" : [
+        {
+            "src" : "https://a0.muscache.com/im/pictures/miso/Hosting-1206692947983125979/original/42ae0fd5-e9d8-40aa-871c-d43453ab1acb.jpeg",
+            "nation" : "한국 가평군",
+            "info" : "강변 전망강변 전망",
+            "date" : "1월 5일~10일1월 5일~10일",
+            "price" : "171648",
+            "isGood" : true,
+            "color": true
+        },
+        {
+            "src" : "https://a0.muscache.com/im/pictures/33357308-3507-49e5-aaaf-0b5b9fe234fc.jpg",
+            "nation" : "한국 가평군",
+            "info" : "강변 전망강변 전망",
+            "date" : "1월 5일~10일1월 5일~10일",
+            "price" : "171648",
+            "isGood" : false,
+            "color": false
+        },
+        {
+            "src" : "https://a0.muscache.com/im/pictures/33357308-3507-49e5-aaaf-0b5b9fe234fc.jpg",
+            "nation" : "한국 가평군",
+            "info" : "강변 전망강변 전망",
+            "date" : "1월 5일~10일1월 5일~10일",
+            "price" : "171648",
+            "isGood" : true,
+            "color": false
+        },
+        {
+            "src" : "https://a0.muscache.com/im/pictures/33357308-3507-49e5-aaaf-0b5b9fe234fc.jpg",
+            "nation" : "한국 가평군",
+            "info" : "강변 전망강변 전망",
+            "date" : "1월 5일~10일1월 5일~10일",
+            "price" : "171648",
+            "isGood" : false,
+            "color": true
+        },
+        {
+            "src" : "https://a0.muscache.com/im/pictures/33357308-3507-49e5-aaaf-0b5b9fe234fc.jpg",
+            "nation" : "한국 가평군",
+            "info" : "강변 전망강변 전망",
+            "date" : "1월 5일~10일1월 5일~10일",
+            "price" : "171648",
+            "isGood" : false,
+            "color": false
+        },
+        {
+            "src" : "https://a0.muscache.com/im/pictures/33357308-3507-49e5-aaaf-0b5b9fe234fc.jpg",
+            "nation" : "한국 가평군",
+            "info" : "강변 전망강변 전망",
+            "date" : "1월 5일~10일1월 5일~10일",
+            "price" : "171648",
+            "isGood" : false,
+            "color": false
+        }
+    ]
+}
