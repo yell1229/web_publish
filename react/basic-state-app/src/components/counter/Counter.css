@@ -1,0 +1,5 @@
+
+.container{width:300px;margin:0 auto;padding:20px;text-align:center;border:1px solid lightgray;margin-bottom:20px;}
+.container .number{font-size:50px;}
+.container .total-number{font-size:55px;font-weight: bold;}
+.button{font-size:20px;margin:10px}
