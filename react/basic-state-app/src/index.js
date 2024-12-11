@@ -7,12 +7,14 @@ import './index.css';
 // import Avatar from './components/avatar/Avatar.jsx';
 // import AppCounter from './components/counter/AppCounter.jsx';
 // import AppBestSeller from './components/yes24/AppBestSeller.jsx';
-import AppCounter from './components/yes242/AppCounter.jsx';
+// import AppCounter from './components/yes242/AppCounter.jsx';
+// import AppShopping from './components/shopping/AppShopping.jsx';
+import AppOlive from './components/olive/AppOlive.jsx';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <AppCounter />
+    <AppOlive />
   </React.StrictMode>
 );
 
