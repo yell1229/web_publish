@@ -10,11 +10,12 @@ import './index.css';
 // import AppCounter from './components/yes242/AppCounter.jsx';
 // import AppShopping from './components/shopping/AppShopping.jsx';
 // import AppOlive from './components/olive/AppOlive.jsx';
-import AppCount from './components/count2/AppCount.jsx';
+// import AppCount from './components/count2/AppCount.jsx';
+import AppAladin from './components/aladin/AppAladin.jsx';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <AppCount />
+    <AppAladin />
   </React.StrictMode>
 );
 
