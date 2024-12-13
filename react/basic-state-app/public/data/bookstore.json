@@ -1,0 +1,154 @@
+{
+    "navList" :[
+        {    
+            "menu" : "로그인"
+        },
+        {    
+            "menu" : "회원가입"
+        },
+        {    
+            "menu" : "마이페이지"
+        },
+        {    
+            "menu" : "하위메뉴보기"
+        },
+        {    
+            "menu" : "카트"
+        },
+        {    
+            "menu" : "주문/배송"
+        },
+        {    
+            "menu" : "고객센터"
+        }
+    ],
+    "category" : [
+        { "name" : "에세이"},
+        { "name" : "소설"},
+        { "name" : "자기계발"},
+        { "name" : "사회과학"},
+        { "name" : "고전"}
+    ],
+    "bookList" :[
+        {
+            "id":"p_0001",
+            "rank":1,
+            "img":"https://image.yes24.com/goods/13137546/L",
+            "title" :"[해외][고전] 소년이 온다",
+            "price":"13500",
+            "date":"24.12.02 ~ 24.12.31",
+            "type" : "overseas",
+            "category" : "고전"
+        },
+        {
+            "id":"p_0002",
+            "rank":2,
+            "img":"https://image.yes24.com/goods/108422348/L",
+            "title" :"[국내][에세이]채식주의자",
+            "price":"13500",
+            "date":"24.12.02 ~ 24.12.31",
+            "type" : "domestic",
+            "category" : "에세이"
+        },
+        {
+            "id":"p_0003",
+            "rank":3,
+            "img":"https://image.yes24.com/goods/103495056/L",
+            "title" :"[해외][소설]작별하지 않는다",
+            "price":"13500",
+            "date":"24.12.02 ~ 24.12.31",
+            "type" : "overseas",
+            "category" : "소설"
+        },
+        {
+            "id":"p_0004",
+            "rank":4,
+            "img":"https://image.yes24.com/goods/11467936/L",
+            "title" :"[국내][자기계발]서랍에 저녁을 넣어 두었다",
+            "price":"13500",
+            "date":"24.12.02 ~ 24.12.31",
+            "type" : "domestic",
+            "category" : "자기계발"
+        },
+        {
+            "id":"p_0005",
+            "rank":5,
+            "img":"https://image.yes24.com/goods/13137546/L",
+            "title" :"[해외][고전] 소년이 온다",
+            "price":"13500",
+            "date":"24.12.02 ~ 24.12.31",
+            "type" : "overseas",
+            "category" : "고전"
+        },
+        {
+            "id":"p_0006",
+            "rank":6,
+            "img":"https://image.yes24.com/goods/108422348/L",
+            "title" :"[국내][에세이]채식주의자",
+            "price":"13500",
+            "date":"24.12.02 ~ 24.12.31",
+            "type" : "domestic",
+            "category" : "에세이"
+        },
+        {
+            "id":"p_0007",
+            "rank":7,
+            "img":"https://image.yes24.com/goods/103495056/L",
+            "title" :"[해외][소설]작별하지 않는다",
+            "price":"13500",
+            "date":"24.12.02 ~ 24.12.31",
+            "type" : "overseas",
+            "category" : "소설"
+        },
+        {
+            "id":"p_0008",
+            "rank":8,
+            "img":"https://image.yes24.com/goods/11467936/L",
+            "title" :"[국내][자기계발]서랍에 저녁을 넣어 두었다",
+            "price":"13500",
+            "date":"24.12.02 ~ 24.12.31",
+            "type" : "domestic",
+            "category" : "자기계발"
+        },
+        {
+            "id":"p_0009",
+            "rank":9,
+            "img":"https://image.yes24.com/goods/13137546/L",
+            "title" :"[해외][고전] 소년이 온다",
+            "price":"13500",
+            "date":"24.12.02 ~ 24.12.31",
+            "type" : "overseas",
+            "category" : "고전"
+        },
+        {
+            "id":"p_0010",
+            "rank":10,
+            "img":"https://image.yes24.com/goods/108422348/L",
+            "title" :"[국내][에세이]채식주의자",
+            "price":"13500",
+            "date":"24.12.02 ~ 24.12.31",
+            "type" : "domestic",
+            "category" : "에세이"
+        },
+        {
+            "id":"p_0011",
+            "rank":11,
+            "img":"https://image.yes24.com/goods/103495056/L",
+            "title" :"[해외][소설]작별하지 않는다",
+            "price":"13500",
+            "date":"24.12.02 ~ 24.12.31",
+            "type" : "overseas",
+            "category" : "소설"
+        },
+        {
+            "id":"p_0012",
+            "rank":12,
+            "img":"https://image.yes24.com/goods/11467936/L",
+            "title" :"[국내][자기계발]서랍에 저녁을 넣어 두었다",
+            "price":"13500",
+            "date":"24.12.02 ~ 24.12.31",
+            "type" : "domestic",
+            "category" : "자기계발"
+        }
+    ]
+}

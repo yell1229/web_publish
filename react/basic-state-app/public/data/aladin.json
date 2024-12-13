@@ -9,55 +9,55 @@
     "books" :[
         {
             "img" :"https://image.aladin.co.kr/product/4086/97/cover200/8936434128_2.jpg",
-            "title" :"[국내]소년이 온다 ",
+            "title" :"[국내][에세이]소년이 온다 ",
             "type" : "domestic",
             "category" : "에세이"
         },
         {
             "img" :"https://image.aladin.co.kr/product/27877/5/cover200/8954682154_3.jpg",
-            "title" :"[국외]작별하지 않는다 ",
+            "title" :"[국외][소설]작별하지 않는다 ",
             "type" : "overseas",
             "category" : "소설"
         },
         {
             "img" :"https://image.aladin.co.kr/product/29137/2/cover200/8936434594_2.jpg",
-            "title" :"[국내]채식주의자 (리마스터판) ",
+            "title" :"[국내][자기계발]채식주의자 (리마스터판) ",
             "type" : "domestic",
             "category" : "자기계발"
         },
         {
             "img" :"https://image.aladin.co.kr/product/4086/97/cover200/8936434128_2.jpg",
-            "title" :"[국내]소년이 온다 ",
+            "title" :"[국내][사회과학]소년이 온다 ",
             "type" : "domestic",
             "category" : "사회과학"
         },
         {
             "img" :"https://image.aladin.co.kr/product/27877/5/cover200/8954682154_3.jpg",
-            "title" :"[국외]작별하지 않는다 ",
+            "title" :"[국외][고전]작별하지 않는다 ",
             "type" : "overseas",
             "category" : "고전"
         },
         {
             "img" :"https://image.aladin.co.kr/product/29137/2/cover200/8936434594_2.jpg",
-            "title" :"[국내]채식주의자 (리마스터판) ",
+            "title" :"[국내][자기계발]채식주의자 (리마스터판) ",
             "type" : "domestic",
             "category" : "자기계발"
         },
         {
             "img" :"https://image.aladin.co.kr/product/4086/97/cover200/8936434128_2.jpg",
-            "title" :"[국내]소년이 온다 ",
+            "title" :"[국내][고전]소년이 온다 ",
             "type" : "domestic",
             "category" : "고전"
         },
         {
             "img" :"https://image.aladin.co.kr/product/27877/5/cover200/8954682154_3.jpg",
-            "title" :"[국외]작별하지 않는다 ",
+            "title" :"[국외][소설]작별하지 않는다 ",
             "type" : "overseas",
             "category" : "소설"
         },
         {
             "img" :"https://image.aladin.co.kr/product/29137/2/cover200/8936434594_2.jpg",
-            "title" :"[국내]채식주의자 (리마스터판) ",
+            "title" :"[국내][에세이]채식주의자 (리마스터판) ",
             "type" : "domestic",
             "category" : "에세이"
         }

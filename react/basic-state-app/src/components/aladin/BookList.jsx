@@ -20,7 +20,7 @@ export default function BookList() {
                 if(type === 'total'){
                     setBooks(jsonData.books);
                     setCategory(jsonData.category);
-                    // setSelectCategory(jsonData.category);
+
                 }else{
                     // 필터
                     const filterBooks = jsonData.books.filter((book) => book.type === type ); // book으로 리턴한다.

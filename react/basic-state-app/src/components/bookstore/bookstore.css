@@ -1,0 +1,59 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap");
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, input, select {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Sans KR", sans-serif;
+  word-break: break-all;
+  font-weight: normal;
+  font-size:12px;
+}
+
+body {
+  min-width: 320px;
+}
+
+img {
+  vertical-align: top;
+}
+
+ul, li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+.inner {
+  width: 991px;
+  margin: 0 auto;
+}
+
+header{
+    display:flex;
+    justify-content: end;
+    height: 38px;
+    background: #0080ff;
+}
+header .top-nav{
+    display:flex;
+    gap:15px;
+    color:#fff;
+    font-size: 12px;
+    line-height: 38px;
+    padding-right:20px;
+}
+header .top-nav a{color:inherit}
+
+.container{width:1000px;margin:30px auto;}
+.container .filter{margin:20px 0; }
+.container .filter label{margin:0 20px;}
+.container .book-list{display:grid;grid-template-columns: repeat(4, 1fr);column-gap: 64px;row-gap: 40px;}
+.container .book{width:200px;}
+.container .book .thumb img{width:100%;}
+.container .book .title{margin-top:5px;text-align:center;font-weight: bold;text-align:center;font-size:14px;}
+.container .book .btns{margin-top:10px;text-align:center;}
+.container .book .btns span{display:inline-block;width:40px;height:25px;line-height:25px;border:1px solid #ccc;text-align:center;cursor: pointer;}
+.cart{width:120px;margin:15px auto;border:1px solid #ccc;line-height:30px;text-align:center;cursor: pointer;}
