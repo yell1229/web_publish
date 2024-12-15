@@ -2,34 +2,25 @@ import React,{useState, useEffect} from 'react';
 import Book from './Book.jsx';
 
 export default function BookList({passParent}) {
-    const [getnumber, setGetNumber] = useState(0);
     const [type, setType] = useState('total');
     const [books, setBooks] = useState([]);
-    const [filterBooks, setFilterBooks] = useState([]);
 
     useEffect(() =>{
             fetch('/data/bookstore.json')
                 .then(data => data.json())
                 .then(jsonData=>{
-                    
-                    if(type === 'total'){
-                        setBooks(jsonData.bookList);
-                        setFilterBooks(jsonData.bookList);
+                    if(type==='total'){
+                    setBooks(jsonData.bookList);
                     }else{
-                        const newFilter = jsonData.bookList.filter((item) => item.type === type);
-                        setFilterBooks(newFilter);
+                        const newFilter = jsonData.bookList.filter(item => item.type === type);
+                        setBooks(newFilter);
                     }
                 })
                 .catch(error => console.log(error))
         },[type]);
-
-    const passCartNumber = (number) => { 
-        setGetNumber(number);
-        passParent(number);
-    }
-    const checkFilter = (event) => {
-        setType(event.target.value);  
-    }
+        const checkFilter = (e) => {
+            setType(e.target.value);
+        }
 
     return (
         <>
@@ -43,8 +34,8 @@ export default function BookList({passParent}) {
             </select> */}
             <div className='book-list'>
                 {
-                    filterBooks && filterBooks.map( item =>
-                        <Book click={passCartNumber} img={item.img} title={item.title} price={item.price} date={item.date} isBest={item.isBest} />
+                    books && books.map( item =>
+                        <Book  img={item.img} title={item.title} price={item.price} date={item.date} isBest={item.isBest} />
                     )
                 }
                 

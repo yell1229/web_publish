@@ -11,8 +11,8 @@ export default function AppBookStore() {
     
     return (
         <div>
-            <Header pass={number}/>
-            <Contents passTop={passNum} />
+            <Header />
+            <Contents />
         </div>
     );
 }
