@@ -1,7 +1,7 @@
 import React,{useState, useEffect, useRef} from 'react';
 import Menu from './Menu.jsx';
 
-export default function MenuList() {
+export default function MenuList({cartAdd}) {
     const [topNav, setTopNav] = useState([]); 
 
     useEffect(() =>{
@@ -13,8 +13,10 @@ export default function MenuList() {
 
     return (
         <ul className='top-nav'>
-            {topNav && topNav.map(item =>
-                <li><Menu menu={item.menu} /></li>
+            {topNav && topNav.map(item => 
+               <li><Menu menu={item.menu} />{(item.menu === '카트') ? <span>({cartAdd})</span> : '' }</li>
+            //    <li><Menu menu={item.menu} /><span>{cartAdd}</span></li>
+                
             )}
             
         </ul>

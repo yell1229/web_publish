@@ -8,7 +8,7 @@ export default function ImgBox(product,cartcheck) {
 
     let addCart = () => {
         alert('imgBox click');
-        cartcheck();
+        // cartcheck;
     }
 
     return (

@@ -11,7 +11,7 @@ import './index.css';
 // import AppShopping from './components/shopping/AppShopping.jsx';
 // import AppOlive from './components/olive/AppOlive.jsx';
 // import AppCount from './components/count2/AppCount.jsx';
-// import AppAladin from './components/aladin/AppAladin.jsx';
+// import AppAladin from './components/aladin/AppAladin.jsx';/
 // import AppAladin2 from './components/aladin2/AppAladin2.jsx';
 // import AppForm from './components/form/AppForm.jsx';
 import AppBookStore from './components/bookstore/AppBookStore.jsx';

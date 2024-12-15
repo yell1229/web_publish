@@ -33,17 +33,19 @@ a {
 
 header{
     display:flex;
-    justify-content: end;
+    justify-content:space-between;
     height: 38px;
     background: #0080ff;
+    padding: 0 20px;
 }
+header .login{padding-top:7px;color:#fff;}
+header .login label{margin-right:15px;}
 header .top-nav{
     display:flex;
     gap:15px;
     color:#fff;
     font-size: 12px;
     line-height: 38px;
-    padding-right:20px;
 }
 header .top-nav a{color:inherit}
 
@@ -52,8 +54,13 @@ header .top-nav a{color:inherit}
 .container .filter label{margin:0 20px;}
 .container .book-list{display:grid;grid-template-columns: repeat(4, 1fr);column-gap: 64px;row-gap: 40px;}
 .container .book{width:200px;}
+.container .book .thumb{position:relative;}
 .container .book .thumb img{width:100%;}
-.container .book .title{margin-top:5px;text-align:center;font-weight: bold;text-align:center;font-size:14px;}
+.container .book .thumb .heart{position:absolute;top:0px;right:10px;color:rgb(187,187,187);font-size:30px;cursor: pointer;}
+.container .book .thumb .isbest{position:absolute;top:10px;left:10px;width:50px;height:50px;text-align:center;line-height:50px;background-color: #fff;border-radius: 100%;box-shadow: 2px 2px 8px #666;}
+.container .book .info-box{text-align:center;}
+.container .book .title{margin:5px 0;font-weight: bold;font-size:14px;}
+.container .book .price{margin:5px 0;font-weight: bold;font-size:14px;}
 .container .book .btns{margin-top:10px;text-align:center;}
 .container .book .btns span{display:inline-block;width:40px;height:25px;line-height:25px;border:1px solid #ccc;text-align:center;cursor: pointer;}
 .cart{width:120px;margin:15px auto;border:1px solid #ccc;line-height:30px;text-align:center;cursor: pointer;}

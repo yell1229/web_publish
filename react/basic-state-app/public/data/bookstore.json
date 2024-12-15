@@ -26,7 +26,6 @@
         { "name" : "에세이"},
         { "name" : "소설"},
         { "name" : "자기계발"},
-        { "name" : "사회과학"},
         { "name" : "고전"}
     ],
     "bookList" :[
@@ -38,7 +37,8 @@
             "price":"13500",
             "date":"24.12.02 ~ 24.12.31",
             "type" : "overseas",
-            "category" : "고전"
+            "category" : "고전",
+            "isBest" : true
         },
         {
             "id":"p_0002",
@@ -48,7 +48,8 @@
             "price":"13500",
             "date":"24.12.02 ~ 24.12.31",
             "type" : "domestic",
-            "category" : "에세이"
+            "category" : "에세이",
+            "isBest" : true
         },
         {
             "id":"p_0003",
@@ -58,7 +59,8 @@
             "price":"13500",
             "date":"24.12.02 ~ 24.12.31",
             "type" : "overseas",
-            "category" : "소설"
+            "category" : "소설",
+            "isBest" : false
         },
         {
             "id":"p_0004",
@@ -68,7 +70,8 @@
             "price":"13500",
             "date":"24.12.02 ~ 24.12.31",
             "type" : "domestic",
-            "category" : "자기계발"
+            "category" : "자기계발",
+            "isBest" : true
         },
         {
             "id":"p_0005",
@@ -78,7 +81,8 @@
             "price":"13500",
             "date":"24.12.02 ~ 24.12.31",
             "type" : "overseas",
-            "category" : "고전"
+            "category" : "고전",
+            "isBest" : false
         },
         {
             "id":"p_0006",
@@ -88,7 +92,8 @@
             "price":"13500",
             "date":"24.12.02 ~ 24.12.31",
             "type" : "domestic",
-            "category" : "에세이"
+            "category" : "에세이",
+            "isBest" : true
         },
         {
             "id":"p_0007",
@@ -98,7 +103,8 @@
             "price":"13500",
             "date":"24.12.02 ~ 24.12.31",
             "type" : "overseas",
-            "category" : "소설"
+            "category" : "소설",
+            "isBest" : false
         },
         {
             "id":"p_0008",
@@ -108,7 +114,8 @@
             "price":"13500",
             "date":"24.12.02 ~ 24.12.31",
             "type" : "domestic",
-            "category" : "자기계발"
+            "category" : "자기계발",
+            "isBest" : false
         },
         {
             "id":"p_0009",
@@ -118,7 +125,8 @@
             "price":"13500",
             "date":"24.12.02 ~ 24.12.31",
             "type" : "overseas",
-            "category" : "고전"
+            "category" : "고전",
+            "isBest" : true
         },
         {
             "id":"p_0010",
@@ -128,7 +136,8 @@
             "price":"13500",
             "date":"24.12.02 ~ 24.12.31",
             "type" : "domestic",
-            "category" : "에세이"
+            "category" : "에세이",
+            "isBest" : false
         },
         {
             "id":"p_0011",
@@ -138,7 +147,8 @@
             "price":"13500",
             "date":"24.12.02 ~ 24.12.31",
             "type" : "overseas",
-            "category" : "소설"
+            "category" : "소설",
+            "isBest" : false
         },
         {
             "id":"p_0012",
@@ -148,7 +158,8 @@
             "price":"13500",
             "date":"24.12.02 ~ 24.12.31",
             "type" : "domestic",
-            "category" : "자기계발"
+            "category" : "자기계발",
+            "isBest" : false
         }
     ]
 }
