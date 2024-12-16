@@ -1,12 +1,19 @@
 import React,{useState, useRef} from 'react';
+import {validateForm} from '../../apis/validate.js';
 
 export default function UserInfo() {
     // const [name, setName] = useState('');
     // const [address, setAddress] = useState('');
     //폼데이터 저장소: 값이 바뀔때마다 바로바로 저장
-    const nameRef = useRef(null);
-    const addressRef = useRef(null);
-    const ageRef = useRef(null);
+
+    // const nameRef = useRef(null);
+    // const addressRef = useRef(null);
+    // const ageRef = useRef(null);
+    const refs = {
+        nameRef:useRef(null),
+        addressRef:useRef(null),
+        ageRef:useRef(null)
+    }
 
     const init = {"name" :"","address" :"", "age":""};
     const [form, setForm] = useState(init); // 값이 바뀌면 바로바로 return 한다.
@@ -19,28 +26,33 @@ export default function UserInfo() {
     // console.log(form.name);
     // console.log(form.address);
 
-const validateForm = () => {
-    if(nameRef.current.value === ''){
-        alert('name를 입력해주세요.');
-        nameRef.current.focus();
-        return false;
-    }else if(addressRef.current.value === ''){
-        alert('address를 입력해주세요.');
-        addressRef.current.focus();
-        return false;
-    }else if(ageRef.current.value === ''){
-        alert('age를 입력해주세요.');
-        ageRef.current.focus();
-        return false;
-    }else{
-        return true;
-    }
+// const validateForm = () => {
+//     if(nameRef.current.value === ''){
+//         alert('name를 입력해주세요.');
+//         nameRef.current.focus();
+//         return false;
+//     }else if(addressRef.current.value === ''){
+//         alert('address를 입력해주세요.');
+//         addressRef.current.focus();
+//         return false;
+//     }else if(ageRef.current.value === ''){
+//         alert('age를 입력해주세요.');
+//         ageRef.current.focus();
+//         return false;
+//     }else{
+//         return true;
+//     }
     
-}
+// }
 
     const handleSubmit = (e) => {
+        // const param = {
+        //     "nameRef":nameRef,
+        //     "addressRef":addressRef,
+        //     "ageRef":ageRef
+        // }
         e.preventDefault();
-        if(validateForm()){
+        if(validateForm(refs)){
             console.log(form);
         }
         
@@ -53,15 +65,15 @@ const validateForm = () => {
                 <ul>
                     <li>
                         <label>name</label>
-                        <input type="text" name="name" value={form.name} ref={nameRef} onChange={getForm} />
+                        <input type="text" name="name" value={form.name} ref={refs.nameRef} onChange={getForm} />
                     </li>
                     <li>
                         <label>Address</label>
-                        <input type="text" name="address" value={form.address} ref={addressRef} onChange={getForm} />
+                        <input type="text" name="address" value={form.address} ref={refs.addressRef} onChange={getForm} />
                     </li>
                     <li>
                         <label>age</label>
-                        <input type="text" name="age" value={form.age} ref={ageRef} onChange={getForm} />
+                        <input type="text" name="age" value={form.age} ref={refs.ageRef} onChange={getForm} />
                     </li>
                     <li>
                         <button type="submit">Send</button>
