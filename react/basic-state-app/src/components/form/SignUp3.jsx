@@ -51,18 +51,16 @@ export default function SignUp3() {
         let result = true;
 
         const newRefs = Object.entries(refs);
-        // console.log('newRefs',newRefs);
+        console.log('newRefs',newRefs);
 
         for(const item of newRefs){
             const name = item[0];
             const ref = item[1];
-            console.log(name,ref);
-            
-            // if(item[0].current.value === ''){
-            //     console.log('id');
-            //     refs.idRef.current.focus();
-            //     result = false;
-            // }
+            if(item[0].current.value === ''){
+                console.log('id');
+                refs.idRef.current.focus();
+                result = false;
+            }
         }
         
         
