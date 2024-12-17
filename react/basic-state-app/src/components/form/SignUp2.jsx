@@ -29,7 +29,7 @@ export default function SignUp2() {
     // form 변경 시 호출
     const handleChange = (e) => {
         const {name, value} = e.target;
-        setFormData({...formData,[name]:value}); // ...이 없으면 ormData 의 주소를 힙에서 가져옴. ...formData는 주소의 값을 가져와서 펼쳐놓는다.
+        setFormData({...formData,[name]:value}); // ...이 없으면 formData 의 주소를 힙에서 가져옴. ...formData는 주소의 값을 가져와서 펼쳐놓는다.
 
         // 문자 입력 시 경고텍스트 삭제
         const Lists = [
@@ -43,9 +43,7 @@ export default function SignUp2() {
         ];
 
         Lists.map((item) => 
-            (item.name === name) ? ( 
-                (value === '') ? setErrors({...errors,[item.name]:item.msg}) : setErrors({...errors,[item.name]:''})
-            ) : ''
+            (item.name === name) ? ( (value === '') ? setErrors({...errors,[item.name]:item.msg}) : setErrors({...errors,[item.name]:''}) ) : ''
         );
 
     }

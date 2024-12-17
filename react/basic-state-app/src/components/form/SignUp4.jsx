@@ -3,53 +3,123 @@ import {validateSignup} from '../../apis/validate.js';
 import './Cgv.css';
 
 export default function SignUp4() {
+    const initObject = (array) => {
+        const init = array.reduce((acc,key) => {
+            acc[key] = '';//acc = {}
+            return acc;
+        },{});
+        return init;
+    }
+    const refs = {
+        idRef:useRef(null),
+        pwdRef:useRef(null),
+        cpwdRef:useRef(null),
+        nameRef:useRef(null),
+        phoneRef:useRef(null),
+        emailnameRef:useRef(null),
+        emaildomainRef:useRef(null)
+    };
+    const names = ['id','pwd','cpwd','name','phone','emailname','emaildomain'];
+    const [formData, setFormData] = useState({});
+    const [errorMsg, setErrorMsg] = useState(initObject(names));
+    
+    // input 값 담고 화면에 출력
+    const handleChangeSignup = (e) => {
+        const {name,value} = e.target;
+        setFormData({...formData,[name] :value});
+    }
+    const nameList = [
+        {'name':'id', 'msg':'아이디를 입력해주세요'},
+        {'name':'pwd', 'msg':'비밀번호를 입력해주세요'},
+        {'name':'cpwd', 'msg':'비밀번호를 입력해주세요'},
+        {'name':'name', 'msg':'이름을 입력해주세요'},
+        {'name':'phone', 'msg':'전화번호를 입력해주세요'},
+        {'name':'emailname', 'msg':'이메일을 입력해주세요'},
+        {'name':'emaildomain', 'msg':'도메인을 확인 해주세요'}
+    ];
+    // validation
+    const validation = () => {
+        const newRefs = Object.entries(refs);
+        let result = true;
+        let count = 0;
 
+        for(const item of newRefs){
+            const name = item[0];
+            const ref = item[1];
+            if(ref.current.value === ''){
+                // alert(names[count].mag);
+                setErrorMsg({...errorMsg,[nameList[count].name]:nameList[count].msg})
+                ref.current.focus();
+                result = false;
+            }else if(ref.current.value ==='default'){
+                setErrorMsg({...errorMsg,['emaildomain']:'도메인을 확인 해주세요'});
+                ref.current.focus();
+                result = false;
+            }
+            count++;
+        }
+        // if(refs.idRef.current.value===''){
+        //     setErrorMsg({...errorMsg,['id']:'아이디를 입력해주세요'})
+        //     return false;
+        // }
+        return result;
+    }
+    
+    // 전송
+    const formSubmit = (e) => {
+        e.preventDefault();
+        if(validation()) console.log(formData);
+        
+    }
     return (
         <div className="content">
             <div className="join-form center-layout">
                 <h1 className="center-title">회원가입</h1>
-                <form>
+                <form onSubmit={formSubmit}>
                     <ul>
                         <li>
-                            <label for="" ><b>아이디</b></label>
-                            <span></span>
+                            <label><b>아이디</b></label>
+                            <span>{errorMsg.id}</span>
                             <div>
-                                <input type="text" name="id" placeholder="아이디 입력(6~20자)" />
+                                <input type="text" name="id" placeholder="아이디 입력(6~20자)" value={formData.id} ref={refs.idRef} onChange={handleChangeSignup} />
                                 <button>중복확인</button>       
                             </div>
                         </li>
                         <li>
-                            <label for=""><b>비밀번호</b></label>
-                            <span>12자 이내의 비밀번호를 입력해주세요</span>
+                            <label><b>비밀번호</b></label>
+                            <span>{errorMsg.pwd}</span>
                             <div>
-                                <input type="password" name="pwd" placeholder="비밀번호 입력(문자,숫자,특수문자 포함 6~12자)" />
+                                <input type="password" name="pwd" placeholder="비밀번호 입력(문자,숫자,특수문자 포함 6~12자)" value={formData.pwd} ref={refs.pwdRef} onChange={handleChangeSignup} />
                             </div>
                         </li>
                         <li>
-                            <label for=""><b>비밀번호 확인</b></label>
-                            <span>비밀번호가 일치하지 않습니다</span>
+                            <label><b>비밀번호 확인</b></label>
+                            <span>{errorMsg.cpwd}</span>
                             <div>
-                                <input type="password" name="cpwd" placeholder="비밀번호 재입력" />
+                                <input type="password" name="cpwd" placeholder="비밀번호 재입력" value={formData.cpwd} ref={refs.cpwdRef} onChange={handleChangeSignup} />
                             </div>
                         </li>
                         <li>
-                            <label for=""><b>이름</b></label>
+                            <label><b>이름</b></label>
+                            <span>{errorMsg.name}</span>
                             <div>
-                                <input type="text" name="name" placeholder="이름을 입력해주세요" />
+                                <input type="text" name="name" placeholder="이름을 입력해주세요" value={formData.name} ref={refs.nameRef} onChange={handleChangeSignup} />
                             </div>
                         </li>
                         <li>
-                            <label for=""><b>전화번호</b></label>
+                            <label><b>전화번호</b></label>
+                            <span>{errorMsg.phone}</span>
                             <div>
-                                <input type="text" name="phone" placeholder="휴대폰 번호 입력('-' 포함)" />
+                                <input type="text" name="phone" placeholder="휴대폰 번호 입력('-' 포함)" value={formData.phone} ref={refs.phoneRef} onChange={handleChangeSignup} />
                             </div>
                         </li>
                         <li>
-                            <label for=""><b>이메일 주소</b></label>
+                            <label><b>이메일 주소</b></label>
+                            <span>{errorMsg.emailname}</span><span>{errorMsg.emaildomain}</span>
                             <div>
-                                <input type="text" name="emailname" placeholder="이메일 주소" />
+                                <input type="text" name="emailname" placeholder="이메일 주소" value={formData.emailname} ref={refs.emailnameRef} onChange={handleChangeSignup} />
                                 <span>@</span>       
-                                <select name="emaildomain">
+                                <select name="emaildomain" value={formData.emaildomain} ref={refs.emaildomainRef} onChange={handleChangeSignup}>
                                     <option value="default">선택</option>
                                     <option value="naver.com">naver.com</option>
                                     <option value="gmail.com">gmail.com</option>
