@@ -1,9 +1,12 @@
 import React,{useState, useRef} from 'react';
 import {validateSignup} from '../../apis/validate.js';
 import {errorCheckSignup} from '../../apis/errorCheck.js';
+import { initFormNames } from '../../apis/initial.js';
 import './Cgv.css';
 
 export default function SignUp() {
+    const idMsgRef = useRef(null);
+    const cpwdMsgRef = useRef(null);
     // 폼 체크
     const refs = {
         idRef : useRef(null), // 객체의 주소가 들어가기 때문에 ''없이 진행한다.
@@ -13,30 +16,33 @@ export default function SignUp() {
         phoneRef : useRef(null),
         emailnameRef : useRef(null),
         emaildomainRef : useRef(null)
+
     }
 
     // form 데이터 저장
-    const init={
-        'id':'',
-        'pwd':'',
-        'cpwd':'',
-        'name':'',
-        'phone':'',
-        'emailname':'',
-        'emaildomain':''
-    }
-    const initErrors={
-        'id':'',
-        'pwd':'',
-        'cpwd':'',
-        'name':'',
-        'phone':'',
-        'emailname':'',
-        'emaildomain':''
-    }
-
-    const [formData, setFormData] = useState(init);
-    const [errors, setErrors] = useState(initErrors);
+    // const init={
+    //     'id':'',
+    //     'pwd':'',
+    //     'cpwd':'',
+    //     'name':'',
+    //     'phone':'',
+    //     'emailname':'',
+    //     'emaildomain':''
+    // }
+    const init = ['id', 'pwd', 'cpwd', 'name', 'phone', 'emailname', 'emaildomain'];
+    // const initErrors={
+    //     'id':'',
+    //     'pwd':'',
+    //     'cpwd':'',
+    //     'name':'',
+    //     'phone':'',
+    //     'emailname':'',
+    //     'emaildomain':''
+    // }
+    const initErrors = ['id','pwd','cpwd','name','phone','emailname','emaildomain']; // init과 동일한 배열이기 때문에 따로 만들 필요가 없다.
+    const [formData, setFormData] = useState(initFormNames(init));
+    const [errors, setErrors] = useState(initFormNames(init));
+    // const [errors, setErrors] = useState(initFormNames(initErrors));
 
     // 폼 입력이 변경되는 경우 호출되는 함수
     const handleChangeSignup = (e) => {
@@ -50,8 +56,50 @@ export default function SignUp() {
         errorCheckSignup(name,value,errors, setErrors);
     }
 
-    
+    const handleIdCheck = () => {
+        const id = refs.idRef.current;
+        if( id.value === ''){
+            // alert('id값을 입력해주세요');
+            // refs.idRef.current.focus();
+            // return false;
+            errorCheckSignup('id',id.value,errors, setErrors);
+        }else{
+            const did = 'test'; // DB값이라고 설정.
+            if(did === id.value) {
+                // alert('사용중인 id 입니다.');
+                setErrors({...errors,['id']:'사용중인 id 입니다.'});
+                id.focus();
+                return false;
+            }else {
+                setErrors({...errors,['id']:'사용 가능한 id 입니다.'});
+                idMsgRef.current.style.setProperty('color','green');
+                idMsgRef.current.style.setProperty('font-weight','bold');
+            }
+                
+            return true;
+        }
+    }
 
+    const handlePasswordCheck = () => {
+        const pwd = refs.pwdRef.current;
+        const cpwd = refs.cpwdRef.current;
+        if(pwd.value === ''){
+            errorCheckSignup('pwd',pwd.value,errors, setErrors);
+            pwd.focus();
+        }else if(cpwd.value === ''){
+            errorCheckSignup('cpwd',cpwd.value,errors, setErrors);
+            cpwd.focus();
+        }else if(pwd.value !== cpwd.value){
+            setErrors({...errors,['cpwd']:'같은 비밀번호를 입력해주세요'});
+            // setFormData({...formData,['pwd']:''});
+            setFormData({...formData,['pwd']:'', ['cpwd']:''});
+            cpwd.focus();
+            
+        }else if(pwd.value === cpwd.value){
+            cpwdMsgRef.current.style.setProperty('color','green');
+            setErrors({...errors,['cpwd']:'사용가능합니다.'});
+        }
+    }
     // 폼 입력이 종료된 후 submit 함수
     const handleSubmitSignup = (e) => {
         e.preventDefault();
@@ -68,10 +116,10 @@ export default function SignUp() {
                     <ul>
                         <li>
                             <label for="" ><b>아이디</b></label>
-                            <span>{errors.id}</span>
+                            <span ref={idMsgRef}>{errors.id}</span>
                             <div>
                                 <input type="text" name="id" value={formData.id} placeholder="아이디 입력(6~20자)" ref={refs.idRef} onChange={handleChangeSignup} />
-                                <button>중복확인</button>       
+                                <button onClick={handleIdCheck}>중복확인</button>       
                             </div>
                         </li>
                         <li>
@@ -83,9 +131,9 @@ export default function SignUp() {
                         </li>
                         <li>
                             <label for=""><b>비밀번호 확인</b></label>
-                            <span>{errors.cpwd}</span>
+                            <span ref={cpwdMsgRef}>{errors.cpwd}</span>
                             <div>
-                                <input type="password" name="cpwd" value={formData.cpwd} placeholder="비밀번호 재입력" ref={refs.cpwdRef} onChange={handleChangeSignup} />
+                                <input type="password" name="cpwd" value={formData.cpwd} placeholder="비밀번호 재입력" ref={refs.cpwdRef} onChange={handleChangeSignup} onBlur={handlePasswordCheck} />
                             </div>
                         </li>
                         <li>

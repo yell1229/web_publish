@@ -2,7 +2,7 @@ import React,{useState, useRef} from 'react';
 import {validateSignup} from '../../apis/validate.js';
 import './Cgv.css';
 
-export default function SignUp() {
+export default function SignUp4() {
 
     return (
         <div className="content">
@@ -12,7 +12,7 @@ export default function SignUp() {
                     <ul>
                         <li>
                             <label for="" ><b>아이디</b></label>
-                            <span>{errorMsg.id}</span>
+                            <span></span>
                             <div>
                                 <input type="text" name="id" placeholder="아이디 입력(6~20자)" />
                                 <button>중복확인</button>       
