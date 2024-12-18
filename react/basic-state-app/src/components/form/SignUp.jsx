@@ -1,5 +1,5 @@
 import React,{useState, useRef} from 'react';
-import {validateSignup} from '../../apis/validate.js';
+import {validateSignup, handleIdCheck, handlePasswordCheck} from '../../apis/validate.js';
 import {errorCheckSignup} from '../../apis/errorCheck.js';
 import { initFormNames } from '../../apis/initial.js';
 import './Cgv.css';
@@ -55,51 +55,51 @@ export default function SignUp() {
         // }
         errorCheckSignup(name,value,errors, setErrors);
     }
-
-    const handleIdCheck = () => {
-        const id = refs.idRef.current;
-        if( id.value === ''){
-            // alert('id값을 입력해주세요');
-            // refs.idRef.current.focus();
-            // return false;
-            errorCheckSignup('id',id.value,errors, setErrors);
-        }else{
-            const did = 'test'; // DB값이라고 설정.
-            if(did === id.value) {
-                // alert('사용중인 id 입니다.');
-                setErrors({...errors,['id']:'사용중인 id 입니다.'});
-                id.focus();
-                return false;
-            }else {
-                setErrors({...errors,['id']:'사용 가능한 id 입니다.'});
-                idMsgRef.current.style.setProperty('color','green');
-                idMsgRef.current.style.setProperty('font-weight','bold');
-            }
+    // 아이디 체크 함수 (validate.js)
+    // const handleIdCheck = () => {
+    //     const id = refs.idRef.current;
+    //     if( id.value === ''){
+    //         // alert('id값을 입력해주세요');
+    //         // refs.idRef.current.focus();
+    //         // return false;
+    //         errorCheckSignup('id',id.value,errors, setErrors);
+    //     }else{
+    //         const did = 'test'; // DB값이라고 설정.
+    //         if(did === id.value) {
+    //             // alert('사용중인 id 입니다.');
+    //             setErrors({...errors,['id']:'사용중인 id 입니다.'});
+    //             id.focus();
+    //             return false;
+    //         }else {
+    //             setErrors({...errors,['id']:'사용 가능한 id 입니다.'});
+    //             idMsgRef.current.style.setProperty('color','green');
+    //             idMsgRef.current.style.setProperty('font-weight','bold');
+    //         }
                 
-            return true;
-        }
-    }
+    //         return true;
+    //     }
+    // }
 
-    const handlePasswordCheck = () => {
-        const pwd = refs.pwdRef.current;
-        const cpwd = refs.cpwdRef.current;
-        if(pwd.value === ''){
-            errorCheckSignup('pwd',pwd.value,errors, setErrors);
-            pwd.focus();
-        }else if(cpwd.value === ''){
-            errorCheckSignup('cpwd',cpwd.value,errors, setErrors);
-            cpwd.focus();
-        }else if(pwd.value !== cpwd.value){
-            setErrors({...errors,['cpwd']:'같은 비밀번호를 입력해주세요'});
-            // setFormData({...formData,['pwd']:''});
-            setFormData({...formData,['pwd']:'', ['cpwd']:''});
-            cpwd.focus();
+    // const handlePasswordCheck = () => {
+    //     const pwd = refs.pwdRef.current;
+    //     const cpwd = refs.cpwdRef.current;
+    //     if(pwd.value === ''){
+    //         errorCheckSignup('pwd',pwd.value,errors, setErrors);
+    //         pwd.focus();
+    //     }else if(cpwd.value === ''){
+    //         errorCheckSignup('cpwd',cpwd.value,errors, setErrors);
+    //         cpwd.focus();
+    //     }else if(pwd.value !== cpwd.value){
+    //         setErrors({...errors,['cpwd']:'같은 비밀번호를 입력해주세요'});
+    //         // setFormData({...formData,['pwd']:''});
+    //         setFormData({...formData,['pwd']:'', ['cpwd']:''});
+    //         cpwd.focus();
             
-        }else if(pwd.value === cpwd.value){
-            cpwdMsgRef.current.style.setProperty('color','green');
-            setErrors({...errors,['cpwd']:'사용가능합니다.'});
-        }
-    }
+    //     }else if(pwd.value === cpwd.value){
+    //         cpwdMsgRef.current.style.setProperty('color','green');
+    //         setErrors({...errors,['cpwd']:'사용가능합니다.'});
+    //     }
+    // }
     // 폼 입력이 종료된 후 submit 함수
     const handleSubmitSignup = (e) => {
         e.preventDefault();
@@ -119,7 +119,16 @@ export default function SignUp() {
                             <span ref={idMsgRef}>{errors.id}</span>
                             <div>
                                 <input type="text" name="id" value={formData.id} placeholder="아이디 입력(6~20자)" ref={refs.idRef} onChange={handleChangeSignup} />
-                                <button onClick={handleIdCheck}>중복확인</button>       
+                                <button onClick={() => {
+                                        const param = {
+                                            'idRef':refs.idRef,
+                                            'errorCheckSignup':errorCheckSignup,
+                                            'errors':errors,
+                                            'setErrors':setErrors,
+                                            'idMsgRef':idMsgRef
+                                            }
+                                        handleIdCheck(param)}
+                                    }>중복확인</button>       
                             </div>
                         </li>
                         <li>
@@ -133,8 +142,22 @@ export default function SignUp() {
                             <label for=""><b>비밀번호 확인</b></label>
                             <span ref={cpwdMsgRef}>{errors.cpwd}</span>
                             <div>
-                                <input type="password" name="cpwd" value={formData.cpwd} placeholder="비밀번호 재입력" ref={refs.cpwdRef} onChange={handleChangeSignup} onBlur={handlePasswordCheck} />
-                            </div>
+                                <input type="password" name="cpwd" value={formData.cpwd} placeholder="비밀번호 재입력" ref={refs.cpwdRef} onChange={handleChangeSignup} 
+                                onBlur={() =>{
+                                    const param ={
+                                        'refs':refs,
+                                        'errorCheckSignup':errorCheckSignup,
+                                        'errors':errors,
+                                        'setErrors':setErrors,
+                                        'formData':formData,
+                                        'setFormData':setFormData,
+                                        'cpwdMsgRef':cpwdMsgRef
+                                    }
+                                    handlePasswordCheck(param)}} />  
+                                </div>
+                                {/* onBlur={() => handlePasswordCheck(refs, errorCheckSignup, errors, setErrors, formData, setFormData,cpwdMsgRef)} />   */}
+                                {/* 콜백함수는 {}없이 리턴되기 때문에 그냥 진행하지만, 오브젝트로 진행될 경우 {} 처리해줌                             */}
+                                
                         </li>
                         <li>
                             <label for=""><b>이름</b></label>

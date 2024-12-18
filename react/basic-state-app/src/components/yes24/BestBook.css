@@ -1,2 +1,9 @@
-li{list-style:none;}
+
 button{border-radius:3px;background:#969696;border:1px solid #969696;color:#fff;}
+.container{width:1000px;margin:0 auto;}
+.container-avatar{display:flex;align-items: center;}
+.container-avatar p{padding:0 10px;font-size:1rem;font-weight: bold;}
+.container-avatar img{width:100px}
+.container-content{padding:0 40px;}
+.container-content div:first-child span{display:inline-block;border:1px solid #333;padding:1px 3px;border-radius: 3px;}
+.container-button{margin-left:auto;list-style-type: none;background-color: beige;padding:20px;}

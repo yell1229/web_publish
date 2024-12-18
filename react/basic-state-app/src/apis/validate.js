@@ -221,3 +221,93 @@ export function validateFormSignUpNew(refs) {
     // }
     // return checkResult;
 }
+
+
+// SignUp.jsx 아이디 중복 체크
+export const handleIdCheck = ({idRef, errorCheckSignup, errors, setErrors, idMsgRef}) => {
+    const id = idRef.current;
+    if( id.value === ''){
+        // alert('id값을 입력해주세요');
+        // refs.idRef.current.focus();
+        // return false;
+        errorCheckSignup('id',id.value,errors, setErrors);
+    }else{
+        const did = 'test'; // DB값이라고 설정.
+        if(did === id.value) {
+            // alert('사용중인 id 입니다.');
+            setErrors({...errors,['id']:'사용중인 id 입니다.'});
+            id.focus();
+            return false;
+        }else {
+            setErrors({...errors,['id']:'사용 가능한 id 입니다.'});
+            idMsgRef.current.style.setProperty('color','green');
+            idMsgRef.current.style.setProperty('font-weight','bold');
+        }
+            
+        return true;
+    }
+}
+
+// SignU.jsx 비밀번호 확인 버튼
+export const handlePasswordCheck = ({refs, errorCheckSignup,errors, setErrors,formData, setFormData,cpwdMsgRef}) => { // 구조분해 할당으로 받는다.
+        const pwd = refs.pwdRef.current;
+        const cpwd = refs.cpwdRef.current;
+        if(pwd.value === ''){
+            errorCheckSignup('pwd',pwd.value,errors, setErrors);
+            pwd.focus();
+        }else if(cpwd.value === ''){
+            errorCheckSignup('cpwd',cpwd.value,errors, setErrors);
+            cpwd.focus();
+        }else if(pwd.value !== cpwd.value){
+            setErrors({...errors,['cpwd']:'같은 비밀번호를 입력해주세요'});
+            // setFormData({...formData,['pwd']:''});
+            setFormData({...formData,['pwd']:'', ['cpwd']:''});
+            cpwd.focus();
+            
+        }else if(pwd.value === cpwd.value){
+            cpwdMsgRef.current.style.setProperty('color','green');
+            setErrors({...errors,['cpwd']:'사용가능합니다.'});
+        }
+    }
+
+// export const handlePasswordCheck = (param) => {
+//         const pwd = param.refs.pwdRef.current;
+//         const cpwd = param.refs.cpwdRef.current;
+//         if(pwd.value === ''){
+//             param.errorCheckSignup('pwd',pwd.value,param.errors, param.setErrors);
+//             pwd.focus();
+//         }else if(cpwd.value === ''){
+//             param.errorCheckSignup('cpwd',cpwd.value,param.errors, param.setErrors);
+//             cpwd.focus();
+//         }else if(pwd.value !== cpwd.value){
+//             param.setErrors({...param.errors,['cpwd']:'같은 비밀번호를 입력해주세요'});
+//             // setFormData({...formData,['pwd']:''});
+//             param.setFormData({...param.formData,['pwd']:'', ['cpwd']:''});
+//             cpwd.focus();
+            
+//         }else if(pwd.value === cpwd.value){
+//             param.cpwdMsgRef.current.style.setProperty('color','green');
+//             param.setErrors({...param.errors,['cpwd']:'사용가능합니다.'});
+//         }
+//     }
+
+// export const handlePasswordCheck = (refs, errorCheckSignup,errors, setErrors,formData, setFormData,cpwdMsgRef) => {
+//         const pwd = refs.pwdRef.current;
+//         const cpwd = refs.cpwdRef.current;
+//         if(pwd.value === ''){
+//             errorCheckSignup('pwd',pwd.value,errors, setErrors);
+//             pwd.focus();
+//         }else if(cpwd.value === ''){
+//             errorCheckSignup('cpwd',cpwd.value,errors, setErrors);
+//             cpwd.focus();
+//         }else if(pwd.value !== cpwd.value){
+//             setErrors({...errors,['cpwd']:'같은 비밀번호를 입력해주세요'});
+//             // setFormData({...formData,['pwd']:''});
+//             setFormData({...formData,['pwd']:'', ['cpwd']:''});
+//             cpwd.focus();
+            
+//         }else if(pwd.value === cpwd.value){
+//             cpwdMsgRef.current.style.setProperty('color','green');
+//             setErrors({...errors,['cpwd']:'사용가능합니다.'});
+//         }
+//     }

@@ -1,0 +1,147 @@
+{
+    "bookList" : [
+        {
+            "rank":"1",
+            "img":"https://image.yes24.com/goods/13137546/L",
+            "suggest":true,
+            "today":true ,
+            "type":"도서" ,
+            "title":"realtime 소년이 온다" ,
+            "author":"한강" ,
+            "company":"창비"  ,
+            "price":"13,500" ,
+            "perSale":"10" ,
+            "point":"750",
+            "category":"realtime"
+        },
+        {
+            "rank":"2",
+            "img":"https://image.yes24.com/goods/108422348/L",
+            "suggest": true,
+            "today": false ,
+            "type":"도서" ,
+            "title":"hotprice 소년이 온다" ,
+            "author":"한강" ,
+            "company":"창비"  ,
+            "price":"13,500" ,
+            "perSale":"10" ,
+            "point":"750",
+            "category":"hotprice"
+        },
+        {
+            "rank":"3",
+            "img":"https://image.yes24.com/goods/13137546/L",
+            "suggest": false,
+            "today": true ,
+            "type":"도서" ,
+            "title":"day 소년이 온다" ,
+            "author":"한강" ,
+            "company":"창비"  ,
+            "price":"13,500" ,
+            "perSale":"10" ,
+            "point":"750",
+            "category":"day"
+        },
+        {
+            "rank":"4",
+            "img":"https://image.yes24.com/goods/108422348/L",
+            "suggest": true,
+            "today": false ,
+            "type":"도서" ,
+            "title":"monthweek 소년이 온다" ,
+            "author":"한강" ,
+            "company":"창비"  ,
+            "price":"13,500" ,
+            "perSale":"10" ,
+            "point":"750",
+            "category":"monthweek"
+        },
+        {
+            "rank":"5",
+            "img":"https://image.yes24.com/goods/13137546/L",
+            "suggest": true,
+            "today": false ,
+            "type":"도서" ,
+            "title":"steady 소년이 온다" ,
+            "author":"한강" ,
+            "company":"창비"  ,
+            "price":"13,500" ,
+            "perSale":"10" ,
+            "point":"750",
+            "category":"steady"
+        },
+        {
+            "rank":"6",
+            "img":"https://image.yes24.com/goods/13137546/L",
+            "suggest": true,
+            "today": false ,
+            "type":"도서" ,
+            "title":"realtime 소년이 온다" ,
+            "author":"한강" ,
+            "company":"창비"  ,
+            "price":"13,500" ,
+            "perSale":"10" ,
+            "point":"750",
+            "category":"realtime"
+        },
+        {
+            "rank":"7",
+            "img":"https://image.yes24.com/goods/13137546/L",
+            "suggest": true,
+            "today": false ,
+            "type":"도서" ,
+            "title":"day 소년이 온다" ,
+            "author":"한강" ,
+            "company":"창비"  ,
+            "price":"13,500" ,
+            "perSale":"10" ,
+            "point":"750",
+            "category":"day"
+        }
+    ],
+
+    "menuList" : [
+        {
+            "name":"종합" ,
+            "href":"#", 
+            "bg":"#fff", 
+            "color":"#333",
+            "category":"total"
+        },
+        {
+            "name":"실시간" ,
+            "href":"#", 
+            "bg":"#fff", 
+            "color":"#333",
+            "category":"realtime"
+        },
+        {
+            "name":"특가" ,
+            "href":"#", 
+            "bg":"#fff", 
+            "color":"#333",
+            "category":"hotprice"
+        },
+        {
+            "name":"일별" ,
+            "href":"#", 
+            "bg":"#fff", 
+            "color":"#333",
+            "category":"day"
+        },
+        {
+            "name":"주별/월별" ,
+            "href":"#", 
+            "bg":"#fff", 
+            "color":"#333",
+            "category":"monthweek"
+        },
+        {
+            "name":"스테디셀러" ,
+            "href":"#", 
+            "bg":"#fff", 
+            "color":"#333",
+            "category":"steady"
+        }
+    ]
+}
