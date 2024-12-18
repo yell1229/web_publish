@@ -13,7 +13,7 @@ import SignUpNew2 from './SignUpNew2.jsx';
 export default function AppForm() {
     return (
         <div>
-            <SignUpNew2 />
+            <SignUp4 />
             {/* <hr /> */}
             {/* <Login /> */}
             {/* <hr /> */}
