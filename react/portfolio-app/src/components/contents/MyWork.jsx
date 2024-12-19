@@ -3,10 +3,34 @@ import ImgBox from './ImgBox.jsx';
 
 export default function MyWork() {
 
-        const ulRef = useRef(null)
+    const ulRef = useRef(null)
     const [portfolio, setPortfolio] = useState([]);
+    const [filterCount, setFilterCount] = useState({});
+    const arrFilter = ['front','back','mobile'];
     const [type, setType] = useState('total');
     const [initNum,setInitNum] = useState(0);
+    useEffect(() =>{
+                fetch('/data/portfolio.json')
+                    .then(data => data.json())
+                    .then(jsonData=>{
+                            arrFilter.map(item => {
+                                if(item ==='front'){
+                                    const newArr1 = jsonData.boxList.filter(img => img.type === item );
+                                    setFilterCount({...filterCount,['front']:[newArr1]}) 
+                                }else if(item ==='back'){
+                                    const newArr2 = jsonData.boxList.filter(img => img.type === item );
+                                    setFilterCount({...filterCount,['back']:[newArr2]}) 
+                                }else if(item ==='mobile'){
+                                    const newArr3 = jsonData.boxList.filter(img => img.type === item );
+                                    setFilterCount({...filterCount,['mobile']:[newArr3]}) 
+                                }
+                            })
+                    })
+                    .catch(error => console.log(error))
+            },[]);
+console.log('filterCount',filterCount);
+
+
     useEffect(() =>{
                 fetch('/data/portfolio.json')
                     .then(data => data.json())
@@ -24,6 +48,7 @@ export default function MyWork() {
                     })
                     .catch(error => console.log(error))
             },[type]);
+    
     
     const handleFilter = (e) => {
         setType(e.target.getAttribute('data-type'));
