@@ -13,12 +13,14 @@ import './index.css';
 // import AppCount from './components/count2/AppCount.jsx';
 // import AppAladin from './components/aladin/AppAladin.jsx';/
 // import AppAladin2 from './components/aladin2/AppAladin2.jsx';
-import AppForm from './components/form/AppForm.jsx';
+// import AppForm from './components/form/AppForm.jsx';
 // import AppBookStore from './components/bookstore/AppBookStore.jsx';
+import AppRouter from './components/router/AppRouter.jsx';
+import AppRouter2 from './components/router2/AppRouter2.jsx';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <AppForm />
+    <AppRouter2 />
   </React.StrictMode>
 );
 

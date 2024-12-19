@@ -15,12 +15,12 @@ export default function AppAirbnb(){
     console.log(list);
     
     return (
-        <>
+        <div>
         {
             list && list.map( item =>
                 <AribnbComponent src={item.src} nation={item.nation} info={item.info} date={item.date} price={item.price} isGood={item.isGood} color={item.color} />
             )
         }
-        </>
+        </div>
     );
 }

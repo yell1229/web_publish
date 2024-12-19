@@ -46,11 +46,21 @@ export default function SignUp5() {
         for(const item of newRefs){
             const name = item[0];
             const ref = item[1];
-            if(ref.current.value === ''){
-                setErrorMsg({...errorMsg,[msgList[count].name]:msgList[count].msg});
-                ref.current.focus();
-                return false;
+            if(name !== 'jobRef'){
+                if(ref.current.value === ''){
+                    setErrorMsg({...errorMsg,[msgList[count].name]:msgList[count].msg});
+                    // ref.current.focus();
+                    // return false;
+                }
+            }else{
+                if(ref.current.value === 'default'){
+                    setErrorMsg({...errorMsg,[msgList[count].name]:msgList[count].msg});
+                    // ref.current.focus();
+                    // return false;
+                }
             }
+            ref.current.focus();
+            return false;
             count++;
         }   
         // validatorSelect();
