@@ -1,6 +1,7 @@
-import React from 'react';
+import React,{useEffect, useRef} from 'react';
 
 export default function MySkill() {
+
     return (
         <section id="skill" class="section max-container">
         <h2 class="title">My Skills</h2>

@@ -3,74 +3,64 @@ import ImgBox from './ImgBox.jsx';
 
 export default function MyWork() {
 
-    const ulRef = useRef(null)
     const [portfolio, setPortfolio] = useState([]);
-    const [filterCount, setFilterCount] = useState({});
-    const arrFilter = ['front','back','mobile'];
     const [type, setType] = useState('total');
-    const [initNum,setInitNum] = useState(0);
+    const [typeTotal, setTypeTotal] = useState(0);
+    const [typeFront, setTypeFront] = useState(0);
+    const [typeBack, setTypeBack] = useState(0);
+    const [typeMobile, setTypeMobile] = useState(0);
+    
     useEffect(() =>{
-                fetch('/data/portfolio.json')
-                    .then(data => data.json())
-                    .then(jsonData=>{
-                            arrFilter.map(item => {
-                                if(item ==='front'){
-                                    const newArr1 = jsonData.boxList.filter(img => img.type === item );
-                                    setFilterCount({...filterCount,['front']:[newArr1]}) 
-                                }else if(item ==='back'){
-                                    const newArr2 = jsonData.boxList.filter(img => img.type === item );
-                                    setFilterCount({...filterCount,['back']:[newArr2]}) 
-                                }else if(item ==='mobile'){
-                                    const newArr3 = jsonData.boxList.filter(img => img.type === item );
-                                    setFilterCount({...filterCount,['mobile']:[newArr3]}) 
-                                }
-                            })
-                    })
-                    .catch(error => console.log(error))
-            },[]);
-console.log('filterCount',filterCount);
-
-
+        fetch('/data/portfolio.json')
+            .then(data => data.json())
+            .then(jsonData => {
+                setTypeTotal(jsonData.boxList.length);
+                setTypeFront(jsonData.boxList.filter( item =>item.type === 'front').length);
+                setTypeBack(jsonData.boxList.filter( item =>item.type === 'back').length);
+                setTypeMobile(jsonData.boxList.filter( item =>item.type === 'mobile').length);
+            })
+            .catch( error => console.log(error) )
+    },[])
+    
+    
+    // click 필터된 이미지 노출
     useEffect(() =>{
-                fetch('/data/portfolio.json')
-                    .then(data => data.json())
-                    .then(jsonData=>{
-                        if(type==='total'){
-                            setPortfolio(jsonData.boxList);
-                            setInitNum(jsonData.boxList.length);
-                        }else{
-                            const newList = jsonData.boxList.filter( (item) => item.type === type )
-                            console.log('filter 갯수 :', newList.length);
-                            setInitNum(newList.length);
-                            setPortfolio(newList);
-                        }
+        fetch('/data/portfolio.json')
+            .then(data => data.json())
+            .then(jsonData =>  {
+                if(type==='total'){
+                setPortfolio(jsonData.boxList);
+                }else{
+                    const newList = jsonData.boxList.filter(item => item.type === type )
+                    setPortfolio(newList);
+                }
 
-                    })
-                    .catch(error => console.log(error))
-            },[type]);
+            })
+            .catch( error => console.log(error) )
+    },[type])
     
     
     const handleFilter = (e) => {
         setType(e.target.getAttribute('data-type'));
-        //console.log('ul',ulRef.current.childElementCount);
-        // console.log('click span check?? ',e.target.firstElementChild);
-        e.target.firstElementChild.textContent = initNum;   
-        console.log('initNum',initNum);
-        
+        const children = e.target.parentElement.parentElement.children;
+        const childrenArr = Object.entries(children);
+        childrenArr.map(item =>
+            item[1].children[0].classList.remove('category--selected')
+        )
+        e.target.classList.add('category--selected'); 
     }
-
     
     return (
         <section id="work" class="section max-container">    
         <h2 class="title">My work</h2>
         <p class="description">Projects</p>
         <ul class="categories">
-            <li><button type="button" data-type="total" class="category category--selected" onClick={handleFilter}>All<span class="category__count">8</span></button></li>
-            <li><button type="button" data-type="front" class="category" onClick={handleFilter}>Front-end<span class="category__count">3</span></button></li>
-            <li><button type="button" data-type="back" class="category" onClick={handleFilter}>Back-end<span class="category__count">3</span></button></li>
-            <li><button type="button" data-type="mobile" class="category" onClick={handleFilter}>Mobile<span class="category__count">2</span></button></li>
+            <li><button type="button" data-type="total" className='category category--selected' onClick={handleFilter}>All<span class="category__count">{typeTotal}</span></button></li>
+            <li><button type="button" data-type="front" className='category'  onClick={handleFilter}>Front-end<span class="category__count">{typeFront}</span></button></li>
+            <li><button type="button" data-type="back" className='category' onClick={handleFilter}>Back-end<span class="category__count">{typeBack}</span></button></li>
+            <li><button type="button" data-type="mobile" className='category' onClick={handleFilter}>Mobile<span class="category__count">{typeMobile}</span></button></li>
         </ul>
-        <ul class="projects" ref={ulRef}>
+        <ul class="projects">
             {
                 portfolio.map((item) => 
                     <ImgBox img={item.img} title={item.title} para={item.para} />

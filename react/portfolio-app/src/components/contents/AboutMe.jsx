@@ -1,6 +1,12 @@
-import React from 'react';
+import React,{useEffect, useRef} from 'react';
 
 export default function AboutMe() {
+    // function sendTop(){
+    //     top('About', ref.current.offsetTop);
+    // }
+    // useEffect(() => {
+    //     sendTop();
+    // },[ref]);
     return (
         <div>
             <section id="about" class="section max-container">

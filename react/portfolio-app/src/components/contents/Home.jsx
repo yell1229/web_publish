@@ -1,6 +1,7 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 
 export default function Home() {
+
     return (
         <section id="home">
             <img class="home__avatar" src="/images/favicon.ico" alt="portfolio" />
