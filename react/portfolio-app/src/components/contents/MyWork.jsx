@@ -2,14 +2,13 @@ import React,{useState, useEffect, useRef} from 'react';
 import ImgBox from './ImgBox.jsx';
 
 export default function MyWork() {
-
     const [portfolio, setPortfolio] = useState([]);
     const [type, setType] = useState('total');
     const [typeTotal, setTypeTotal] = useState(0);
     const [typeFront, setTypeFront] = useState(0);
     const [typeBack, setTypeBack] = useState(0);
     const [typeMobile, setTypeMobile] = useState(0);
-    
+
     useEffect(() =>{
         fetch('/data/portfolio.json')
             .then(data => data.json())
@@ -21,6 +20,7 @@ export default function MyWork() {
             })
             .catch( error => console.log(error) )
     },[])
+
     
     
     // click 필터된 이미지 노출

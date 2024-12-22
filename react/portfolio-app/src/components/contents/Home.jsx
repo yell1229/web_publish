@@ -1,9 +1,12 @@
-import React,{useEffect} from 'react';
+import React,{useEffect, useRef} from 'react';
 
 export default function Home() {
-
+    const homeRef = useRef(null);
+    const handleAddClass = () => {
+        homeRef.current.classList.add('on');
+    }
     return (
-        <section id="home">
+        <section id="home" onLoad={handleAddClass} ref={homeRef}>
             <img class="home__avatar" src="/images/favicon.ico" alt="portfolio" />
             <h2 class="home__title">Hello <br /> I'm 
                 <strong class="home__title--strong">Dream Coder</strong>, Judy</h2>

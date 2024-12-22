@@ -1,4 +1,4 @@
-import React,{useEffect, useRef} from 'react';
+import React,{useEffect, useRef, useState} from 'react';
 
 export default function MySkill() {
 
@@ -16,27 +16,27 @@ export default function MySkill() {
             <ul>
                 <li class="bar">
                 <div class="bar__metadata"><span>HTML</span><span>98%</span></div>
-                <div class="bar__bg"><div class="bar__value" style={{"width":"98%"}}></div></div>
+                <div class="bar__bg"><div class="bar__value"></div></div>
                 </li>
                 <li class="bar">
                 <div class="bar__metadata"><span>CSS</span><span>90%</span></div>
-                <div class="bar__bg"><div class="bar__value" style={{"width":"90%"}}></div></div>
+                <div class="bar__bg"><div class="bar__value"></div></div>
                 </li>
                 <li class="bar">
                 <div class="bar__metadata"><span>JavaScript</span><span>90%</span></div>
-                <div class="bar__bg"><div class="bar__value" style={{"width":"90%"}}></div></div>
+                <div class="bar__bg"><div class="bar__value"></div></div>
                 </li>
                 <li class="bar">
                 <div class="bar__metadata"><span>TypeScript</span><span>80%</span></div>
-                <div class="bar__bg"><div class="bar__value" style={{"width":"80%"}}></div></div>
+                <div class="bar__bg"><div class="bar__value"></div></div>
                 </li>
                 <li class="bar">
                 <div class="bar__metadata"><span>React</span><span>79%</span></div>
-                <div class="bar__bg"><div class="bar__value" style={{"width":"79%"}}></div></div>
+                <div class="bar__bg"><div class="bar__value"></div></div>
                 </li>
                 <li class="bar">
                 <div class="bar__metadata"><span>NodeJS</span><span>68%</span></div>
-                <div class="bar__bg"><div class="bar__value" style={{"width":"68%"}}></div></div>
+                <div class="bar__bg"><div class="bar__value"></div></div>
                 </li>          
             </ul>
             </article>

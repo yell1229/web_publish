@@ -1,7 +1,10 @@
 import React from 'react';
 import Menu from './Menu.jsx';
 
-export default function MenuList() {
+export default function MenuList({scrollListToChild}) {
+
+    const scrollList= Object.entries(scrollListToChild);
+    
     const menuList=[
         {"name":"Home", "link":"#home", "class":"header__menu__item"},
         {"name":"About", "link":"#about", "class":"header__menu__item"},
@@ -13,9 +16,9 @@ export default function MenuList() {
     return (
         <nav>
             <ul class="header__menu">
-                {
-                    menuList.map((item) => 
-                        <Menu name={item.name} link={item.link} css={item.class} />
+                {   
+                    menuList.map((item,i) => 
+                        <Menu name={item.name} link={item.link} css={item.class} scrollList={scrollList[i]} />
                     )
                 }
             </ul>

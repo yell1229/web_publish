@@ -6,7 +6,7 @@ import Login3 from './Login3.jsx';
 import SignUp2 from './SignUp2.jsx';
 import SignUp from './SignUp.jsx';
 import SignUp4 from './SignUp4.jsx';
-import SignUp5 from './SignUp5.jsx';
+import SignUp6 from './SignUp6.jsx';
 import SignUpNew from './SignUpNew.jsx';
 import SignUpNew2 from './SignUpNew2.jsx';
 
@@ -14,7 +14,7 @@ import SignUpNew2 from './SignUpNew2.jsx';
 export default function AppForm() {
     return (
         <div>
-            <SignUp5 />
+            <SignUp6 />
             {/* <hr /> */}
             {/* <Login /> */}
             {/* <hr /> */}

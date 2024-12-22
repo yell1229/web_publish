@@ -3,16 +3,16 @@ import List from './List.jsx';
 
 export default function Testimonials() {
     const [list, setList] = useState([]);
-    
+
     useEffect(() => {
         fetch('/data/portfolio.json')
             .then(data => data.json())
             .then(jsonData => {
                 setList(jsonData.info);
+ 
             })
             .catch(error =>console.log(error))
     },[]);
-    
     
     return (
         <section id="testimonial" class="section max-container">
