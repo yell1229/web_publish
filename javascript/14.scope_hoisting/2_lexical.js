@@ -16,8 +16,9 @@
         {
             let c = 30;
             console.log(`c => ${c}`);
-            console.log(`a => ${a}`);
+            console.log(`a??? => ${a}`);
             console.log(`b => ${b}`);
+            let a = 20;
         }// level 2
 
     }// level 1

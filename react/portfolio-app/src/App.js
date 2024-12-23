@@ -9,7 +9,7 @@ import NavBtn from './components/header/NavBtn.jsx';
 import TopBtn from './components/footer/TopBtn.jsx';
 
 export default function App() {
-
+    const navRef = useRef(null);
     const footerRef = useRef(null);
     const [scrollList, setScrollList] = useState({
         homeRef: null,
@@ -26,15 +26,17 @@ export default function App() {
             ...list // list에 있는 항목들을 기존 scrollList에 병합
         }));
     };
-
+    
     return (
             <div>
                 <Header >
                     <Logo />
-                    <MenuList passScrollList={scrollList}/>
+                    <div ref={navRef}>
+                        <MenuList passScrollList={scrollList} />
+                    </div>
                     <NavBtn />
                 </Header>        
-                <Contanier setScrollListToParent ={setScrollListToParent } />
+                <Contanier setScrollListToParent ={setScrollListToParent } nav={navRef} />
                 <div ref={footerRef}>
                     <Footer />
                 </div>

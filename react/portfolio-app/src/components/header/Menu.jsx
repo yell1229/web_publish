@@ -2,21 +2,12 @@ import React,{useState, useEffect,useRef} from 'react';
 
 export default function Menu({name, link, css,scrollList,totalList}) {
     const active = useRef(null);
-    const [eleTop, setEleTop] = useState([])
     
     
     useEffect(() => {
         if(active.current.innerText === 'Home')  active.current.classList.add('active');
-        // 컴포넌트를 가져와 offsetTop을 배열에 담는다.
-        const newEletop = Object.entries(totalList).map(([name, value]) =>{
-            if(value && value.offsetTop){
-                return value.offsetTop
-            }
-            return null;
-        });
-        setEleTop(newEletop);
 
-    },[totalList]);
+    },[]);
 
 
     

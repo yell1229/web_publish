@@ -1,8 +1,7 @@
-import React,{useState, useEffect} from 'react';
+import React,{useState, useEffect, useRef} from 'react';
 import Menu from './Menu.jsx';
 
 export default function MenuList({passScrollList}) {
-
     const scrollList= Object.entries(passScrollList);
     const menuList=[
         {"name":"Home", "link":"#home", "class":"header__menu__item"},
@@ -12,17 +11,16 @@ export default function MenuList({passScrollList}) {
         {"name":"Testimonial", "link":"#testimonial", "class":"header__menu__item"},
         {"name":"Contact", "link":"#contact", "class":"header__menu__item"}
     ]
-
-
+    
     return (
         <nav>
-            <ul class="header__menu">
+            <div class="header__menu">
                 {   
                     menuList.map((item,i) => 
                         <Menu name={item.name} link={item.link} css={item.class} scrollList={scrollList[i]} totalList={passScrollList} />
                     )
                 }
-            </ul>
+            </div>
         </nav>
     );
 }

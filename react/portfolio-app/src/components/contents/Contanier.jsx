@@ -5,7 +5,8 @@ import MySkill from './MySkill.jsx';
 import MyWork from './MyWork.jsx';
 import Testimonials from './Testimonials.jsx';
 
-export default function Contanier({setScrollListToParent }) {
+export default function Contanier({setScrollListToParent, nav}) {
+      
     const scrollRef  = {
         homeRef: useRef(null),
         aboutmeRef: useRef(null),
@@ -32,14 +33,28 @@ export default function Contanier({setScrollListToParent }) {
         // 부모 컴포넌트로 scrollList를 전달
         setScrollListToParent(updatedScrollList);
 
+        const navRef =nav.current?.children?.[0]?.children?.[0] // 옵셔널 체이닝
+        const childNavRef = Object.values(navRef.children);
+        
+        
         const handleScroll = () => {
-           Object.entries(updatedScrollList).forEach(([name,targetEle]) =>{         
-            if(targetEle){
-                if(window.scrollY >= targetEle.offsetTop - window.innerHeight /2) targetEle.classList.add('on');
-                // else targetEle.classList.remove('on');
-            }
-               
-            })  
+            const eleList = ["home-area","about-area","skill-area","work-area","testimonials-area"];
+
+            Object.entries(updatedScrollList).forEach(([name,targetEle]) =>{         
+                if(targetEle){
+                    if(window.scrollY >= targetEle.offsetTop -74) {
+                        targetEle.classList.add('on');
+
+                        childNavRef.map((item,i) => {
+                            item.classList.remove('active');
+                            if(targetEle.classList.contains(eleList[i])){
+                                navRef.children[i].classList.add('active');
+                            }
+                        });          
+                    }
+                    
+                } 
+            });  
         }
 
         window.addEventListener('scroll',handleScroll);
