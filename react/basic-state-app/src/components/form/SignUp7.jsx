@@ -2,7 +2,7 @@ import React,{useState, useRef} from 'react';
 import {validateSignup} from '../../apis/validate.js';
 import './Cgv.css';
 
-export default function SignUp5() {
+export default function SignUp7() {
 
     return (
         <div className="content">
