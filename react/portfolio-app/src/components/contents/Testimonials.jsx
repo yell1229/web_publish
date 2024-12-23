@@ -15,10 +15,10 @@ export default function Testimonials() {
     },[]);
     
     return (
-        <section id="testimonial" class="section max-container">
-            <h2 class="title">Testimonial</h2>
-            <p class="description">See what they say about me</p>
-            <ul class="testimonials">
+        <section id="testimonial" className="section max-container">
+            <h2 className="title">Testimonial</h2>
+            <p className="description">See what they say about me</p>
+            <ul className="testimonials">
                 {
                     list && list.map( item =>
                         <List img={item.img} info={item.infoText} name={item.name} com={item.company} />

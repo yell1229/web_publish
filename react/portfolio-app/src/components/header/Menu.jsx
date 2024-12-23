@@ -1,12 +1,36 @@
 import React,{useState, useEffect,useRef} from 'react';
 
-export default function Menu({name, link, css,scrollList}) {
+export default function Menu({name, link, css,scrollList,totalList}) {
     const active = useRef(null);
-
+    const [eleTop, setEleTop] = useState([])
+    
+    
     useEffect(() => {
         if(active.current.innerText === 'Home')  active.current.classList.add('active');
-    },[]);
+        const newEletop = Object.entries(totalList).map(([name, value]) =>{
+            if(value && value.offsetTop){
+                return value.offsetTop
+            }
+            return null;
+        });
+        setEleTop(newEletop);
 
+        const scrollBtnStyle = () => {
+            // if(eleTop[0] !== null){
+            //     if(window.scrollY >= eleTop[0]) active.current.classList.add('active');
+            // }else if(eleTop[1] !== null){
+            //     console.log(eleTop[1]);
+                
+            //     if(window.scrollY >= eleTop[1]) active.current.classList.add('active');
+            // }else if(eleTop[2] !== null){
+            //     if(window.scrollY >= eleTop[2]) active.current.classList.add('active');
+            // }
+        }
+        window.addEventListener('scroll',scrollBtnStyle);
+    },[totalList]);
+
+
+    
     const clickStyle = (e, ref) => {
         e.preventDefault();
         

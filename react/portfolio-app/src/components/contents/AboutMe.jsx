@@ -1,46 +1,58 @@
 import React,{useEffect, useRef, useState} from 'react';
+import { faHtml5 } from '@fortawesome/free-brands-svg-icons';
+import { faMobile } from '@fortawesome/free-solid-svg-icons';
+import { faGear } from '@fortawesome/free-solid-svg-icons';
+import Major from './Major.jsx';
 
-export default function AboutMe({top}) {
+
+export default function AboutMe() {
+    const majorList = [
+        {
+            "title":"Front-end",
+            "para":"HTML, CSS, JavaScript, TypeScript, React, WebAPIs",
+            "icon":faHtml5
+        },
+        {
+            "title":"Mobile",
+            "para":"Android Studio, React Native, iOS, Swift, Java, Kotlin",
+            "icon":faMobile
+        },
+        {
+            "title":"Back-end",
+            "para":"Java, JavaScript, Go, Kotlin, Spring, Spring Boot",
+            "icon":faGear
+        },
+    ]
     
     return (
         <div>
-            <section id="about" class="section max-container">
-                <h2 class="title">About me</h2>
-                <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            <section id="about" className="section max-container">
+                <h2 className="title">About me</h2>
+                <p className="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
                     Iure natus, temporibus perspiciatis repudiandae nostrum modi
                     doloremque expedita non eius ipsum! Beatae porro adipisci 
                     omnis architecto dignissimos. Iusto ipsa inventore adipisci.
                 </p>
-                <ul class="majors">
-                    <li class="major">
-                        <i class="fa-brands fa-html5 major__icon"></i>
-                        <p class="major__title">Front-end</p>
-                        <p>HTML, CSS, JavaScript, TypeScript, React, WebAPIs</p>
-                    </li>
-                    <li class="major">
-                        <i class="fa-solid fa-mobile major__icon"></i>
-                        <p class="major__title">Mobile</p>
-                        <p>Android Studio, React Native, iOS, Swift, Java, Kotlin</p>
-                    </li>
-                    <li class="major">
-                        <i class="fa-solid fa-server major__icon"></i>
-                        <p class="major__title">Back-end</p>
-                        <p>Java, JavaScript, Go, Kotlin, Spring, Spring Boot</p>
-                    </li>
+                <ul className="majors">
+                    {
+                        majorList.map(item =>
+                            <li className="major"><Major title={item.title} para={item.para} icon={item.icon} /></li>
+                        )
+                    }
                 </ul>
-                <ul class="jobs">
-                    <li class="job">
+                <ul className="jobs">
+                    <li className="job">
                     <img src="/images/jobs/google.png" alt="google" />
                     <div>
-                        <p class="job__name">Google as Junior Software Engineer</p>
-                        <p class="job__period">2019 Oct - Until now</p>
+                        <p className="job__name">Google as Junior Software Engineer</p>
+                        <p className="job__period">2019 Oct - Until now</p>
                     </div>
                     </li>
-                    <li class="job">
+                    <li className="job">
                     <img src="/images/jobs/samsung.png" alt="samsung" />
                     <div>
-                        <p class="job__name">Samsung as Junior Software Engineer</p>
-                        <p class="job__period">2010 Oct - 2019 Oct</p>
+                        <p className="job__name">Samsung as Junior Software Engineer</p>
+                        <p className="job__period">2010 Oct - 2019 Oct</p>
                     </div>
                     </li>
                 </ul>

@@ -36,7 +36,7 @@ export default function Contanier({setScrollListToParent }) {
            Object.entries(updatedScrollList).forEach(([name,targetEle]) =>{         
             if(targetEle){
                 if(window.scrollY >= targetEle.offsetTop - window.innerHeight /2) targetEle.classList.add('on');
-                else targetEle.classList.remove('on');
+                // else targetEle.classList.remove('on');
             }
                
             })  

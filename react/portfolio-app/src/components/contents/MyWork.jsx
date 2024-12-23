@@ -51,16 +51,16 @@ export default function MyWork() {
     }
     
     return (
-        <section id="work" class="section max-container">    
-        <h2 class="title">My work</h2>
-        <p class="description">Projects</p>
-        <ul class="categories">
+        <section id="work" className="section max-container">    
+        <h2 className="title">My work</h2>
+        <p className="description">Projects</p>
+        <ul className="categories">
             <li><button type="button" data-type="total" className='category category--selected' onClick={handleFilter}>All<span class="category__count">{typeTotal}</span></button></li>
             <li><button type="button" data-type="front" className='category'  onClick={handleFilter}>Front-end<span class="category__count">{typeFront}</span></button></li>
             <li><button type="button" data-type="back" className='category' onClick={handleFilter}>Back-end<span class="category__count">{typeBack}</span></button></li>
             <li><button type="button" data-type="mobile" className='category' onClick={handleFilter}>Mobile<span class="category__count">{typeMobile}</span></button></li>
         </ul>
-        <ul class="projects">
+        <ul className="projects">
             {
                 portfolio.map((item) => 
                     <ImgBox img={item.img} title={item.title} para={item.para} />
