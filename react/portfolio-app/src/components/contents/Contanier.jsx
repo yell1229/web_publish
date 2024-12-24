@@ -21,7 +21,7 @@ export default function Contanier({setScrollListToParent, nav}) {
         myworkRef: null,
         testimonialsRef: null
     });
-
+    const newList = useRef([]);
     useEffect(() => {
         // `scrollRef`의 값들을 상태로 업데이트
         const updatedScrollList = Object.entries(scrollRef).reduce((acc, [name, ref]) => {
@@ -30,8 +30,17 @@ export default function Contanier({setScrollListToParent, nav}) {
         }, {});
 
         setScrollList(updatedScrollList);
+
+        newList.current = [
+            scrollRef.homeRef.current?.offsetTop,
+            scrollRef.aboutmeRef.current?.offsetTop,
+            scrollRef.myskillRef.current?.offsetTop,
+            scrollRef.myworkRef.current?.offsetTop,
+            scrollRef.testimonialsRef.current?.offsetTop,
+        ];
+
         // 부모 컴포넌트로 scrollList를 전달
-        setScrollListToParent(updatedScrollList);
+        setScrollListToParent(updatedScrollList,newList);
 
         const navRef =nav.current?.children?.[0]?.children?.[0] // 옵셔널 체이닝
         const childNavRef = Object.values(navRef.children);

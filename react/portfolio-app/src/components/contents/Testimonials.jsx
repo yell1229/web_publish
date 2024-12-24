@@ -5,7 +5,7 @@ export default function Testimonials() {
     const [list, setList] = useState([]);
 
     useEffect(() => {
-        fetch('/data/portfolio.json')
+        fetch('https://yell1229.github.io/react-sample-1/data/portfolio.json')
             .then(data => data.json())
             .then(jsonData => {
                 setList(jsonData.info);

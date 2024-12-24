@@ -1,15 +1,15 @@
 import React,{useState, useEffect,useRef} from 'react';
 
-export default function Menu({name, link, css,scrollList,totalList}) {
+export default function Menu({name, link, css,scrollList}) {
     const active = useRef(null);
-    
-    
+
     useEffect(() => {
         if(active.current.innerText === 'Home')  active.current.classList.add('active');
-
+        
     },[]);
 
-
+    
+    
     
     const clickStyle = (e, ref) => {
         e.preventDefault();
@@ -25,6 +25,7 @@ export default function Menu({name, link, css,scrollList,totalList}) {
             ref[1].classList.add('on');  
         }      
     }
+    
     return (
         <>
             <a className={css} href={link} ref={active} onClick={(e) => clickStyle(e, scrollList)}>{name}</a>

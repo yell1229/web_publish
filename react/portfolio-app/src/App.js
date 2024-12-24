@@ -1,4 +1,4 @@
-import React,{useState,useRef,useEffect} from 'react';
+import React,{useState,useRef, useEffect} from 'react';
 import Header from './components/header/Header.jsx';
 import Footer from './components/footer/Footer.jsx';
 import Contanier from './components/contents/Contanier.jsx';
@@ -11,6 +11,7 @@ import TopBtn from './components/footer/TopBtn.jsx';
 export default function App() {
     const navRef = useRef(null);
     const footerRef = useRef(null);
+
     const [scrollList, setScrollList] = useState({
         homeRef: null,
         aboutmeRef: null,
@@ -19,12 +20,14 @@ export default function App() {
         testimonialsRef: null,
         footerRef:null
     });
-    const setScrollListToParent = (list) => {
+    const scrollTopList = useRef([]);
+    const setScrollListToParent = (list,topList) => {
         setScrollList((prevState) => ({
             ...prevState,
             footerRef: footerRef.current,  // footerRef를 업데이트
             ...list // list에 있는 항목들을 기존 scrollList에 병합
         }));
+        scrollTopList.current = topList;
     };
     
     return (
@@ -32,7 +35,7 @@ export default function App() {
                 <Header >
                     <Logo />
                     <div ref={navRef}>
-                        <MenuList passScrollList={scrollList} />
+                        <MenuList passScrollList={scrollList} scrollTop={scrollTopList.current} />
                     </div>
                     <NavBtn />
                 </Header>        

@@ -1,4 +1,4 @@
-import React,{useEffect, useRef, useState} from 'react';
+import React from 'react';
 import { faHtml5 } from '@fortawesome/free-brands-svg-icons';
 import { faMobile } from '@fortawesome/free-solid-svg-icons';
 import { faGear } from '@fortawesome/free-solid-svg-icons';
@@ -42,14 +42,14 @@ export default function AboutMe() {
                 </ul>
                 <ul className="jobs">
                     <li className="job">
-                    <img src="/images/jobs/google.png" alt="google" />
+                    <img src="https://yell1229.github.io/react-sample-1/images/jobs/google.png" alt="google" />
                     <div>
                         <p className="job__name">Google as Junior Software Engineer</p>
                         <p className="job__period">2019 Oct - Until now</p>
                     </div>
                     </li>
                     <li className="job">
-                    <img src="/images/jobs/samsung.png" alt="samsung" />
+                    <img src="https://yell1229.github.io/react-sample-1/images/jobs/samsung.png" alt="samsung" />
                     <div>
                         <p className="job__name">Samsung as Junior Software Engineer</p>
                         <p className="job__period">2010 Oct - 2019 Oct</p>
