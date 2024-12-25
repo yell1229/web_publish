@@ -11,6 +11,7 @@ import TopBtn from './components/footer/TopBtn.jsx';
 export default function App() {
     const navRef = useRef(null);
     const footerRef = useRef(null);
+    let [topBtn, setTopBtn] = useState(false);
 
     const [scrollList, setScrollList] = useState({
         homeRef: null,
@@ -29,7 +30,18 @@ export default function App() {
         }));
         scrollTopList.current = topList;
     };
+
+    useEffect(() => {
+        const scrollCheck = () => {
+            console.log(topBtn.current);
+            
+            if(window.scrollY>100) setTopBtn(true);
+            else setTopBtn(false);
+        }
+        window.addEventListener('scroll',scrollCheck);
+    },[]);
     
+
     return (
             <div>
                 <Header >
@@ -43,7 +55,7 @@ export default function App() {
                 <div ref={footerRef}>
                     <Footer />
                 </div>
-                <TopBtn />
+                {topBtn && <TopBtn />}
             </div>
     );
 }
