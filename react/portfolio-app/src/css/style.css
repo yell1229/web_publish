@@ -102,11 +102,6 @@ button:focus {
   font-size: 1.8rem;
   color:var(--color-white);
 }
-nav{
-  /* margin-left:auto; */
-  /* display:flex;
-  justify-content: flex-end; */
-}
 .header__menu{
   display:flex;
   gap:4px;
@@ -131,7 +126,7 @@ nav{
   right:1rem;
 }
 /* home */
-.home-area{ background-color: var(--color-primary);}
+.home-area{height:100vh; background-color: var(--color-primary);}
 #home{
   background-color: var(--color-primary);
   color: var(--color-white);
@@ -643,4 +638,5 @@ margin-top:3rem}
 .about-area,
 .skill-area,
 .work-area,
-.testimonials-area{padding-top:74px}
+.testimonials-area{
+  width:100%;padding-top:74px;overflow-x:hidden;}
