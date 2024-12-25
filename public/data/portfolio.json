@@ -1,0 +1,72 @@
+{
+    "boxList" : [
+        { 
+            "img":"https://yell1229.github.io/react-sample-1/images/projects/project1.webp",
+            "title":"Project #1",
+            "para":"[front] Clone Coding with HTML, CSS",
+            "type":"Front-end"
+        },
+        { 
+            "img":"https://yell1229.github.io/react-sample-1/images/projects/project2.webp",
+            "title":"Project #2",
+            "para":"[back]Clone Coding with HTML, CSS",
+            "type":"Back-end"
+        },
+        { 
+            "img":"https://yell1229.github.io/react-sample-1/images/projects/project3.webp",
+            "title":"Project #3",
+            "para":"[mobile]Clone Coding with HTML, CSS",
+            "type":"Mobile"
+        },
+        { 
+            "img":"https://yell1229.github.io/react-sample-1/images/projects/project4.webp",
+            "title":"Project #4",
+            "para":"[front]Clone Coding with HTML, CSS",
+            "type":"Front-end"
+        },
+        { 
+            "img":"https://yell1229.github.io/react-sample-1/images/projects/project5.webp",
+            "title":"Project #5",
+            "para":"[mobile]Clone Coding with HTML, CSS",
+            "type":"Mobile"
+        },
+        { 
+            "img":"https://yell1229.github.io/react-sample-1/images/projects/project6.webp",
+            "title":"Project #6",
+            "para":"[front]Clone Coding with HTML, CSS",
+            "type":"Front-end"
+        },
+        { 
+            "img":"https://yell1229.github.io/react-sample-1/images/projects/project7.webp",
+            "title":"Project #7",
+            "para":"[back]Clone Coding with HTML, CSS",
+            "type":"Back-end"
+        },
+        { 
+            "img":"https://yell1229.github.io/react-sample-1/images/projects/project8.webp" ,
+            "title":"Project #8",
+            "para":"[back]Clone Coding with HTML, CSS",
+            "type":"Back-end"
+        }
+    ],
+    "info" : [
+        {
+            "img":"https://yell1229.github.io/react-sample-1/images/testimonials/people1.webp",
+            "infoText":"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis similique, unde nam totam quam, nisi odio error amet provident iste modi eos dicta, eum suscipit rem illum inventore sapiente blanditiis?",
+            "name":"James Kim",
+            "company":"Google"
+        },
+        {
+            "img":"https://yell1229.github.io/react-sample-1/images/testimonials/people2.webp",
+            "infoText":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore necessitatibus sequi id obcaecati, assumenda quam corrupti. Numquam blanditiis praesentium, similique autem, accusamus debitis cupiditate, tempora officiis sed inventore nihil incidunt.",
+            "name":"Smith Park",
+            "company":"Samsung"
+        },
+        {
+            "img":"https://yell1229.github.io/react-sample-1/images/testimonials/people3.webp",
+            "infoText":"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio nulla incidunt autem ullam, commodi in impedit repellat exercitationem provident at recusandae doloremque pariatur temporibus hic blanditiis explicabo voluptatibus neque aliquam.",
+            "name":"Anna Jin",
+            "company":"Samsung"
+        }
+    ]
+}
