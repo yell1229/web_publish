@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import TodoList from './components/TodoList.jsx';
 import Cgv from './components/Cgv.jsx';
+import './scss/test.scss';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

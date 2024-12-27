@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function SignUpForm() {
+export default function Radio() {
   const [formData, setFormData] = useState({
     gender: '',  // 성별 값
   });

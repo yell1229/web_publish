@@ -132,8 +132,8 @@ export default function SignUp7() {
                             <label for=""><b>성별</b></label>
                             <span>{errorMsg.gender}</span>
                             <div>
-                                <label style={{width:'50%'}}><input style={{width:'30px'}}type="radio" name="gender"  ref={refs.genderRef} value="m" checked={formData.gender ='m'} onChange={handleChangeValue} />남자</label>
-                                <label style={{width:'50%'}}><input style={{width:'30px'}}type="radio" name="gender"  ref={refs.genderRef} value="f" checked={formData.gender ='f'} onChange={handleChangeValue} />여자</label>
+                                <label style={{width:'50%'}}><input style={{width:'30px'}} type="radio" name="gender"  ref={refs.genderRef} value="m" checked={formData.gender ='m'} onChange={handleChangeValue} />남자</label>
+                                <label style={{width:'50%'}}><input style={{width:'30px'}} type="radio" name="gender"  ref={refs.genderRef} value="f" checked={formData.gender ='f'} onChange={handleChangeValue} />여자</label>
                             </div>
                         </li>
                         <li>

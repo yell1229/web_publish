@@ -9,6 +9,7 @@ import SignUp4 from './SignUp4.jsx';
 import SignUp6 from './SignUp6.jsx';
 import SignUpNew from './SignUpNew.jsx';
 import SignUpNew2 from './SignUpNew2.jsx';
+import Radio from './Radio.jsx';
 
 
 export default function AppForm() {
