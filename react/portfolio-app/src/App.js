@@ -3,10 +3,11 @@ import Header from './components/header/Header.jsx';
 import Footer from './components/footer/Footer.jsx';
 import Contanier from './components/contents/Contanier.jsx';
 import Logo from './components/header/Logo.jsx';
-import './css/style.css';
 import MenuList from './components/header/MenuList.jsx';
 import NavBtn from './components/header/NavBtn.jsx';
 import TopBtn from './components/footer/TopBtn.jsx';
+import Join from './components/contents/Join.jsx';
+import './scss/portfolio.scss';
 
 export default function App() {
     const navRef = useRef(null);
@@ -50,7 +51,8 @@ export default function App() {
                         <MenuList passScrollList={scrollList} scrollTop={scrollTopList.current} />
                     </div>
                     <NavBtn />
-                </Header>        
+                </Header>   
+                <Join />     
                 <Contanier setScrollListToParent ={setScrollListToParent } nav={navRef} />
                 <div ref={footerRef}>
                     <Footer />
