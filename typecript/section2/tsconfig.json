@@ -1,0 +1,15 @@
+{
+    "include": ["src"],
+    "compilerOptions":{
+        // "skibLibCheck":true,
+        "module":"ESNext",
+        "target":"ESNext",
+        "outDir": "dist",
+        "strict":true,
+        "moduleDetection": "force",
+        //"strictNullChecks": false //엄격한 null 검사
+    },
+    "ts-node":{
+        "ems":true
+    }
+  }

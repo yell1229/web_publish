@@ -1,0 +1,6 @@
+{
+  "include": ["src"],
+  "compilerOption":{
+      "skibLibCheck":true
+  }
+}
