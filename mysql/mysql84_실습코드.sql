@@ -493,6 +493,226 @@ select emp_id, emp_name, dept_id, hire_date, format(ifnull(salary, 0), 0), conca
 	from employee
     order by salary;
 
+-- 3. 날짜 함수 : curdate(), now(), sysdate()
+-- (1)curdate() : 현재 시스템(pc) 날짜를 출력, 년월일 만 출력
+select curdate() from dual;
+-- (2) now(), sysdate() : 현재 시스템 날짜를 출력, 년월일 시분초 출력 
+select now(), sysdate() from dual;
+
+-- 4. 형변환 함수 : cast(), convert()
+-- cast(변경데이터 as 변경할 데이터타입)
+select 12345 숫자, cast(12345 as char) 문자 from dual;
+select '12345' 문자 , cast('12345' as unsigned integer) 정수 from dual;
+
+-- 입력폼에서 '20150101' 데이터 날짜를 가진 사원을 조회
+select *
+	from employee
+    where hire_date = cast('20150101' as date);
+
+-- floor 함수를 적용한 cast 함수 
+select floor('12-34-5') 문자,
+	   floor(cast('12-34-5' as unsigned integer)) 정수
+	from dual;
+
+-- 5. 문자열 치환 함수 : replace(문자열, old, new) 
+select '123,456' 문자,
+	replace('123,456',',','') 문자,
+    cast(replace('123,456',',','') as unsigned integer) 숫자
+	from dual;
+
+-- 사원테이블의 입사일 포맷을 변경 '2015-01-01' --> '2015/01/01'
+select emp_name, hire_date,
+	replace(hire_date,'-','/') hire_date
+	from employee;
+
+/* *******************************************************
+	그룹(집계)함수 : sum(), avg(), min(), max(), count() ...
+	group by : 그룹함수를 적용하기 위해 일반 컬럼을 그룹핑하는 단뒤
+    having : 그룹함수의 조건절을 적용하는 구문
+******************************************************* */
+
+-- 1. sum(숫자, 숫자컬럼)
+-- 사원테이블에서 모든 사원의 연봉 총합을 조회 
+select sum(salary) 총연봉,
+		concat(format(sum(salary),0) , ' 만원') 총연봉
+	from employee;
+
+-- 2. avg(숫자, 숫자컬럼)
+-- 사원들의 총연봉, 평균연봉 조회 , 3자리구분, '만원'단위, 소수점 1자리까지
+select concat(format(sum(salary), 1) ,' 만원') 총연봉,
+	   concat(format(avg(salary), 1), ' 만원') 평균연봉
+	from employee;
+
+-- 3. min(숫자, 숫자컬럼) : 최소값
+-- 가장 작은 값을 출력
+-- 사원들의 총연봉, 평균 연봉, 최소연봉을 출력
+-- 3자리구분, 만원 추가, 소수점자리 생략
+select concat(format(sum(salary),0),' 만원') 총연봉,
+	   concat(format(avg(salary),0),' 만원') 평균연봉,
+       concat(format(min(salary),0),' 만원') 최소연봉
+	from employee;
+
+-- 4. max(숫자, 숫자컬럼)
+-- 가장 큰 값을 출력
+-- 사원들의 총연봉, 평균 연봉, 최대연봉을 출력
+-- 3자리구분, 만원 추가, 소수점자리 생략
+select concat(format(sum(salary),0),' 만원') 총연봉,
+	   concat(format(avg(salary),0),' 만원') 평균연봉,
+       concat(format(max(salary),0),' 만원') 최대연봉
+	from employee;
+
+-- 5. count(컬럼명) 
+-- 테이블의 모든 row count를 출력 
+-- null을 포함한 데이터의 count는 계산하지 않는다. 
+select count(*) '총 사원수' ,
+       count(salary) '연봉협상 완료 사원수'
+       from employee; -- 19
+
+select *
+	from employee
+    where salary is null;
+
+-- 총 사원수, 퇴직한 사원수, 현재사원수를 조회
+select concat(cast(count(*) as char), ' 명') '총 사원수',
+	   concat(cast(count(retire_date) as char), ' 명') '최직 사원수',
+       concat(cast(count(*) - count(retire_date) as char), ' 명') '재직 사원 수'
+	from employee;
+
+-- 사원테이블에서 정보시스템 부서의 사원수를 조회
+select count(*)
+	from employee
+    where dept_id='SYS';
+
+-- 2015 년도에 입사한 사원수
+select count(*) '2015 입사자',
+	   sum(salary) '총 연봉',
+       avg(salary) '평균 연봉',
+       min(salary) '최소 연봉'
+	from employee
+    where left(hire_date,4)='2015';
+
+--  가장 최근 입사자와 오래된 입사자의 입사일 조회
+select max(hire_date) '최근 입사일',
+	   min(hire_Date) '최초 입사일'
+	from employee;
+-- 마케팅부서 기준 가장 낮은 연봉과 높은 연봉을 조회
+select max(hire_date) '최근 입사일',
+	   min(hire_Date) '최초 입사일'
+	from employee
+    where dept_id='MKT';
+
+-- hrd 부서 기준 최근 입사자와 오래된 입사자의 입사일 조회
+select max(hire_date) '최근 입사자',
+	min(hire_date) '최초 입사자'
+	from employee
+    where dept_id = 'HRD';
+-- 마케팅부서 기준 가장 낮은 연봉과 높은 연봉을 조회
+select max(salary) '최대 연봉',
+	   min(salary) '최소 연봉'
+	from employee
+    where dept_id = 'MKT';
+
+-- 6. group by ~ 적용 : ~~별 그룹함수를 적용해야 하는 경우 
+-- 사원테이블에서 부서별 사원수를 조회 
+-- group by에 사용된 일반컬럼은 그룸함수와 함께 조회가 가능
+select dept_id , count(*) 부서별사원수
+	from employee
+    group by dept_id;
+
+-- 입사년도별 총연봉, 평균연봉, 최저연봉, 최고연봉, 입사사원수를 조회
+select  left(hire_date, 4) '입사년도',
+		concat(format(sum(salary),0) ,' 만원') '총연봉',
+		min(salary) '최저연봉',
+        truncate(avg(salary), 0) '평균연봉',
+        max(salary) '최고연봉',
+        count(*) '입사사원 수'
+	from employee
+    group by left(hire_date, 4);
+
+-- 부서별 총연봉, 평균연봉, 최저연봉, 최고연봉, 입사사원수를 조회
+select  dept_id '부서',
+		sum(ifnull(salary, 0)) '총연봉',
+		min(ifnull(salary,0)) '최저연봉',
+        max(ifnull(salary,0)) '최고연봉',
+        count(*) '입사사원 수'
+	from employee
+    group by dept_id;
+
+-- 7. having 절 : group by를 통해 그룹핑 한 결과에 조건절을 추가하는 구문 
+/* select *
+	from employee
+    group by
+    having ;
+*/
+-- 부서별 평균 연봉을 조회
+-- null값이 포함된 경우 0으로 변환
+-- 소숫점 자리는 절삭
+-- 부서아이디 함께 출력
+-- 부서 평균연봉이 6000 이상인 부서만 출력
+-- 평균연봉 기준 오름차순으로
+select dept_id 부서명,
+	   truncate(avg(ifnull(salary, 0)) , 0) 평균연봉 -- 오라클 NVL(컬럼명, 값)
+	from employee
+    group by dept_id
+    having 평균연봉 >= 6000 -- having절 에서는 별칭컬럼명을 조건으로 사용 가능.
+    order by 평균연봉;
+
+-- 입사년도 기준 총연봉, 평균연봉을 조회
+-- 총연봉이 5000 이상인 사원들만 출력
+-- null값을 포함한 경우 0으로 초기화 
+select  left(hire_date, 4) 입사년도,
+		sum(salary) 총연봉 ,
+        truncate(avg(ifnull(salary,0)), 0) 평균연봉
+	from employee
+    group by left(hire_date, 4)
+    having 총연봉 >= 5000;
+
+-- 부서별 남녀사원의 사원수를 조회 
+select  dept_id 부서ID, 
+		gender 성별,
+		count(*) 사원수
+	from employee
+    group by dept_id, gender;
+
+-- 8. rollup 함수 : reporting을 위한 함수
+/*  
+형식 : 
+	select [컬럼리스트]  
+		from [테이블명]
+		where [조건절]
+		group by [그룹핑 컬럼] width rollup;
+*/
+-- 부서별 총 연봉을 조회, 연봉이 정해지지 않는 부서는 포함하지 않음
+-- select if(grouping(dept_id), '부서 총합계', ifnull(dept_id, '-')) '부서',
+-- 		concat(format(sum(salary), 0),' 만원') '총 연봉'
+-- 	from employee
+--     where salary is not null
+--     group by dept_id with rollup;
+
+-- 사원들의 휴가사용 내역을 조회
+select *
+	from vacation;
+ 
+ -- 사원 id별 휴가사용 횟수 조회
+ -- 총 휴가사용일 기준으로 내림차순 정렬
+ select emp_id 사원아이디,
+		count(*) 휴가상신횟수,
+        sum(duration) 총가사용일자
+	from vacation
+    group by emp_id
+    order by 총가사용일자 desc;
+    
+-- 2016~2017년도 사이에 사원아이디별 휴가사용 횟수 조회
+select if(grouping(emp_id), '사원별 총 휴가사용내용', ifnull(emp_id, '-')) 사원아이디,
+		count(*) 휴가상신횟수,
+        sum(duration) 총사용일수
+	from vacation
+    where left(begin_date,4) between 2016 and 2017
+    group by emp_id with rollup
+    order by 총사용일수;
+    
+ 
+
 
 
 
