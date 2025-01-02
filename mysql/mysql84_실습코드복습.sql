@@ -546,16 +546,16 @@ select  dept_id 부서,
 
 -- 퇴직한 사원들을 복제하여 employee_retire 테이블 생성,
 -- 내부 데이터 삭제
-create table employee_retire
-as
-select emp_name,emp_id, salary 
-	from employee
-    where retire_date is not null;
 
-select * from employee_retire;
 
-insert into employee_retire(emp_name,emp_id, salary )
-values('홍길동','s0001',7000);
+
+/* **************************************************
+	dml : insert(c), select(R), update(U), delete(D)
+    
+************************************************** */
+-- 1. insert : 데이터 추가
+-- 형식: insert into [테이블명](컬럼리스트)
+--		values(데이터리스트 ...)    컬럼리스트 와 데이터 리스트 1:1 맵핑되도록 한다.
 
 
 
