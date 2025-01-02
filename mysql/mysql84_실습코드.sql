@@ -711,18 +711,361 @@ select if(grouping(emp_id), '사원별 총 휴가사용내용', ifnull(emp_id, '
     group by emp_id with rollup
     order by 총사용일수;
     
- 
+ /* **********************************************************
+	DDL : 테이블 생성, 수정, 삭제 
+    명령어 : create, alter, drop, truncate(함수랑 틀림. row를 제거)
+    
+********************************************************** */
+
+-- 1. 테이블 생성 : create
+-- 형식 : create table [생성할 테이블명] (
+-- 		컬럼명 데이터타입(크기) [제약사항],
+-- 		...
+-- )
+show tables;
+
+-- test 테이블 생성 및 제거
+create table test(
+	id char(4)		not null
+);
+show tables;
+desc test;
+select *
+	from test;
+    
+drop table test; -- table 삭제 
+show tables;
+
+-- data type(데이터 타입) : 숫자, 문자, 날짜(시간)
+-- (1) 숫자 데이터 타입
+-- 1) 정수: smallint(2), int(4), bigint(8)
+-- 2) 실수 : float(4), double(8)
+-- 3) 문자 : char(크기: 고정형) => 만들어질 때 크기가 픽스됨 , 
+--          varchar(크기: 가변형) => bd 메모리의 가변성 최대폭 지정.데이터가 들어갈 때 크기가 픽스됨
+-- 4) 텍스트 : text - 긴 문자를 저장하는 데이터 타입(공지글?)
+-- 5) blob 타입 : blob - 큰 바이너리 타입의 데이터 저장(최대 2G까지 사용가능)
+-- 6) 날짜 : date - 년, 월, 일, datetime(년,월,일,시,분,초까지 저장할 때)
+--         데이터타입에 맞는 날짜 함수 호출필요!! 
+
+-- emp 테이블 생성
+-- 컬럼리스트 : emp_id 고정형(4), emp_name 가변형(10), hire_date 날짜/시간, salary 정수(5) 
+create table emp(
+	emp_id		char(4),
+    emp_name 	varchar(10),
+    hire_date 	datetime,
+    salary 		int(5)
+);
+show tables;
+desc  emp; -- null에 대한 제약없이 만들면 허용한다.
+
+desc department;
+-- dept 테이블 생성 : dept_id 고정형(3), dept_name 가변형(10), loc 가변형(20)
+create table dept(
+	dept_id 	char(3),
+    dept_name	varchar(10),
+    loc 		varchar(20)
+);
+show tables;
+desc dept;
 
 
+-- emp, dept 테이블의 모든 데이터 조회
+select * from emp;
+select * from dept;
 
 
+-- 2. 테이블 생성(복제) : create table ~ as ~ select
+-- 물리적으로 메모리 생성
+-- 기본키, 참조키 등의 제약사항은 복제가 불가능, 복제 후 alter table 명령으로 제약사항 추가
+-- 형식 : create table [생성(복제)할 테이블명] 
+-- 		 as
+--       select [컬럼리스트]
+-- 			from [테이블명]
+-- 			where [조건절]
+
+-- 정보시스템 부서의 사월들만 별도로 테이블을 복제(CAS)
+-- employee_sys
+
+select * 
+	from employee
+    where dept_id = 'SYS'; -- 데이터가 있는지 확인
+
+create table employee_sys 
+as 
+select * 
+	from employee
+    where dept_id = 'SYS'; -- 데이터를 새로운 테이블로 카피.
+
+show tables;
+select * 	
+	from employee_sys;
+
+desc employee_sys;
+desc employee;
+
+-- 퇴직한 사원들을 복제하여 employee_retire 테이블로 관리
 
 
+create table employee_retire
+as
+select *
+	from employee
+    where retire_date is not null;
+
+show tables;
+select * from employee_retire;
+
+-- 2015, 2017년 입사자들을 복제하여 별도로 관리
+-- 테이블명: employee_2015_2017
+create table employee_2015_2017
+as
+select emp_id, emp_name, phone, salary
+	from employee
+    where left(hire_date,4) in(2015, 2017);
+
+show tables;
+select *
+	from employee_2015_2017;
+    
+    
+/* *****************************************    
+    테이블 제거 : drop table
+    형식 : drop table [제거할 테이블명]
+    명령 즉시 메모리에서 바로 테이블 삭제하므로 주의!! 
+    복구가 불가능
+******************************************** */ 
+-- employee_2015_2017 테이블 제거
+drop table employee_2015_2017; -- 메모리에서 실제로 삭제한다. 
+    
+    
+-- employee_retire 테이블 제거
+drop table employee_retire;
+    
+-- 재직중인 사원 테이블 생성(복제)
+-- employee_working
+
+create table employee_working
+as
+select *
+	from employee
+    where retire_date is null;
+    
+/* *****************************************    
+    테이블 데이터 제거 : truncate table
+    형식 : truncate table [제거할 데이터를 가진 테이블명]
+    명령 즉시 메모리에서 바로 테이블의 데이터 모두 제거되므로 주의!! 
+    복구가 불가능
+******************************************** */   
+    
+select *
+	from employee_working;
+-- employee_working의 모든 데이터(row)를 제거.
+truncate table employee_working;
+
+/* *****************************************    
+    테이블 구조 변경 : alter table
+    형식 : alter table [변경할 테이블명]
+    1) 컬럼 추가 : add column [new 컬럼명 데이터타입(크기) 제약사항]
+    2) 컬럼 변경 : modify column [변경할 컬럼명 데이터타입(크기) 제약사항]
+    3) 컬럼 삭제 : drop column [삭제할 컬럼명]
+******************************************** */   
+
+select * from employee_working;
+desc employee_working;
+-- employee_working에 bonus 컬럼 추가, 데이터타입은 정수형 4자리, null 허용 
+alter table employee_working
+		add column bonus int(4);
+
+-- employee_working에 dname(부서명) 추가, 데이터타입 가변형(10), 널값 허용
+alter table employee_working
+add column dname varchar(10);
+
+-- employee_working에 email주소 컬럼 크기를 30으로 수정 
+alter table employee_working
+modify column email varchar(30); -- 비어있을 때만 줄이는게 적용가능
+
+-- employee_working에 salary 컬럼을 실수타입(double)로 수정
+alter table employee_working
+modify column salary double;
+
+select * from employee_sys;
+-- employee_sys 테이블의 이메일주소 컬럼 크기를 가변형 10 크기로 수정 
+alter table employee_sys
+	modify column email varchar(10); -- 데이터가 있는 상태에서 varchar(30)에서 줄이는것을 데이터가 유실될 가능성이 있으므로 에러발생.
+
+-- employee_working 테이블의  bonus 컬럼 삭제
+desc employee_working;
+
+alter table employee_working
+	drop column bonus;
+
+-- employee_working 테이블 제거
+
+drop table employee_working;
+
+show tables;
 
 
+-- employee 테이블에서 hrd 부서에 속한 사원들의 사원아이디, 사원명, 입사일, 연봉, 보너스(연봉10%) 정보를 별칭을 사용하여 조회한 후
+-- employee_hrd 이름으로 복제
+create table employee_hrd
+as
+select  emp_id 사원아이디,
+		emp_name 사원명,
+        hire_date 입사일,
+        salary 연봉,
+        salary * 0.1 보너스
+	from employee
+    where dept_id='HRD';
+
+show tables;
+desc employee_hrd;
+
+/* **************************************************
+	dml : insert(c), select(R), update(U), delete(D)
+    
+************************************************** */
+-- 1. insert : 데이터 추가
+-- 형식: insert into [테이블명](컬럼리스트)
+--			values(데이터리스트 ...) //   컬럼리스트 와 데이터 리스트 1:1 맵핑되도록 한다.
+
+show tables;
+desc emp;
+select * from emp;
+-- s001, 홍길동, 현재날짜, 1000
+insert into emp(emp_id, emp_name, hire_date, salary)
+	values('S001','홍길동',curdate(), 1000);
+
+-- s002, 홍길순, 현재날짜(now, sysdate), 2000
+insert into emp(emp_id, emp_name, hire_date, salary)
+	values('S002','홍길순',now(),2000);
+
+-- s003, 김철수, 현재날짜(now, sysdate), 3000
+-- 컬럼리스트 생략시에는 생성시 컬럼의 순서대로 insert 실행됨
+insert into emp()
+	values('S003','김철수',sysdate(),3000);
+
+-- s004, 이영희, 현재날짜(now, sysdate), 연봉협상전 데이터 추가 
+insert into emp(emp_id, emp_name, hire_date,salary)
+	values('S004','이영희', now(),null);
+
+-- employee 테이블의 정보시스템 부서의 사원들 정보 중
+-- 사원아이디, 사원명, 입사일, 부서아이디, 연봉을 2016년 이전에 입사한 사원들 .복제하여 employee_sys 테이블 생성 
+drop table employee_sys;
+create table employee_sys
+as
+select emp_id,emp_name, hire_date, dept_id, salary
+	from employee
+    where dept_id='SYS' and left(hire_date,4) < '2016';
+
+show tables;
+select * from employee_sys;
+
+-- employee_sys 테이블에 2016년도 이후에 입사한 정보시스템 부서 서원 추가
+-- 서브쿼리를 이용한 데이터 추가
+insert into employee_sys(emp_id,emp_name, hire_date, dept_id, salary)
+select emp_id,emp_name, hire_date, dept_id, salary
+	from employee
+    where dept_id='SYS' and left(hire_date,4) >= '2016';
+
+-- dept  테이블 구조 확인 및 데이터 추가
+show tables;
+desc dept;
+select * from dept;
+-- sys, 정보시스템, 서울
+-- mkt, 마케팅, 뉴욕
+-- hrd, 인사, 부산 
+-- acc, 회계, 정해지지 않음
+insert into dept(dept_id, dept_name, loc) values('sys', '정보시스템', '서울');
+insert into dept(dept_id, dept_name, loc) values('mkt','마케팅','뉴욕');
+insert into dept(dept_id, dept_name, loc) values('hrd','인사','부산');
+insert into dept(dept_id, dept_name, loc) values('acc','회계',null);
+-- 에러발생 : 컬럼리스트와 매칭 카운트가 다름
+-- insert into dept(dept_id, dept_name) values('acc','회계',null);
+-- 에러발생 : dept_id 컬럼 사이즈보다 큰 데이터 입력 char(3)
+-- insert into dept(dept_id, dept_name) values('SALES','회계',null);
 
 
+/* ***********************************************************
+	constraint(제약사항) : 데이터 무결성의 원칙을 적용하기 위한 규칙
+    - unique : 유니크(중복방지) 제약 사항 
+    - not null : null 값을 허용하지 않는 제약
+    - primary key(기본키) : unique + not null 제약을 지정
+    - foreign key(참조키) : 타 테이블을 참조하기 위한 제약
+    - default : 디폴트로 저장되는 데이터 정의하는 제약
+    
+    사용형식 : create table + 제약사항 
+             alter table + 제약사항 
+*********************************************************** */
+-- DB의 스키마 구조를 통해 각 테이블의 제약사항 확인
+-- information_schema.table_constraints
+select * from information_schema.table_constraints
+	where table_name ='employee';
+
+desc employee;
 
 
+show tables;
+desc emp;
+-- emp_cost 테이블 생성
+-- 기본기 제약 : emp_id
+-- 유니크 제약 : emp_name
+-- not null 제약 : salary
 
+create table emp_cost(
+	emp_id		char(4) primary key,
+    emp_name 	varchar(10) unique ,
+    hire_date 	datetime ,
+    salary 		int not null
+);
 
+select * from information_schema.table_constraints
+		where table_name ='emp_cost';
+
+-- s001, 홍길동, 현재날짜, 1000
+insert into emp_cost(emp_id, emp_name, hire_date, salary)
+	values('s001','홍길동', now(), 1000);
+
+select * from emp_cost;
+
+-- s001, 김철수, 현재날짜, 1000 (emp_id를 동일하게 넣어 테스트)
+-- Error Code: 1062. Duplicate entry 's001' for key 'emp_cost.PRIMARY'
+-- PRIMARY 키로 설정되어 있는 컬럼은 입력폼에서 아이디 중복체크 기능을 통해 확인함.
+insert into emp_cost(emp_id, emp_name, hire_date, salary)
+	values('s001', '김철수', now(), 1000);
+
+-- 솔루션 : 중복된 's001' -> 's002' 변경 후 실행
+insert into emp_cost(emp_id, emp_name, hire_date, salary)
+	-- values('s001', '김철수', now(), 1000);
+    values('s002', '김철수', now(), 1000);
+
+-- null 입력 테스트 : Error Code: 1048. Column 'emp_id' cannot be null	
+-- 솔루션 : null 또는 중복된 값을 배제하여 진행.
+insert into emp_cost(emp_id, emp_name, hire_date, salary)
+	-- values(null, '김철수2', now(), 1000);
+    values('s003', '김철수2', now(), 1000);
+
+-- emp_name에 null값 추가.
+insert into emp_cost(emp_id, emp_name, hire_date, salary)
+    values('s004', null, now(), 1000);
+
+-- emp_name에 null값 추가. 오라클에서는 null도 유니크하게 체크하지만, mysql은 중복으로 사용 가능함.
+insert into emp_cost(emp_id, emp_name, hire_date, salary)
+    values('s005', null, now(), 1000);
+
+select * from information_schema.table_constraints
+		where table_name ='emp_cost';
+
+-- emp_const2 테이블 생성
+-- emp_id: primary key
+-- emp_name: unique
+create table emp_const2(
+	emp_id 	char(4),
+ 	emp_name varchar(10),
+		constraint pk_emp_id	primary key(emp_id),
+		constraint uk_emp_name  unique(emp_name)  
+);
+
+desc emp_const2;
+select * from information_schema.table_constraints
+		where table_name ='emp_const2';
