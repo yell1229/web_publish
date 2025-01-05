@@ -557,8 +557,248 @@ select  dept_id 부서,
 -- 형식: insert into [테이블명](컬럼리스트)
 --		values(데이터리스트 ...)    컬럼리스트 와 데이터 리스트 1:1 맵핑되도록 한다.
 
+-- emp 테이블 생성(employee 카피: emp_id, emp_name, hire_date, salary)
+show tables;
+create table emp
+as
+select emp_id, emp_name, hire_date, salary
+	from employee;
+
+select * from emp;
+truncate table emp;
+
+-- s001, 홍길동, 현재날짜, 1000
+insert into emp(emp_id, emp_name, hire_date, salary)
+	values('s001','홍길동' ,curdate(), 7000);
+-- s002, 홍길순, 현재날짜(now, sysdate), 2000
+insert into emp()
+	values('s002','홍길순',now(),2000);
+
+-- s003, 김철수, 현재날짜(now, sysdate), 3000
+-- 컬럼리스트 생략시에는 생성시 컬럼의 순서대로 insert 실행됨
+
+-- s004, 이영희, 현재날짜(now, sysdate), 연봉협상전 데이터 추가 
+
+
+-- employee 테이블의 정보시스템 부서의 사원들 정보 중
+-- 사원아이디, 사원명, 입사일, 부서아이디, 연봉을 2016년 이전에 입사한 사원들 .복제하여 employee_sys 테이블 생성 
+create table employee_sys
+as
+select emp_id, emp_name,hire_date, dept_id, salary
+from employee
+where left(hire_date,4) < '2016';
+
+select * from employee_sys;
+-- employee_sys 테이블에 2016년도 이후에 입사한 정보시스템 부서 서원 추가
+-- 서브쿼리를 이용한 데이터 추가
+
+-- sys, 정보시스템, 서울
+-- mkt, 마케팅, 뉴욕
+-- hrd, 인사, 부산 
+-- acc, 회계, 정해지지 않음
+insert into dept(dept_id, dept_name, loc) values('sys', '정보시스템', '서울');
+insert into dept(dept_id, dept_name, loc) values('mkt','마케팅','뉴욕');
+insert into dept(dept_id, dept_name, loc) values('hrd','인사','부산');
+insert into dept(dept_id, dept_name, loc) values('acc','회계',null);
+-- 에러발생 : 컬럼리스트와 매칭 카운트가 다름
+-- insert into dept(dept_id, dept_name) values('acc','회계',null);
+-- 에러발생 : dept_id 컬럼 사이즈보다 큰 데이터 입력 char(3)
+-- insert into dept(dept_id, dept_name) values('SALES','회계',null);
+
+
+/* ***********************************************************
+	constraint(제약사항) : 데이터 무결성의 원칙을 적용하기 위한 규칙
+    - unique : 유니크(중복방지) 제약 사항 
+    - not null : null 값을 허용하지 않는 제약
+    - primary key(기본키) : unique + not null 제약을 지정
+    - foreign key(참조키) : 타 테이블을 참조하기 위한 제약
+    - default : 디폴트로 저장되는 데이터 정의하는 제약
+    
+    사용형식 : create table + 제약사항 
+             alter table + 제약사항 
+*********************************************************** */
+-- DB의 스키마 구조를 통해 각 테이블의 제약사항 확인
+-- information_schema.table_constraints
+select * from information_schema.table_constraints
+	where table_name ='employee';
+
+desc employee;
+
+
+show tables;
+desc emp;
+-- emp_cost 테이블 생성
+-- 기본기 제약 : emp_id
+-- 유니크 제약 : emp_name
+-- not null 제약 : salary
+
+create table emp_cost(
+	emp_id		char(4) primary key,
+    emp_name 	varchar(10) unique ,
+    hire_date 	datetime ,
+    salary 		int not null
+);
+
+select * from information_schema.table_constraints
+		where table_name ='emp_cost';
+
+-- s001, 홍길동, 현재날짜, 1000
+insert into emp_cost(emp_id, emp_name, hire_date, salary)
+	values('s001','홍길동', now(), 1000);
+
+select * from emp_cost;
+
+-- s001, 김철수, 현재날짜, 1000 (emp_id를 동일하게 넣어 테스트)
+-- Error Code: 1062. Duplicate entry 's001' for key 'emp_cost.PRIMARY'
+-- PRIMARY 키로 설정되어 있는 컬럼은 입력폼에서 아이디 중복체크 기능을 통해 확인함.
+insert into emp_cost(emp_id, emp_name, hire_date, salary)
+	values('s001', '김철수', now(), 1000);
+
+-- 솔루션 : 중복된 's001' -> 's002' 변경 후 실행
+insert into emp_cost(emp_id, emp_name, hire_date, salary)
+	-- values('s001', '김철수', now(), 1000);
+    values('s002', '김철수', now(), 1000);
+
+-- null 입력 테스트 : Error Code: 1048. Column 'emp_id' cannot be null	
+-- 솔루션 : null 또는 중복된 값을 배제하여 진행.
+insert into emp_cost(emp_id, emp_name, hire_date, salary)
+	-- values(null, '김철수2', now(), 1000);
+    values('s003', '김철수2', now(), 1000);
+
+-- emp_name에 null값 추가.
+insert into emp_cost(emp_id, emp_name, hire_date, salary)
+    values('s004', null, now(), 1000);
+
+-- emp_name에 null값 추가. 오라클에서는 null도 유니크하게 체크하지만, mysql은 중복으로 사용 가능함.
+insert into emp_cost(emp_id, emp_name, hire_date, salary)
+    values('s005', null, now(), 1000);
+
+select * from information_schema.table_constraints
+		where table_name ='emp_cost';
+
+-- emp_const2 테이블 생성
+-- emp_id: primary key
+-- emp_name: unique
+create table emp_const2(
+	emp_id 	char(4),
+ 	emp_name varchar(10),
+		constraint pk_emp_id	primary key(emp_id),
+		constraint uk_emp_name  unique(emp_name)  
+);
+
+desc emp_const2;
+select * from information_schema.table_constraints
+		where table_name ='emp_const2';
+
+-- 제약사항 테스트를 위한 테이블 생성: const_test
+-- uid 컬럼: char(4) 기본키 제약,
+-- name 컬럼: varchar(10) null 허용 x 
+-- age 컬럼: int null 허용
+-- addr 컬럼: varchar(30) null 허용 
+
+show tables;
+create table const_test(
+	uid		char(4) 	primary key,
+    name 	varchar(10),
+    age 	int ,
+    addr	varchar(30)
+);
+
+alter table const_test
+	modify column name varchar(10) not null;
+
+desc const_test;
+select *
+	from information_schema.table_constraints
+    where table_name = 'const_test';
+
+-- dept_id 컬럼 추가 : char(3) 디폴트 'hrd' / null 허용x
+alter table const_test
+	add column dept_id char(3) default('hrd');
+
+-- s001, 홍길동, 20, 서울시, sys
+insert into const_test(uid, name, age, addr, dept_id)
+values('s001','홍길동',20,'서울시','sys');
+
+select * from const_test;
+
+-- s002, 김철수, 20, 서울시, hrd
+insert into const_test(uid, name, age, addr)
+values('s002','김철수',20,'서울시');
+
+-- salary 컬럼 추가 : int, 3000이상인 숫자 등록할 수 있도록 check 제약
+alter table const_test
+	add column 	salary 	int	 check(salary >= 3000); -- null을 허용한 뒤 제작. 이전에 만든 데이터들에는 값이 없어 에러가 뜨기 때문이다. 
+
+-- s003, 이영희, 30, 부산시, hrd, 2900
+insert into const_test(uid, name, age, addr, dept_id, salary)
+values('s004','이영희', 30,'부산시','hrd',4000);
+
+
+-- 상품 테이블 생성: product_test
+-- 컬럼 : pid int 기본키, pname varchar(30) not null, price int null 허용, company varchar 20 null 허용
+-- auto_increment : 자동번호 생성기(숫자만 가능)
+-- 오라클 : sequence
+create table product_test(
+	pid int primary key,
+    pname varchar(30) not null
+);
+show tables;
+alter table product_test
+	add  pid int primary key auto_increment;
+
+-- 2. update : 데이터 수정
+-- 형식: update [테이블명] 
+--      set [컬럼명='업데이트 데이터', ...] 
+--      where [조건절]; 
+
+-- const_test의 홍길동 연봉 업데이트 : 3500
+
+-- 김철수 연봉을 5000으로 업데이트
+
+-- employee 테이블을 복제하여 cp_employee 테이블을 생성
+-- emp_id 컬럼에 기본키 제약 추가
+
+
+-- 복제한 테이블에 제약사항 추가
+-- emp_id를 기본키 지정
+
+
+-- phone, email 컬럼에 unique 제약 추가
 
 
 
 
+-- cp_employee 테이블의 phone에 추가된 제약 사항 삭제
 
+-- cp_employee테이블에서 sys인 부서 아이디를 -> '정보' 부서로 수정
+
+
+-- Error Code: 1175. You are using safe update mode
+-- safe update mode  설정 변경
+
+    
+-- cp_employee테이블에서 2016년도 입사항 사원들의 입사일 -> 현재 날짜로 수정
+
+
+
+-- 강우동 사원의 영어이름 'kang', 퇴사일을 현재날짜, 부서는 sys로 수정 
+
+
+
+
+-- 트랜잭션 처리방식이 auto commit이 아닌경우
+-- 작업완료: commit, 작업취소 : rollback 
+-- commit;
+
+-- 3. delete : 데이터 삭제
+-- 트랜잭션 관리법에 따라 삭제된 데이터를 복원할 수 있음. auto commit 상태에서는 불가능
+-- 형식 : delete from [테이블명] 
+--       where [조건절];
+
+
+-- 연봉이 7000 이상인 모든 사원삭제
+
+-- cp_employee 테이블에서 '정보' 부서 직원들 모두 삭제
+
+-- cp_employee 테이블에서 2017년 이후 입사자들을 모두 삭제(터미널)
