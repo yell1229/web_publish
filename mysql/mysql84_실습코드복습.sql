@@ -802,3 +802,269 @@ alter table product_test
 -- cp_employee 테이블에서 '정보' 부서 직원들 모두 삭제
 
 -- cp_employee 테이블에서 2017년 이후 입사자들을 모두 삭제(터미널)
+
+/* ************************************************************************************************************************************
+	하나 이상의 테이블 생성 및 연결, 조회
+	- 생성: create table
+    - 연결 : foreign key(참조키)  제약 추가
+    - select(조회) : join, subquery
+    ** 데이터베이스의 테이블 설계과정: 데이터베이스 모델링
+		-> 데이터 정규화 
+		-> erd(entity relationship diagram)
+******************************************** */
+
+
+-- erd : database 메뉴 > reverse engeering
+-- 정규화 : 데이터베이스 저장 효율성을 높이기 위한 방식 - 데이터 중복배제, 테이블 분리 ...
+-- 반정규화 : 분리된 테이블을 하나로 합치는 방식 
+
+-- 예시)
+-- [kk전자의 인사관리시스템 : 사원테이블 생성 - 정규화진행하지 않은 상태]
+-- 사원 테이블의 데이터 : 
+-- 사원아이디(kid, 기본키 auto increment), 사원명, 주소, 입사일, 연봉, 부서번호, 부서명, 부서위치
+
+-- 사원테이블 kk_employee(참조키 필수) / 부서테이블 kk_department(먼저 만든다)
+
+-- 부서테이블 kk_deoartment
+-- dept_id : char(3) 기본키 / dept_name  not null, loc 
+create table kk_department(
+	dept_id 	char(3) 	primary key,
+    dept_name 	varchar(10) not null,
+    loc 		varchar(30)
+);
+
+
+-- 부서 데이터 입력
+-- 'SYS','정보시스템','서울시 서초구' / 'HRD','인사관리','서울시 종로구' / 'ACC','회계관리','서울시 강남구'
+insert into kk_department(dept_id, dept_name, loc) values('SYS','정보시스템','서울시 서초구');
+insert into kk_department(dept_id, dept_name, loc) values('HRD','인사관리','서울시 종로구');
+insert into kk_department(dept_id, dept_name, loc) values('ACC','회계관리','서울시 강남구');
+
+select * from kk_department;
+
+-- 사원테이블 kk_employee
+-- kid 기본키, 자동 넘버링 / kname not null / address / hire_date / salary / dept_id foreign
+create table kk_employee(
+	kid 	int 	primary key 	auto_increment,
+    kname 	varchar(10) 	not null,
+    address varchar(30),
+    hire_date date,
+    salary int,
+    dept_id char(3),
+    constraint fk_kk_employee foreign key(dept_id)
+		references kk_department(dept_id)
+);
+
+select * from kk_employee;
+
+-- dept_id : kk_deoartment를 참조하기 때문에 값이 틀리면 안됨.
+-- 입력 내용: '홍길동','서울시 강남구',curdate(),5000,'SYS' /  '스미스','뉴욕',curdate(),5000,'HRD'
+insert into kk_employee(kname, address, hire_date, salary, dept_id) values('홍길동','서울시 강남구',curdate(),5000,'SYS');
+insert into kk_employee(kname, address, hire_date, salary, dept_id) values('스미스','뉴욕',curdate(),5000,'HRD');
+
+select * from information_schema.table_constraints
+	where table_name='kk_employee';
+
+/*
+1. 과목(subject)테이블은 
+컬럼: sid(과목아이디) 기본키 오토넘버링 , sname(과목명), sdate datetime
+*/
+create table subject(
+	sid 	int 	primary key 	auto_increment,
+    sname	varchar(10),
+    sdate	datetime
+);
+
+/*  student
+	stid 기본키, 오토 / sname not null / gender not null / sid(참조키) / stdate datetime
+*/
+create table student(
+	stid 	int 		primary key 	auto_increment,
+    sname 	varchar(10) not null,
+    gender  char(1) 	not null,
+    sid		int,
+    stdate	datetime,
+    constraint fk_sid_student	 foreign key(sid) 
+		references subject(sid)
+);
+
+/* professor
+	pid 기본키, 오토 / name not null / sid(참조키) / pdate datetime
+*/
+create table professor(
+	pid		int				primary key 	auto_increment,
+    name	varchar(10)		not null,
+    sid		int,
+    pdate 	datetime,
+    constraint 	fk_sid_professor	foreign key(sid)
+		references subject(sid)
+);
+
+
+
+-- subject 과목 데이터 추가
+insert into subject(sname, sdate) values('html', now());
+insert into subject(sname, sdate) values('javascript', now());
+insert into subject(sname, sdate) values('mysql', now());
+select * from subject;
+-- student 학생 데이터 추가
+insert into student(sname,gender,sid,stdate) values('홍길동','M','1',sysdate());
+insert into student(sname,gender,sid,stdate) values('김철수','F','2',sysdate());
+insert into student(sname,gender,sid,stdate) values('홍길순','M','3',sysdate());
+insert into student(sname,gender,sid,stdate) values('영희','F','1',sysdate());
+select * from student;
+-- professor 교수 데이터 추가
+insert into professor(name, sid, pdate) values('스미스','1',now());
+insert into professor(name, sid, pdate) values('이순신','2',now());
+insert into professor(name, sid, pdate) values('강감찬','3',now());
+select * from professor;
+
+-- html 과목의 정보를 조회
+select * from subject where sname='html';
+
+/* *********************************************
+	join(조인) : 두개 이상의 테이블 연동 
+    - 두 개 이상의 테이블을 조합하여 집합 
+    - cros(catesian) join (합집합)
+	  : 두 개 테이블이 독립적으로 생성된 경우, join 연결고리 X 
+      : professor & student -> professor * student
+      
+	-inner(equi) join (교집합)
+	  : 두개 테이블이 join 연결고리를 통해 연동 
+********************************************* */
+select * from professor; 
+
+-- cros(catesian) join (합집합)
+-- select [컬럼리스트] from [테이블명 [테이블별칭], 테이블명 [테이블별칭] ...]
+-- where [조건절]
+select *
+	from professor, student
+    order by pid;
+
+select pid, name, p.sid, sname,gender, stdate 
+	from professor p, student s;
+
+-- professor, student, department join하여 모든 데이터 조회
+select count(*) from professor; -- 3
+select count(*) from student; -- 4
+select count(*) from department; -- 7
+
+select count(*) from professor, student, department; -- 84
+
+-- ansi sql(sequl :: ms-sql) 방식
+select *
+	from professor cross join student
+		           cross join department;
+
+
+-- inner join (교집합) 형식
+-- select [컬럼리스트] from [테이블명1 [테이블별칭], 테이블명2 [테이블별칭] ...]
+-- where [테이블명1.조인컬럼 = 테이블명2.조인컬럼]
+-- and [조건절 ~~]
+select * from subject;
+select * from professor;
+select * 
+	from subject s, professor p 
+	where s.sid = p.sid;
+
+insert into professor(name, sid,pdate)
+	values('안중근','1',now());
+
+select *
+	from subject s, professor p
+    where s.sid = p.sid;
+    
+ insert into subject(sname, sdate)
+	values('react',now());
+    
+select *
+	from subject s, professor p
+    where s.sid = p.sid;
+    
+
+    
+
+-- html 과목을 가르치는 교수 검색
+-- inner join 이후 조건으로 검색
+select * from subject;
+select * from professor;
+select *
+	from subject s, professor p 
+    where s.sid = p.sid
+    and s.sname='html';
+
+-- ncsql 방식
+select * from subject s inner join professor p
+		 on s.sid = p.sid
+         where sname='html';
+
+-- 이순신 교수가 강의하는 과목의 과목아이디, 과목명,교수아이디, 교수명, 교수등록일을 조회 
+select * from professor;
+select * from subject;
+select s.sid, s.sname, p.pid, p.name, p.pdate
+	from subject s, professor p
+    where s.sid = p.pid
+    and p.name='이순신';
+    
+-- ncsql 방식
+select s.sid,s.sname, p.pid, p.name, p.pdate
+		from subject s inner join professor p 
+		on s.sid = p.pid
+		where p.name='이순신';
+
+
+-- html 과목을 수강하는 모든 학생을 조회
+select * from subject;
+select * 
+	from subject su, student st
+    where su.sid = st.sid
+    and su.sname='html';
+select *
+	from subject su inner join student st 
+    on su.sid = st.sid
+    where su.sname='html';
+
+-- html 과목을 수강하는 모든 학생과 강의하는 교수를 모두 조회
+select *
+	from subject su, student st, professor p
+    where su.sid= st.sid and su.sid = p.sid
+    and su.sname='html';
+
+select *
+	from subject su inner join professor p inner join student st
+    on su.sid = p.sid and su.sid = st.sid
+    where su.sname = 'html';
+    
+-- employee, department, vacation, unit 테이블들의 ERD 참조 
+-- 모든 사원들의 사원번호, 사원명, 성별, 부서명, 입사일 조회 
+-- 사원번호 기준으로 오름차순 
+select * from employee;
+select * from department;
+select e.emp_id, e.emp_name, e.gender, d.dept_name, e.hire_date
+	from employee e, department d
+    where e.dept_id = d.dept_id;
+
+select e.emp_id, e.emp_name, e.gender, d.dept_name, e.hire_date
+	from employee e inner join department d
+    on e.dept_id = d.dept_id
+    order by emp_id;
+    
+ 
+-- 영업부서에 속해있는 사원들의 사원번호, 사원명, 입사일, 급여, 부서아이디, 부서명 조회
+select e.emp_id, e.emp_name, e.hire_date, e.salary, d.dept_id, d.dept_name
+	from employee e, department d 
+    where e.dept_id = d.dept_id
+    and d.dept_name='영업';
+select e.emp_id, e.emp_name, e.hire_date, e.salary, d.dept_id, d.dept_name
+	from employee e inner join department d
+    on e.dept_id = d.dept_id
+    where d.dept_name ='영업';
+
+-- 인사과에 속한 사원들 중에 휴가를 사용한 사원들의 리스트를 모두 조회     
+select * from vacation;
+select * from employee;  
+select * from department;
+select *
+	from employee e, vacation v , department d
+    where e.emp_id = v.emp_id and e.dept_id = d.dept_id
+    and d.dept_name='영업';
