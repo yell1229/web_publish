@@ -1194,7 +1194,7 @@ select * from professor;
 -- html 과목의 정보를 조회
 select * from subject where sname='html';
 
-/* *********************************************
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 	join(조인) : 두개 이상의 테이블 연동 
     - 두 개 이상의 테이블을 조합하여 집합 
     - cros(catesian) join (합집합)
@@ -1203,7 +1203,10 @@ select * from subject where sname='html';
       
 	-inner(equi) join (교집합)
 	  : 두개 테이블이 join 연결고리를 통해 연동 
-********************************************* */
+	- outer join : inner join(교집합) + 선택한 테이블 중 교집합에서 제외된 데이터 
+    - self join : 한 테이블을 조인하는 형식 --> 서브쿼리(sub query)
+      ** 한 테이블에 PK를 참조하는 컬럼이 존재하는 경우 사용!
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 select * from professor; 
 
 -- cros(catesian) join (합집합)
@@ -1340,14 +1343,323 @@ select *
     and d.dept_name='인사';
     
     
+ /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+-- 영업부서인 사원의 사원명, 폰번호, 부서명, 휴가사용 이유 조회
+-- 휴가 사용 이유가 '두통'인사원, 소속본부 조회
+select * from vacation; -- resaon(휴가사유), emp_id(fireign)
+select * from employee;  -- emp_id, emp_name, pnone , dept_id(foreign)
+select * from department; -- dept_id , unit_id(foreign)
+select * from unit;  -- unit_id, nit_name(본부이름)
+
+select e.emp_name, e.phone ,d.dept_name, v.reason, u.unit_name
+	from vacation v, employee e, department d, unit u 
+    where v.emp_id = e.emp_id and e.dept_id = d.dept_id and d.unit_id = u.unit_id
+    and v.reason = '두통'
+    and d.dept_name='영업';
+-- ncsql 형태로 변경 
+select e.emp_name, e.phone ,d.dept_name, v.reason, u.unit_name
+	from vacation v inner join employee e inner join department d inner join unit u 
+    on v.emp_id = e.emp_id and e.dept_id = d.dept_id and d.unit_id = u.unit_id
+    where v.reason like '%두통%' and d.dept_name='영업';
     
+-- 2014년부터 1025년도까지 입사한 사원들 중에서 퇴사하지 않은 사원들의
+-- 사원아이디, 사원명, 부서명, 입사일, 소속본부를 조회  
+select * from employee;  -- emp_id, emp_name,  , dept_id(foreign), hire_date, retire_date
+select * from department; -- dept_id , unit_id(foreign)
+select * from unit;  -- unit_id, nit_name(본부이름)
     
+select e.emp_id 아이디, e.emp_name 이름, d.dept_name 부서명, e.hire_date 입사일, u.unit_name 소속본부
+	from employee e, department d, unit u
+    where e.dept_id = d.dept_id and d.unit_id = u.unit_id
+		and left(e.hire_date,4) between '2014' and '2015' 
+		and e.retire_date is null
+        order by u.unit_name asc;
+        
+        
+-- outer join (보통 pk 영역이 outer가 된다 fk는 종속되기 때문.)   
+
+-- 오라클 형식의 outer join이 지원되지 않음
+/* 하위 버전에서는 사용이 가능할 수 있음.
+select *
+	from subject s left outer join professor p
+    on s.sid = p.sid(+);  
+*/
+
+-- ansi sql : left outer join, right outer join
+select *
+	from subject s left outer join professor p
+    on s.sid = p.sid;
     
+-- professor 기준으로 조회하면(foreign kye) 제외되는 부분이 없기때문에 inner join과 동일하다
+select *
+	from subject s right outer join professor p
+    on s.sid = p.sid;
+
+-- department, unit 테이블 
+-- 모든 부서의 본부아이디, 본부이름을 조호
+select * from department;
+select * from unit;
+
+select * 
+	from department d left outer join unit u
+    on d.unit_id = u.unit_id
+    order by u.unit_name;
+
+-- 2017년도부터 2018년도까지 입사한 사원들의 사원명, 입사일, 연봉, 부서명 조회해주세요.
+-- 단 퇴사한 사원들도 모두 조회
+-- 소속본부를 모두 조회
+select * from employee; -- emp_name, hire_date, salary, dept_id
+select e.emp_name, e.hire_date, e.salary,d.dept_name, u.unit_name
+	from employee e inner join department d on e.dept_id = d.dept_id -- 조건이 틀릴 땐 따로따로 조건을 줘야 한다.
+					left outer join unit u  on d.unit_id = u.unit_id
+    where left(e.hire_date,4) between '2017' and '2018'
+    and e.retire_date is null; -- 퇴사한 사원 제외
+
+-- subject, student 테이블 사용
+-- 학생들이 선택하지 않은 과목을 조회 
+select * from subject;
+select * from student;
+
+select *
+	from subject su left outer join student st
+    on su.sid = st.sid
+    where st.sid is null;
+
+-- self join을 취한 테이블 복제
+create table emp
+as
+select * from employee;
+
+select * from emp;
+desc emp;
+-- emp 테이블에 emp_id 컬럼에 기본키 제약 추가
+alter table emp
+	add constraint PK_EMP primary key(emp_id);
+-- mgr column 추가
+alter table emp
+	add column mgr char(5);
+
+-- sys 부서의 사원들의  매니저를 '홍길동(S0001)'사원으로 업데이트
+set sql_safe_updates = 0;-- mysql에서만 사용
+update emp
+	set mgr = 'S0001'
+    where dept_id = 'SYS';
+select * from emp where dept_id = 'SYS';
+
+-- mkt 부서의 사원들의  매니저를 '오감자(S0011)'사원으로 업데이트
+set sql_safe_updates = 0;-- mysql에서만 사용
+update emp
+	set mgr = 'S0011'
+    where dept_id = 'mkt';
     
+-- hrd 부서의 사원들의  매니저를 '정주고(S0019)'사원으로 업데이트
+set sql_safe_updates = 0;-- mysql에서만 사용
+update emp
+	set mgr = 'S0019'
+    where dept_id = 'hrd';
+
+-- self join : emp테이블의  emp_id(기본키), mgr(참조키)
+-- 홍길동 사원이 관리하는 모든 사원들의 사원번호, 사원명, 입사일, 급여, 부서아이디, 부서명(department 추가)을 조회
+select manager.emp_id, manager.emp_name, manager.hire_date, manager.salary, manager.dept_id , d.dept_name
+	from emp employee , emp manager , department d
+    where employee.emp_id = manager.mgr
+    and manager.dept_id = d.dept_id  
+    and manager.mgr = 'S0001';
+
+-- hrd 부서를 관리하는 매니저의 사원번호, 사원명, 입사일, 급여, 부서아이디, 부서명(department 추가)을 조회
+-- distinct 중복 데이터 삭제
+select distinct e.emp_id, m.emp_name, e.emp_name, e.hire_date, e.salary, e.dept_id, d.dept_name
+	from emp e , emp m , department d
+    where e.emp_id = m.mgr and m.dept_id = d.dept_id
+    and m.dept_id='hrd';
+
+-- 매니저가 없는 사원번호, 사원명, 입사일, 급여, 부서아이디 사원정보를 조회 
+-- inner join 진행 시 매니저가 없는 사원은 제외됨. 
+select *
+	from emp m , emp e
+    where m.mgr = e.emp_id
+    and m.mgr is not null;
     
-    
-    
-    
+-- 제외되는 데이터까지 조회하기 위해서는 outer join
+select m.emp_id, m.emp_name, m.hire_date, m.salary, m.dept_id
+	from emp m left outer join emp e
+    on m.mgr = e.emp_id
+    where m.mgr is null;
+
+-- 홍길동 사원이 관리하는 사원들의 사원아이디, 사원명, 연봉, 매니저사원번호, 매니저 이름 
+select e.emp_name , m.emp_name
+	from emp e, emp m -- e: 매니저 사원 정보, m:매니저가 관리하는 사원 테이블
+    where e.emp_id = m.mgr
+    and m.mgr='S0001';
+
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	sub query(서브쿼리) 
+		: select ~ from ~where
+	
+    select [컬럼명, ... (스칼라 서브쿼리)] -- 오라클에서는 사용 불가. 속도 저하.
+		from [테이블명 자리에 쿼리를 쓰면 (인라인 뷰)]
+        where [조건절에 쓰이면 (서브쿼리)]
+        
+	(종류)
+    - 단일행(row) 서브쿼리 : 
+    - 다중행(row) 서브쿼리 :
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+-- (단일행)홍길동 사원이 속한 부서의 이름과 본부아이디를 조회. 
+select * from employee;
+select * from department;
+
+select dept_name, unit_id
+	from department
+    where dept_id = ( select dept_id from employee where emp_name='홍길동' ); 
+    -- where dept_id = 'SYS'; 
+
+select dept_id -- 홍길동 사원이 속한 부서 'SYS'
+	from employee
+    where emp_name='홍길동';
+
+-- 홍길동 사원이 사용한 휴가 내역을 조회
+-- 2017 ~ 2018 년도 내역
+select vacation_id, emp_id, begin_date, end_date, reason, duration -- 컬럼리스트는 컬럼명을 정확하게 작성하시길 권장.
+	from vacation
+    where emp_id = (select emp_id from employee where emp_name='홍길동')
+    and left(begin_date,4) between '2017' and '2018';
+
+-- join으로 변경
+select v.vacation_id, v.emp_id, v.begin_date, v.end_date, v.reason, v.duration
+	from vacation v, employee e
+    where v.emp_id = e.emp_id
+    and e.emp_name='홍길동'
+    and left(begin_date,4) between '2017' and '2018';
+
+-- 1. '제3본부'에 속한 부서들을 모두 출력 
+select * from unit;  
+select * from department;   
+
+select *
+	from department
+    where unit_id = (select unit_id from unit where unit_name='제3본부');
+
+-- 2. '제3본부'에 속한 사원들을 모두 출력 
+select *
+	from employee
+    where dept_id in ( -- 부서 아이디가 2개 이므로 다중행 서브쿼리 형식은 IN
+		select dept_id 
+			from department
+			where unit_id = (select unit_id from unit where unit_name='제3본부')
+    );
+    -- where dept_id in ('avc','mkt');
+-- 다중 결과
+select dept_id 
+	from department
+	where unit_id = (select unit_id from unit where unit_name='제3본부');
+
+
+-- 가장 먼저 입사항 사원의 정보를 조회
+select *
+	from employee
+    where hire_date = (select min(hire_date) from employee);
+-- 서브쿼리 조건 
+select min(hire_date) from employee;
+
+-- 가장 급여가 높은 사원의 정보를 조회
+select *
+	from employee
+    where salary = (select max(salary) from employee);
+-- 가장 급여가 낮은 사원의 정보를 조회
+select *
+	from employee
+    where salary = (select min(salary) from employee);
+
+-- 정보시스템 부서의 사원 중에 휴가를 사용한 사원들을 조회 
+select * 
+	from employee
+    where dept_id=(select dept_id from department where dept_name='정보시스템')
+    and emp_id in(select distinct emp_id from vacation);
+
+-- 정보시스템 부서의 사원 중에 휴가를 사용하지 않은  사원들을 조회 
+select * 
+	from employee
+    where dept_id=(select dept_id from department where dept_name='정보시스템')
+    and emp_id not in(select distinct emp_id from vacation);
+
+/*
+	출력 번호 생성 : row_number() over(order by [정렬할 컬럼명])
+    ** select의 컬럼리스트 자리에 사용되며, * 문자와는 동시에 사용 불가능 
+*/
+-- 정보시스템 부서 사원들 사원아이디, 사원명, 입사일 조회
+select row_number() over(order by emp_id) as 'no',
+	emp_id, emp_name, hire_date
+	from employee 
+    where dept_id = (select dept_id from department where dept_name='정보시스템');
+-- 모든 사원의 사원아이디, 사원명, 급여, 부서아이디 
+-- 출력행 포함
+select  row_number() over(order by salary DESC) as 'no' ,
+		emp_id, emp_name, salary, dept_id
+	from employee;
+
+-- 사원별 휴가사용 일수를 그룹핑하여, 사원아이디, 사원명, 입사일, 연봉, 휴가사용일수를 조회해주세요.
+-- 휴가사용 일수를 구하는 인라인뷰(임시로 만들어지는 테이블)와 사원테이블을 조인
+select * from vacation;
+
+select emp_id, sum(duration) vcount -- 뷰(임시로 만들어지는 테이블)가 만들어진다.
+	from vacation
+    group by emp_id;
+
+select row_number() over(order by vcount desc) as no,
+	e.emp_id, e.emp_name, e.hire_date, concat(format(e.salary, 0),' 만원') as 'salary', v.vcount as '휴가사용횟수'
+	from employee e ,
+		(select emp_id, sum(duration) vcount
+			from vacation
+			group by emp_id) v -- 인라인뷰의 별칭은 반드시 부여.
+	where e.emp_id = v.emp_id;
+
+-- hrd 부서 사원들의 휴가 사용 일수와 사원아이디, 사원명, 부서아이디, 부서명 조회 
+-- 1. hrd 부서의 사원중 휴가를 사용한 사원아이디, 휴가사용일수
+select emp_id, sum(duration) 
+	from vacation
+    where emp_id in (
+		select emp_id
+			from employee
+            where dept_id='hrd'
+    )
+    group by emp_id;
+-- 2. 1번 결과와 employee 테이블을 조인하여 사원 상세 정보 출력
+select row_number() over(order by emp_id) as no,
+		e.emp_id, e.emp_name, e.dept_id, vcount
+	from 
+		(select emp_id, sum(duration) vcount
+		from vacation
+		where emp_id in (
+			select emp_id
+				from employee
+				where dept_id='hrd'
+		)
+		group by emp_id
+    ) v, 
+    employee e
+    where v.emp_id = e.emp_id;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
