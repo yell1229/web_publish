@@ -2010,4 +2010,3 @@ select * from view_emp_vacation where emp_name='홍길동';
 
 
 
-
