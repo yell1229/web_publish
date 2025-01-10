@@ -905,6 +905,8 @@ drop table employee_working;
 
 show tables;
 
+alter table order_detail 
+	rename column drder_detail_id to order_detail_id ;
 
 -- employee 테이블에서 hrd 부서에 속한 사원들의 사원아이디, 사원명, 입사일, 연봉, 보너스(연봉10%) 정보를 별칭을 사용하여 조회한 후
 -- employee_hrd 이름으로 복제
@@ -2004,6 +2006,7 @@ select * from information_schema.views
 select * from view_emp_vacation where emp_name='홍길동';
 
 
+show tables;
 
 
 
