@@ -1,0 +1,6 @@
+https://expressjs.com/en/5x/api.html#express
+
+1. 서버역할 폴더 생성 : mkdir express-server
+2. 서버 폴더로 이동 : cd express-server 
+3. express 라이브러리 설치 : npm install express 
+4. nodemon 라이브러리 설치(대기 상태를 위해 설치. node로 실행시 한번 연결 후 닫힌다) : npm install nodemon --save-dev 
