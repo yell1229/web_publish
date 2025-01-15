@@ -1,23 +1,25 @@
 import React from 'react';
 
-export default function Carts({cartList}) {
+export default function Cart({cartList}) {
     return (
-        <div className='content'>
-            <h1>Carts</h1>
+        <div>
             <table>
                 <tr>
                     <th>pid</th>
-                    <th>size</th>
-                    <th>qty</th>
+                    <th>image</th>
                     <th>price</th>
+                    <th>size</th>
+                    <th>count</th>
                 </tr>
+            
             {
-                cartList.map((item) => 
+                cartList.map((item) =>
                     <tr>
                         <td>{item.pid}</td>
-                        <td>{item.size}</td>
-                        <td>{item.qty}</td>
+                        <td><img src={item.image} style={{width:"150px"}} /></td>
                         <td>{item.price}</td>
+                        <td>{item.size}</td>
+                        <td>{item.count}</td>
                     </tr>
                 )
             }

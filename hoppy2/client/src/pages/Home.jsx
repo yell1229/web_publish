@@ -1,10 +1,9 @@
 import React from 'react';
 import ProductList from '../components/ProductList.jsx';
-
-export default function Products() {
+export default function Home() {
     return (
-        <div className='content'>
-            <h3 className='all-products-title'>All Products</h3>
+        <div>
+            <h1>home</h1>
             <ProductList />
         </div>
     );
