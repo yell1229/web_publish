@@ -9,6 +9,7 @@
     text-align:center;   
     .inner{
         display: block;
+        margin:0 auto;
         font-size: 14px;
         line-height: 42px;
         color: rgb(255, 255, 255);
@@ -28,16 +29,16 @@
 #header{ 
     .top_btns{
         .inner{
-            
-            ul{
+            margin:0 auto;
+            & > ul{
                 display:flex;
                 justify-content: flex-end;
                 align-items: center;
                 margin-left: auto;
-                height:35px;
-                li{
+                & > li{
                     position:relative;
-                    padding:0 12px;
+                    height:35px;
+                    padding:10px 12px;
                     font-size:12px;
                     cursor: pointer;
                     &:first-child{
@@ -62,10 +63,31 @@
                         }
                     }
                     &:last-child{
-                        svg{
+                        .icon{
                             font-size:10px;
                             margin-left:5px;
                         }
+                    }
+                    .sub_list{
+                        display:none;
+                        position: absolute;
+                        right: 0px;
+                        top: 33px;
+                        border: 1px solid rgb(221, 221, 221);
+                        background-color: #fff;
+                        z-index:10;
+                        ul{
+                            display:flex;
+                            flex-direction: column;
+                            width: 130px;
+                            padding: 3px 9px;
+                            li{
+                                height: 24px;
+                                line-height: 24px;
+                                font-size:12px;
+                            }
+                        }
+                        
                     }
                 }
             }

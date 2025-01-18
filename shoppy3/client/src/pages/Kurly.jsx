@@ -7,6 +7,12 @@ import { HiOutlineMapPin } from "react-icons/hi2";
 import { GoHeart } from "react-icons/go";
 import { BsCart2 } from "react-icons/bs";
 import { HiOutlineMenu } from "react-icons/hi";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+
+import 'swiper/scss';
+import 'swiper/scss/navigation';
+import 'swiper/scss/pagination';
 
 export default function Kurly() {
     return (
@@ -23,7 +29,16 @@ export default function Kurly() {
                         <ul className="top_btns">
                             <li>회원가입</li>   
                             <li>로그인</li>   
-                            <li>고객센터<BiSolidDownArrow /></li>   
+                            <li>고객센터<BiSolidDownArrow className="icon" />
+                                <div className="sub_list">
+                                    <ul>
+                                        <li><a href="">공지사항</a></li>
+                                        <li><a href="">자주하는 질문</a></li>
+                                        <li><a href="">1:1 문의</a></li>
+                                        <li><a href="">대량주문 문의</a></li>
+                                    </ul>
+                                </div>
+                            </li>   
                         </ul>
                     </div>
                 </div>
@@ -55,7 +70,21 @@ export default function Kurly() {
                 </div>
             </header>
             <div className="container_area">
-                container
+                <div className="top_slider">
+                    <Swiper
+                        modules={[Navigation, Pagination]}
+                        spaceBetween={50}
+                        slidesPerView={1}
+                        onSlideChange={() => console.log('slide change')}
+                        onSwiper={(swiper) => console.log(swiper)}
+                        Navigation
+                        pagination={{ clickable: true }}
+                    >
+                    <SwiperSlide><img src="https://picsum.photos/1000/370" alt="" /></SwiperSlide>
+                    <SwiperSlide><img src="https://picsum.photos/1000/370" alt="" /></SwiperSlide>
+                    <SwiperSlide><img src="https://picsum.photos/1000/370" alt="" /></SwiperSlide>
+                    </Swiper>
+                </div>
             </div>
             <footer id="footer">
                 <div className="footer_top">
