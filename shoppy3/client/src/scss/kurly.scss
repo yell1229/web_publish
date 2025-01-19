@@ -26,6 +26,7 @@
         }
     }
 }
+// header --------------------------------------------------------------------------------------------------
 #header{ 
     .top_btns{
         .inner{
@@ -222,6 +223,53 @@
         }
     }
 }
+// container_area  -----------------------------------------------------------------------------------------
+.container_area{
+    .banner_area{
+        position:relative;
+        width:$common-width;
+        margin:0 auto;
+        padding:40px 0;
+    }
+    .cont_area{
+        position:relative;
+        width:$common-width;
+        margin:0 auto;
+        padding:40px 0;
+        .tit_area{
+            text-align:center;
+            vertical-align: middle;
+            margin-bottom:27px;
+            strong{
+                display:block;
+                padding:8px 0;
+                a{
+                    color: rgb(51, 51, 51);
+                    font-size: 28px;
+                    line-height: 1.15;
+                    letter-spacing: -0.26px;
+                    font-weight: 500;
+                    .icon{
+                        position:relative;
+                        top:6px;
+                        font-size: 35px;
+                    }
+                }
+            }
+            span{
+                font-size: 16px;
+                font-weight: normal;
+                line-height: 1.45;
+                letter-spacing: -0.2px;
+                text-align: center;
+                color: rgb(153, 153, 153);
+                margin-top: 2px;
+            }
+        }
+    }
+}
+
+// footer --------------------------------------------------------------------------------------------------
 #footer{
     display:flex;
     flex-direction:column;
@@ -350,7 +398,7 @@
         }
     }
 }
-
+// ban_q_aside ---------------------------------------------------------------------------------------------
 .ban_q_aside{
     position:fixed;
     bottom:0;

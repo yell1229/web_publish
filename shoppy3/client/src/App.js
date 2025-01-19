@@ -1,10 +1,10 @@
-import Kurly from "./pages/Kurly.jsx";
+import Main from "./pages/Main.jsx";
 import './scss/kurly.scss';
 
 export default function App() {
   return (
     <div>
-      <Kurly />
+      <Main />
     </div>
   );
 }

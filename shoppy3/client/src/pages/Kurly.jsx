@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+// icons
 import { TfiClose } from "react-icons/tfi";
 import { BiSolidDownArrow } from "react-icons/bi";
 import { BiSearch } from "react-icons/bi";
@@ -7,6 +8,8 @@ import { HiOutlineMapPin } from "react-icons/hi2";
 import { GoHeart } from "react-icons/go";
 import { BsCart2 } from "react-icons/bs";
 import { HiOutlineMenu } from "react-icons/hi";
+import { MdOutlineKeyboardArrowRight } from "react-icons/md";
+// slide
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 
@@ -23,6 +26,7 @@ export default function Kurly() {
                     <button type="button"><TfiClose /></button>
                 </div>
             </div>
+            {/* start of header */}
             <header id="header">
                 <div className="top_btns">
                     <div className="inner">
@@ -69,7 +73,11 @@ export default function Kurly() {
                     </div>
                 </div>
             </header>
+            {/* end of header */}
+
+            {/* start of container_area */}
             <div className="container_area">
+                {/* start slide */}
                 <div className="top_slider">
                     <Swiper
                         modules={[Navigation, Pagination]}
@@ -85,7 +93,27 @@ export default function Kurly() {
                     <SwiperSlide><img src="https://picsum.photos/1000/370" alt="" /></SwiperSlide>
                     </Swiper>
                 </div>
+                {/* end slide */}
+
+                {/* sample ====> start 1 content */}
+                <div className="cont_area">
+                    <div className="tit_area">
+                        <strong><a href="">✨주목! 설 선물 베스트 <MdOutlineKeyboardArrowRight className='icon' /></a></strong>
+                        <span>실패 없는 설 인기 선물만 모았어요!</span>
+                    </div>
+                </div>
+                {/* sample ====> end 1 content */}
+
+                {/* sample ====> banner */}
+                <div className="banner_area">
+                    <a href=""><img src="./images/5502d5ec-27d9-40cc-8eb9-515c1de0bf6c.jpg" alt="" /></a>
+                </div>
+                {/* sample ====> banner */}
+
             </div>
+            {/* end of container_area */}
+
+            {/* start of footer */}
             <footer id="footer">
                 <div className="footer_top">
                     <div className="info_center">
@@ -156,6 +184,9 @@ export default function Kurly() {
                 <em>© KURLY CORP. ALL RIGHTS RESERVED</em>
                 </div>
             </footer>
+            {/* end of footer */}
+
+            {/* start of aside nav */}
             <aside className='ban_q_aside'>
                 <a href=""><img src="./images/deliveryInfo.jpg" alt="" /></a>
                 <ul>
@@ -164,6 +195,7 @@ export default function Kurly() {
                     <li><a href="">레시피</a></li>
                 </ul>
             </aside>
+            {/* end of aside nav */}
         </div>
     );
 }
