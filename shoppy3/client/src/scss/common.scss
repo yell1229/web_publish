@@ -10,11 +10,20 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     word-break: break-all;
     font-weight: 400;
     color: #333;
-    letter-spacing: -0.4px;
+    letter-spacing: -0.5px;
     font-size:14px;
 }
 body{
     min-width:320px;
+}
+table{
+    padding:0;
+    border:0;
+    border-spacing:0px;
+    border-collapse:collapse;
+}
+th,td{
+    padding:0;
 }
 img{
     vertical-align: top;

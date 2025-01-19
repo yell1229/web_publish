@@ -158,6 +158,9 @@
     .nav_area{
         display:flex;
         justify-content: center;
+        margin-top:5px;
+        box-shadow: rgba(0, 0, 0, 0.07) 0px 3px 4px 0px;
+        background-color: #fff;
         .inner{
             display:flex;
             justify-content: space-between;
@@ -166,7 +169,6 @@
             height:56px;
         }
         .category{
-            padding-top:18px;
             line-height: 20px;
             font-size: 16px;
             font-weight: 500;
@@ -192,7 +194,6 @@
                     display: flex;
                     justify-content: center;
                     flex:1;
-                    padding-top: 18px;
                     line-height: 20px;
                     text-align: center;
                     font-size: 16px;
@@ -208,7 +209,6 @@
         }
         .btn_delivery{
             height: 32px;
-            margin-top:18px;
             padding: 6px 16px;
             border-radius: 18px;
             border: 1px solid rgb(238, 238, 238);
