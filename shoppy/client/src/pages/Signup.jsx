@@ -3,6 +3,7 @@ import '../styles/signup.css';
 import {validateSugnup, handleDuplicateIdCheck , handlePasswordCheck} from '../utils/funcValidate.js';
 
 export default function Signup() {
+    const [idCheckResult, setIdCheckResult] = useState('default');
     // 반복을 피하기 위한 배열
     const names= ["id", "pwd", "cpwd", "name", "phone", "emailname"];
     const nameLabels = ['아이디','비밀번호','비밀번호확인','이름','전화번호','이메일 주소',];
@@ -48,7 +49,9 @@ export default function Signup() {
             return acc;
         },{})
     );
-    refs.current['emaildomainRef'] = React.createRef();
+    refs.current.emaildomainRef = React.createRef();
+    console.log('refs ====> ',refs);
+    
 
     console.log('refs reduce ===> ',refs);
 
@@ -144,9 +147,16 @@ export default function Signup() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if(validateSugnup(refs, msgRefs)) console.log(formData);
-    }
 
+        if(validateSugnup(refs, msgRefs)){
+            if(idCheckResult === 'default'){
+                alert('중복확인을 진행해주세요');
+                return false;
+            }else{
+                console.log(formData);
+            }
+        } 
+    }
     return (
         <div className="content">
             <h1 className="center-title">SIGINUP</h1>
@@ -199,9 +209,9 @@ export default function Signup() {
                                         name === 'id' && 
                                             <>  {/* 콜백함수 형태로 넘기지 않으면 브라우저에서 실행됨. 리엑트로 넘어오지 않음. */}
                                                 <button type="button" onClick={() => 
-                                                    handleDuplicateIdCheck(refs.current['idRef'], msgRefs.current['idMsgRef'], refs.current['pwdRef'])
+                                                    handleDuplicateIdCheck(refs.current['idRef'], msgRefs.current['idMsgRef'], refs.current['pwdRef'], setIdCheckResult)
                                                     }>중복확인</button> 
-                                                <input type="hidden" id="idCheckResult" value="default" />
+                                                <input type="hidden" value={idCheckResult} />
                                             </>
                                         }
                                         

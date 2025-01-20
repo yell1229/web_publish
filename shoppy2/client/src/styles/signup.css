@@ -67,15 +67,12 @@
     /* border: 1px solid red; */
 }
 .signup-form ul li label + span {
-    display:none;
     font-size: 0.7em;
     font-weight: 300;
-    color: red;
+    color: #666;
     margin-left: 10px;
 }
-.signup-form ul li label + span.on{
-    display:inline-block;
-}
+
 .signup-form ul li:first-child input{
     border: 1px solid white;
     width: 80%;

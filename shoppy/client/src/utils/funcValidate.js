@@ -38,7 +38,7 @@ export const validateSugnup = (refs, msgRefs) => {
         const name = item[0];
         const ref = item[1];
         let msgItem, msgRef = null;
-        if(i < refEntries.length -1){
+        if(i < refEntries.length - 1){
             msgItem = msgRefEntries[i];
             // msgName = msgItem[0];
             msgRef = msgItem[1];
@@ -96,7 +96,7 @@ export const validateSugnup = (refs, msgRefs) => {
 }
 
 // id 중복체크
-export const handleDuplicateIdCheck = (idRef, idMsgRef, pwdRef) => { // 구조분해할당으로 넘어올 수 없음. 변수로 넘긴다. 순서 중요.
+export const handleDuplicateIdCheck = (idRef, idMsgRef, pwdRef, setIdCheckResult) => { // 구조분해할당으로 넘어올 수 없음. 변수로 넘긴다. 순서 중요.
     // console.log('refs',refs);
     const idCheck='test'; // db 연동 로직 들어감.
     if(idRef.current.value === '' ){
@@ -113,10 +113,12 @@ export const handleDuplicateIdCheck = (idRef, idMsgRef, pwdRef) => { // 구조�
             idRef.current.focus();
             return false;
         }else{
+           // idCheckResultRef.current.value = 'complete'; // 사용이 가능한 id 일때 값 변경.
+            setIdCheckResult('complete');
             idMsgRef.current.innerHTML = '사용가능한 아이디입니다.';
             idMsgRef.current.style.setProperty('color','green');
             idMsgRef.current.classList.add('on');
-            pwdRef.current.focus();
+            pwdRef.current.focus(); // 브라우저의 포커스가 이동되기 전 value값 변경.
             return false;
         }
     }

@@ -74,10 +74,10 @@
     color: #797878;
     margin-left: 10px;
 }
-.signup-form ul li label + span.on{
+/* .signup-form ul li label + span.on{
     display:inline-block;
     color: red;
-}
+} */
 .signup-form ul li label + span.ok{
     display:inline-block;
     color:green;
