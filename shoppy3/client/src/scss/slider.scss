@@ -26,7 +26,7 @@
         height: 52px;
         transition: 0.5s;
         opacity: 0;
-        background:url('http://localhost:3000/images/slide/btn_arrow.svg') no-repeat 0 0;
+        background:url('/images/slide/btn_arrow.svg') no-repeat 0 0;
         &:after{
             font-size:0;
         }

@@ -5,7 +5,7 @@ import './scss/kurly.scss';
 export default function App() {
   return (
     <div>
-      <Detail />
+      <Main />
     </div>
   );
 }

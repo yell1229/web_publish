@@ -7,8 +7,11 @@ import {validateLogin} from '../utils/funcValidate.js';
 export default function Login() {
     const refs = {
         idRef:useRef(null), // 주소값은 객체라서 null 입력
-        pwdRef:useRef(null)
+        pwdRef:useRef(null) 
     };
+    const msgRefs = {
+        msgRef:useRef(null)
+    }
     // validation check를 위해 'id':'','pwd':'' 초기값으로 설정해준다.
     const [formData, setFormData]  = useState({'id':'','pwd':''}); // 전역(폼전송 가능)으로 만들어 자동 업데이트를 한다.
 
@@ -36,7 +39,7 @@ export default function Login() {
     const handleLoginSubmit = (e) => {
         
         e.preventDefault();
-        if(validateLogin(refs)) {
+        if(validateLogin(refs, msgRefs)) {
             console.log(formData);
             // 리액트 ==> 노드서버(express) 데이터 전송
         }
@@ -75,6 +78,7 @@ export default function Login() {
                         </div>
                         <p id="error-msg-pwd"></p>
                     </li>
+                    <li style={{padding:"0"}}><span style={{fontSize:"0.7em",color:"White"}} ref={msgRefs.msgRef}>아이디 또는 패스워드를 입력해주세요.</span></li>
                     <li>
                         <button type="submit" className="login-button">로그인</button>
                     </li>
