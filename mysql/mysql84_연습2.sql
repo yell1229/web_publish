@@ -70,7 +70,8 @@ desc vacation;
 
 -- 기존 컬럼을 이용하여 가상컬럼 생성 - 연봉 10% 인센티브 컬럼 ==> 물리적으로 존재X
 -- 타입이 숫자인 컬럼은 수식 연산이 가능함
-
+select emp_id, salary, (salary* 0.1) as 인센티브
+	from employee;
 
 
 
@@ -121,7 +122,9 @@ select curdate() as 'DATE';
 
 
 -- 사원테이블에서 입사일이 2014년 8월 1일인 모든 사원조회
-
+select *
+	from eemployee
+    where hire_data = '2014-08-01';
 
 
 -- 연봉이 5000인 사원 정보 조회
