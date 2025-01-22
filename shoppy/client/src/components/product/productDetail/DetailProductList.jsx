@@ -24,15 +24,7 @@ export default function DetailProductList() {
   
   return (
     <>
-    <div className="tab_nav">
-        <ul>
-            <li className="on">DETAIL</li>
-            <li>REVIEW</li>
-            <li>Q&A</li>
-            <li>RETURN & DELIVERY</li>
-        </ul>
-    </div>
-    <div className="detail">
+    <div className="detail" style={{paddingTop:'150px;'}}>
     <div className='product_detail_content'>
       <div className='product_notice'>
         <img src='/images/product_detail1.jpg'></img>

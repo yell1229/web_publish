@@ -19,16 +19,8 @@ export default function Qna() {
     }
     return (
         <>
-            <div className="tab_nav">
-                <ul>
-                    <li >DETAIL</li>
-                    <li>REVIEW</li>
-                    <li className="on">Q&A</li>
-                    <li>RETURN & DELIVERY</li>
-                </ul>
-            </div>
             {/* start cont */}
-            <div className="tab_content_area">
+            <div className="tab_content_area qna" style={{paddingTop:'150px;'}}>
                 <div className="button_box">
                     <button type="button" 
                     className="qna_button"

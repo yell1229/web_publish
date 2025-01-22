@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState, useEffect} from 'react';
 import { BiSolidDownArrow } from "react-icons/bi";
 import { BiSearch } from "react-icons/bi";
 import { HiOutlineMapPin } from "react-icons/hi2";
@@ -6,7 +6,26 @@ import { GoHeart } from "react-icons/go";
 import { BsCart2 } from "react-icons/bs";
 import { HiOutlineMenu } from "react-icons/hi";
 
+import axios from 'axios';
+
 export default function Header() {
+
+    const [navList, setNavList] = useState([]);
+
+    // useEffect(() => {
+    //     fetch('/data/navlist.json')
+    //         .then(data => data.json)
+    //         .then(jsonData => setNavList(jsonData.data))
+    //         .cateh(err => console.log(err));
+    // },[]);
+    useEffect(() => {
+        axios.get('/data/navlist.json') // 네트웍 통신을 한다. http://localhost:3000
+            .then((res) => setNavList(res.data))
+            .catch(err => console.log(err));
+    },[]);
+    console.log('navList ==> ',navList);
+    
+
     return (
         <header id="header">
                 <div className="top_btns">
@@ -41,7 +60,15 @@ export default function Header() {
                 </div>
                 <div className="nav_area">
                     <div className="inner">
-                        <div className="category"><a href=""><HiOutlineMenu  className='icon'/>카테고리</a></div>
+                        <div className="category">
+                            <a href=""><HiOutlineMenu  className='icon'/>카테고리</a>
+                            {/* start detail nav list */}
+                            <div className="nav_detail_category">
+                            
+                            </div>
+                            {/* end detail nav list */}
+                        </div>
+                        
                         <nav>
                             <ul>
                                 <li><a href="">신상품</a></li>

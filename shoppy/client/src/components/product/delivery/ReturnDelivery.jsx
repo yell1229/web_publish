@@ -37,7 +37,7 @@ const list = [
 
 export default function return_delivery() {
     return (
-        <div className='return_delivery-main'>
+        <div className='return_delivery-main' style={{paddingTop:'150px;'}}>
             <div className='return_delivery-text'>
                 <h3>배송/교환/반품/AS 관련 유의사항</h3>
                 <p>상품상세설명에 배송/교환/반품/취소 관련 안내가 기재된 경우 다음 안내사항보다 우선 적용됩니다.</p>

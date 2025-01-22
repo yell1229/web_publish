@@ -77,16 +77,8 @@ export default function Detail() {
 
     return (
         <>
-        <div className="tab_nav">
-            <ul>
-                <li>DETAIL</li>
-                <li className="on">REVIEW</li>
-                <li>Q&A</li>
-                <li>RETURN & DELIVERY</li>
-            </ul>
-        </div>
         <div className="box review">
-            
+            <div className='test'>test</div>
             {/* 리뷰 상단 */}
             <div className="review_avg">
                 <div className="tit">상품 만족도(2)</div>

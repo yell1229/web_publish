@@ -98,7 +98,10 @@
         position:relative;
         @include flex_between;
         @include center_width;
+        
         h1{
+            display:flex;
+            align-items: center;
             img{width:82px;}
             strong{
                 color:$main-color;
@@ -169,6 +172,7 @@
             height:56px;
         }
         .category{
+            position:relative;
             line-height: 20px;
             font-size: 16px;
             font-weight: 500;
@@ -183,6 +187,18 @@
             }
             &:hover{
                 color:$main-color;
+            }
+            .nav_detail_category{
+                display:none;
+                position:absolute;
+                top:40px;
+                left:0;
+                width:248px;
+                height:840px;
+                border:1px solid #ddd;
+                background-color: #fff;
+                z-index:10;
+                overflow-y:scroll;
             }
         }
         nav{
@@ -265,6 +281,17 @@
                 color: rgb(153, 153, 153);
                 margin-top: 2px;
             }
+        }
+    }
+
+    // main components
+    .product_wrap{
+        .box{
+            display: block;
+            width: 249px;
+            color: rgb(51, 51, 51);
+            cursor: pointer;
+
         }
     }
 }
@@ -401,15 +428,18 @@
 // ban_q_aside ---------------------------------------------------------------------------------------------
 .ban_q_aside{
     position:fixed;
-    bottom:0;
+    top:50%;
     right:10px;
     width:80px;
+    transform:translateY(-50%);
+    z-index:10;
     img{
         width:100%;
     }
     ul{
         margin-top:7px;
         border:1px solid rgb(221, 221, 221);
+        background-color: #fff;;
         li{
             height: 29px;
             padding-top: 5px;
@@ -421,4 +451,20 @@
             }
         }
     }
+}
+
+.btn_top{
+    position:fixed;
+    bottom:15px;
+    right:30px;
+    width:50px;
+    height:50px;
+    line-height:54px;
+    background-color: #fff;
+    border:1px solid #ccc;
+    border-radius: 100%;
+    font-size:25px;
+    text-align:center;
+    cursor: pointer;
+    overflow:hidden;
 }
