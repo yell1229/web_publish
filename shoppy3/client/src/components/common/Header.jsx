@@ -5,6 +5,7 @@ import { HiOutlineMapPin } from "react-icons/hi2";
 import { GoHeart } from "react-icons/go";
 import { BsCart2 } from "react-icons/bs";
 import { HiOutlineMenu } from "react-icons/hi";
+import { TfiClose } from "react-icons/tfi";
 
 import axios from 'axios';
 
@@ -27,7 +28,15 @@ export default function Header() {
     
 
     return (
-        <header id="header">
+        <>
+            <div className="top_banner">
+                <div className="inner">
+                    <a href="">지금 가입하고,  <b>50% 할인 쿠폰</b>  받아가세요!</a>
+                    <button type="button"><TfiClose /></button>
+                </div>
+            </div>
+
+            <header id="header">
                 <div className="top_btns">
                     <div className="inner">
                         <ul className="top_btns">
@@ -81,6 +90,7 @@ export default function Header() {
                     </div>
                 </div>
             </header>
+        </>
     );
 }
 
