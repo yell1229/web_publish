@@ -13,7 +13,7 @@ export default function DetailProduct({ addCart }) {
 		"tabNavRef":useRef(null),
 		"tabCont1Ref":useRef(null),
 		"tabCont2Ref":useRef(null),
-		// "tabCont3Ref":useRef(null),
+		"tabCont3Ref":useRef(null),
 		"tabCont4Ref":useRef(null)
 	};
 	const navRefs = {
@@ -185,7 +185,7 @@ export default function DetailProduct({ addCart }) {
 				</div>
 				<div className="cont_tab_wrap" ref={refs.tabCont1Ref}><DetailProductList /></div>
 				<div className="cont_tab_wrap" ref={refs.tabCont2Ref}><Detail /></div>
-				{/* <div className="cont_tab_wrap" ref={refs.tabCont3Ref}><Qna /></div> */}
+				<div className="cont_tab_wrap" ref={refs.tabCont3Ref}><Qna /></div>
 				<div className="cont_tab_wrap" ref={refs.tabCont4Ref}><ReturnDelivery /></div>
 			</div>
 			{/* end cont */}

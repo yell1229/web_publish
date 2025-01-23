@@ -70,4 +70,7 @@
         transform:translateX(554px)translateY(-50%) rotate(-180deg);
     }
     .btn_prev{position:absolute;top:0;left:-100px;}
+    .swiper-button-disabled{
+        display:none
+    }
 }
