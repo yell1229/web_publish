@@ -1,9 +1,9 @@
-export const getHello = (req, res) => {
-    res.send(` hello~~ world!!!!`);
+export const getHello = (req, res) =>{
+    res.send(`Welcom to Hello!`);
     res.end();
 }
 
-export const getHelloName = (req, res) => {
-    res.send(`Hello~!!! ${req.params.name} `);
+export const getHelloTest = (req, res) => {
+    res.send(`hello test~!!`);
     res.end();
 }
