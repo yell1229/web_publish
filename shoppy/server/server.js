@@ -3,6 +3,7 @@ import mainRouter from './router/mainRouter.js';
 import helloRouter from './router/helloRouter.js';
 import employeeRouter from './router/employeeRouter.js';
 import empRouter from './router/empRouter.js';
+import testRouter from './router/testRouter.js';
 import cors from 'cors';
 
 const server = express();
@@ -33,6 +34,8 @@ server.use('/hello',helloRouter);
 server.use('/employee', employeeRouter);
 
 server.use('/emp',empRouter);
+
+server.use('/test',testRouter);
 
 server.listen(port,() =>{
     console.log(`start ===> ${port}`);   
