@@ -4,6 +4,7 @@ import helloRouter from './router/helloRouter.js';
 import employeeRouter from './router/employeeRouter.js';
 import empRouter from './router/empRouter.js';
 import testRouter from './router/testRouter.js';
+import memberRouter from './router/memberRouter.js';
 import cors from 'cors';
 
 const server = express();
@@ -31,11 +32,12 @@ server.use('/hello',helloRouter);
 //     res.end();
 // });
 
-server.use('/employee', employeeRouter);
+// server.use('/employee', employeeRouter);
+// server.use('/emp',empRouter);
+// server.use('/test',testRouter);
 
-server.use('/emp',empRouter);
-
-server.use('/test',testRouter);
+// 로그인, 회원가입은 하나의 테이블을 사용한다.
+server.use('/member',memberRouter)
 
 server.listen(port,() =>{
     console.log(`start ===> ${port}`);   

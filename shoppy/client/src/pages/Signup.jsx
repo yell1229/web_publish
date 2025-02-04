@@ -1,8 +1,11 @@
 import React,{useState, useRef} from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/signup.css';
 import {validateSugnup, handleDuplicateIdCheck , handlePasswordCheck} from '../utils/funcValidate.js';
+import axios from 'axios';
 
 export default function Signup() {
+    const navigate = useNavigate();
     const [idCheckResult, setIdCheckResult] = useState('default');
     // 반복을 피하기 위한 배열
     const names= ["id", "pwd", "cpwd", "name", "phone", "emailname"];
@@ -17,7 +20,7 @@ export default function Signup() {
         acc[name] = placeholdersKor[idx];
         return acc;
     },{});
-    console.log('placeholdersKor ===> ',placeholders);
+    // console.log('placeholdersKor ===> ',placeholders);
     // 방법1. names를 통해서 initFormData를 만듬.
     // let initFormData = {}
     // names.forEach((name) => {
@@ -50,10 +53,10 @@ export default function Signup() {
         },{})
     );
     refs.current.emaildomainRef = React.createRef();
-    console.log('refs ====> ',refs);
+    // console.log('refs ====> ',refs);
     
 
-    console.log('refs reduce ===> ',refs);
+    // console.log('refs reduce ===> ',refs);
 
     let msgRefs = useRef(
             names.reduce((acc, name) =>{
@@ -61,7 +64,7 @@ export default function Signup() {
             return acc;
         },{})
     );
-    console.log('msgRefs reduce ===> ',msgRefs);
+    // console.log('msgRefs reduce ===> ',msgRefs);
 
     const initMsg = [
         {"name":"id","ref":refs.idRef},
@@ -153,7 +156,36 @@ export default function Signup() {
                 alert('중복확인을 진행해주세요');
                 return false;
             }else{
-                console.log(formData);
+                console.log(formData); // formData: object 리터럴 타입
+                // 서버 --> DB 테이블에 insert
+                // GET : URL을 통해 호출 및 데이터 전달 => 패킷의 Header에 붙여서 들어가는게 get방식 ex) /:id , /hong?a=100
+                // => req.params 로 받는다. (데이터가 작을 때 (url 길이가 정해져 있기 때문.) / 보안이 필요없는 상태 )
+
+                // POST : URL 주소로 경로 호출, 데이터 전달 => 패킷의 Body에 붙여서 전달 => req.body
+                // => 보안이 필요한 데이터, 큰 데이터
+
+                axios.post('http://localhost:9000/member/signup', formData) // axios.post('경로', 전송할 객체{object type만 가능})
+                    .then(res => {
+                        if(res.data.result_rows === 1){
+                            alert('회원가입에 성공하셨습니다.');
+                            // 로그인 페이지로 이동
+
+                            // 1. useNavigate(훅)
+                            //navigate('/login'); 
+
+                            // 2. 1초 후 이동
+                            setTimeout(() => { navigate('/login') }, 1000);
+
+                            // 3. window(브라우저로 실행) : 사용 가능하지만, 리엑트에 위임하는 방법으로 사용할 것.
+                            // window.location.href='/login';
+                        }else{
+                            alert('회원가입에 실패하셨습니다.');
+                        }
+                    }) // insert가 성공했을 때 받는 결과 ( memberController에서 전달받음.)
+                    .catch(err => {
+                        alert('회원가입에 실패하셨습니다.'); // 네트워크 문제일 때
+                        console.log(err)
+                    });
             }
         } 
     }
