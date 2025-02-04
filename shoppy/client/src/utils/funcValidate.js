@@ -120,8 +120,6 @@ export const handleDuplicateIdCheck = (idRef, idMsgRef, pwdRef, setIdCheckResult
                 }
             })
             .catch(err => console.log(err));
-
-    
 }
 
 // password check
