@@ -1,10 +1,15 @@
-import React,{useRef, useState} from 'react';
+import React,{useRef, useState, useContext} from 'react';
 import '../styles/login.css';
 import { FaUser } from "react-icons/fa";
 import { FaLock } from "react-icons/fa";
 import {validateLogin} from '../utils/funcValidate.js';
+import axios from 'axios';
+import {useNavigate} from 'react-router-dom';
+import { AuthContext } from '../auth/AuthContext.js';
 
 export default function Login() {
+    const {isLoggedIn, setIsLoggedIn} = useContext(AuthContext);
+    const navigate = useNavigate();
     const refs = {
         idRef:useRef(null), // 주소값은 객체라서 null 입력
         pwdRef:useRef(null) 
@@ -40,8 +45,32 @@ export default function Login() {
         
         e.preventDefault();
         if(validateLogin(refs, msgRefs)) {
-            console.log(formData);
+            console.log('formData==>',formData);
+            // 브라우저의 로컬스토리지 영역에 id,pw 저장
+            // localStorage.setItem("userId",formData.id);
+            // localStorage.setItem("userPassword",formData.pwd);
+
+            // console.log(localStorage.getItem("userId"));
+            // localStorage.removeItem("userId");
+            // localStorage.clear();
+            
             // 리액트 ==> 노드서버(express) 데이터 전송
+            axios.post('http://localhost:9000/member/login',formData)
+                    .then(res => {
+                        // console.log('res.data ===> ',res.data);
+                        if(res.data.result_rows === 1){
+                            alert('로그인 성공');
+                            localStorage.setItem("token",res.data.token);
+                            setIsLoggedIn(true);
+                            navigate('/');
+                        }else {
+                            alert('로그인 실패'); // db 실패
+                        }
+                    })
+                    .catch(err => {
+                        alert('로그인 실패'); // 네트워크 장애
+                        console.log(err);
+                    });
         }
         
     }

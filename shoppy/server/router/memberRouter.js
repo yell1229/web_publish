@@ -6,6 +6,7 @@ const router = express.Router();
 // signup.jsx에서 post로 보냄
 router
     .post('/signup', controller.registerMember) // 메소드 체이닝 사용가능
-    .post('/idcheck',controller.getIdCheck);
+    .post('/idcheck',controller.getIdCheck)
+    .post('/login', controller.checkLogin);
 
 export default router;

@@ -39,3 +39,16 @@ export const getIdCheck = async ({id}) => { // idData = { id:'hong' } 객체로 
     
     return result[0]; // result ==>  { result: 1 }
 }
+
+// 로그인 -  select
+export const checkLogin =async ({id, pwd}) => { // {id: 'test', pwd: '1212'} 오브젝트 리터럴로 감싸서 넘어온다. 구조분해할당 가능
+    const sql = `
+                select count(*) as result_rows
+                        from shoppy_member
+                        where id=? and pwd=?
+    `;
+
+    const [result] = await db.execute(sql,[id,pwd]); // [[],[]] 이차원배열로 리턴. 첫번째 배열만 받아온다.
+    // [{result_rows:1}]
+    return result[0];
+}
