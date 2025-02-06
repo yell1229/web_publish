@@ -6,6 +6,7 @@ import Products from './pages/Products.jsx';
 import Carts from './pages/Carts.jsx';
 import Login from './pages/Login.jsx';
 import Signup from './pages/Signup.jsx';
+import NewProduct from './pages/NewProduct.jsx';
 import DetailProduct from './pages/DetailProduct.jsx';
 import {AuthPrrovider} from './auth/AuthContext.js';
 import './styles/shoppy.css';
@@ -32,6 +33,7 @@ export default function App() {
 							<Route path="/login" element={<Login />} />
 							<Route path="/signup" element={<Signup />} />  
 							<Route path="/products/:pid" element={<DetailProduct addCart={addCart} />} />
+							<Route path="/products/new" element={<NewProduct />} />  
 						</Route>
 					</Routes>
 				</BrowserRouter>
