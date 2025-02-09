@@ -82,6 +82,7 @@ export default function DetailProduct({ addCart }) {
 		}
 		window.addEventListener('scroll',handleNavScroll);
 	}, []);
+console.log('product',product);
 
 	//장바구니 추가 버튼 이벤트
 	const addCartItem = () => {

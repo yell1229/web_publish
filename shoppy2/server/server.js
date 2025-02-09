@@ -1,35 +1,17 @@
 import express from 'express';
-import helloRouter from './rourter/helloRouter.js';
+import memberRouter from './router/memberRouter.js';
 
 const server = express();
 const port = 9000;
-
-server.use('/hello',helloRouter);
-// server.get('/hello/:id',(req, res) =>{
-//     res.send(`<h1>hello~!! ====> ${req.params.id}</h1>`);
-//     res.end();
-// });
-
+// 미들웨어
+server.post('/member/login',(req,res) =>{
+    console.log('req.body',req.body);
+    res.send('<h1>test test</h1>');
+});
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//
 server.listen(port,() =>{
-    console.log(`서버 실행됨===> ${port} `);
-    
+    console.log(`start ===> ${port}`);   
 });
