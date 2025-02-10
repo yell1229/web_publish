@@ -14,8 +14,21 @@ const storage = multer.diskStorage({
     }
 })
   
-const upload = multer({ storage: storage }).single('file'); // file은 넘겨받은 값. ImageUpload.jsx 에서 전달이름이 바뀌면 여기도 바꿔야됨.
+const fupload = multer({ storage: storage}).single("file");  // file은 넘겨받은 값. ImageUpload.jsx 에서 전달이름이 바뀌면 여기도 바꿔야됨.
 
 export const fileUpload = (req, res) => {
-
+    console.log(req.body);
+    
+    fupload(req, res, (err) =>{ // fupload 이름으로 멀터가 실행한 결과값을 가져온다.
+        if(err){
+            console.log(err);
+            
+        }else{
+            res.json({
+                uploadImage: res.req.file.path, // 변경된 이름
+                orgImage: req.file.originalname // 사용자가 올린 이름
+            });
+        }
+   });
+    
 }
