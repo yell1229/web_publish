@@ -34,14 +34,36 @@ select id from shoppy_member where id='hongs';
 -- 중복체크 : 결과를 count 함수로 반환(0 or 1)
 select count(id) as result from shoppy_member where id='hongs';  -- {result : 0}
 
+select * from shoppy_member;
 
+-- login
+select count(*) as result_rows
+	from shoppy_member
+    where id='hongs' and pwd='12345';
 
+use hrdb2019;
+select * from information_schema.tables
+	where table_name like 'shoppy%';
+    
+-- shoppy_product
+create table shoppy_product(
+	pid		int 	primary key 	auto_increment,
+    pname 	varchar(50) 	not null ,
+    price 	int ,
+    description 	varchar(200) ,
+    upload_file		varchar(100) ,
+    source_file 	varchar(100) ,
+    pdate 			datetime
+);
 
+desc shoppy_product;
+select * from shoppy_product;
 
-
-
-
-
+-- 입력 데이터 삭제
+set sql_safe_updates =0; -- 해제:0 , 설정:1
+delete from shoppy_product;
+commit; -- 실제 bd에 있는 코드들이 삭제됨.
+select * from shoppy_product; -- 삭제 확인
 
 
 
