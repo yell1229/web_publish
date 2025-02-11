@@ -3,7 +3,7 @@ import axios from 'axios';
 import DetailProductDesc from './DetailProductDesc.jsx';
 import DetailProductInfo from './DetailProductInfo.jsx';
 
-export default function DetailProductList() {
+export default function DetailProductList({imgList}) {
   const [ productInfo, setProductInfo ] = useState([]);
   const [ productDesc, setProductDesc ] = useState([]);
   const [ isMoreView, setIsMoreView ] = useState(false);
@@ -35,8 +35,8 @@ export default function DetailProductList() {
       </div>
       <div className='product_description'>
         <ul className='product_description_list'>
-          { productDesc && productDesc.map((item)=>(
-              <DetailProductDesc {...item}/>
+          { imgList && imgList.map((item)=>(
+              <img src={item} />
           ))}
         </ul>
       </div>

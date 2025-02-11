@@ -34,6 +34,7 @@ export default function ProductList() {
                 rows.map((rowArray) => 
                     <div className="product-list">
                     { rowArray.map((product) => 
+                    // 화면상에 띄울 때 key값은 반복하는 구문에 사용함.f12에서 계속 요청함.
                         <Link key={product.pid} to={`/products/${product.pid}`}>
                             <ProductAvata img={`${product.image}`} />
                         </Link>

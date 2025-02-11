@@ -3,8 +3,8 @@ import * as controller from '../controller/imageUploadController.js';
 
 const router = express.Router();
 
-router.post('/', controller.fileUpload);
-// router.post('/new', controller.fileUpload);
+// router.post('/', controller.fileUpload);
+router.post('/new', controller.fileUpload);
 
 
 

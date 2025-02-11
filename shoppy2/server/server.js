@@ -1,5 +1,6 @@
 import express from 'express';
 import imageUploadRouter from './router/imageUploadRouter.js';
+import productRouter from './router/productRouter.js';
 import path from 'path';
 import cors from 'cors';
 
@@ -17,6 +18,8 @@ server.use('/upload_files', express.static(path.join("upload_files"))); // expre
 
 // 미들웨어
 server.use('/uploads',imageUploadRouter);
+
+server.use('/product',productRouter)
 
 //
 server.listen(port,() =>{

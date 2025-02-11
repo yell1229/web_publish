@@ -14,3 +14,11 @@ export const getList = async (req,res) => {
     res.json(result);
     res.end();
 }
+
+// 상품 상세 정보 조회
+export const getProduct = async (req,res) => {
+    // console.log(req.body); // { pid: '4' }
+    const result = await repository.getProduct(req.body.pid); //하나만 넘어왔기 때문에 객체 => 변수 형태로 변경해서 넘길 수 있다. { pid: '4' } => 4
+    res.json(result);
+    res.end();
+}

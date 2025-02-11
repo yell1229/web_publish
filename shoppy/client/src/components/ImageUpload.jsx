@@ -5,7 +5,7 @@ import axios from 'axios';
 export default function ImageUpload({getFileName}) {
     const [oldFile, setOldFile] = useState(''); // 이전 파일은 db에 전달이 필요 없기 때문에 이 위치에서 진행한다.
 
-    const formData = new FormData();
+    const formData = new FormData(); // nodejs에서 제공하는 클래스
 
     const handleFileUpload = (e) => {
         formData.append("file",e.target.files[0]); // 새로운파일

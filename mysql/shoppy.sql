@@ -65,18 +65,94 @@ delete from shoppy_product;
 commit; -- 실제 bd에 있는 코드들이 삭제됨.
 select * from shoppy_product; -- 삭제 확인
 
+drop table shoppy_product;
 
+-- mysql에는 json 사용가능
+create table shoppy_product(
+	pid		int 	primary key 	auto_increment,
+    pname 	varchar(50) 	not null ,
+    price 	int ,
+    description 	varchar(200) ,
+    upload_file		json ,
+    source_file 	json ,
+    pdate 			datetime
+);
 
+--
+select 
+		pid,
+		pname as name,
+		price,
+		description as info,
+		concat('http://localhost:9000/', upload_file->>'$[0]') as image, -- json 타입으로 저장되었을 때 배열을 가져올 수 있다.
+		source_file,
+		pdate
+from shoppy_product;
 
+desc shoppy_product;
 
+select  pid,
+		pname,
+        price,
+        description,
+        upload_file as uploadFile,
+        source_file as sourceFile,
+        pdate,
+        concat('http://localhost:9000/',upload_file->>'$[0]') as image,
+        -- json_array(0, 1, 2 번지의 이미지를 가져와서 배열객체로 생성하는 함수) as imgList
+        json_array(
+			concat('http://localhost:9000/',upload_file->>'$[0]'),
+            concat('http://localhost:9000/',upload_file->>'$[1]'),
+            concat('http://localhost:9000/',upload_file->>'$[2]')
+        ) as imgList,
+        json_arrayagg(
+			concat('http://localhost:9000/',jt.filename)
+        ) as detailImgList
+	from shoppy_product , 
+        json_table(shoppy_product.upload_file, '$[*]'
+         columns(filename varchar(100) path '$')) as jt
+    where pid = 4
+    group by pid;
 
+-- json_table(테이블.컬럼명, 매핑데이터 colimns(멀럼 생성 후 리턴)) as jt
+        json_table(shoppy_product.upload_file, '$[*]' -- upload_file 배열을 가져와서 -- 전체를 다 돌린다.
+         colimns(filename varchar(100) path '$') as jt; -- $기호 자리에 데이터를 담는다.
 
+select  pid,
+                        pname as name,
+                        price,
+                        description as info,
+                        upload_file as uploadFile,
+                        source_file as sourceFile,
+                        pdate,
+                        concat('http://localhost:9000/',upload_file->>'$[0]') as image,
+                        json_array(
+                            concat('http://localhost:9000/',upload_file->>'$[0]'),
+                            concat('http://localhost:9000/',upload_file->>'$[1]'),
+                            concat('http://localhost:9000/',upload_file->>'$[2]')
+                        ) as imgList,
+                         json_arrayagg(
+                                concat('http://localhost:9000/',jt.filename)
+                            ) as detailImgList
+                from shoppy_product , 
+                    json_table(shoppy_product.upload_file, '$[*]'
+                                columns(filename varchar(100) path '$')) as jt
+                where pid = 3
+                group by pid;
 
-
-
-
-
-
-
-
+-- 컬리 테이블
+create table kurly_product(
+	pid				int 	primary key 	auto_increment,
+    name 			varchar(50) 	not null,
+    brand 			varchar(30) 	not null,
+    description 	varchar(100) ,
+    originalPrice 	int,
+	discountRate 	varchar(3) ,
+	discountedPrice int ,
+	specialPrice 	varchar(10),
+	delivery 		json,
+	seller 			varchar(10) ,
+	packaging 		varchar(10),
+	first_image		varchar(100)
+);
 

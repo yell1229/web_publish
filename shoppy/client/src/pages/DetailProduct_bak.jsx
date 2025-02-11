@@ -7,7 +7,6 @@ import Detail from "../components/product/review/Review.jsx";
 import Qna from './qna/Qna.jsx';
 import ReturnDelivery from '../components/product/delivery/ReturnDelivery.jsx';
 import DetailProductList from '../components/product/productDetail/DetailProductList.jsx';
-import ImageList from "../components/ImageList.jsx";
 
 export default function DetailProduct({ addCart }) {
 	const refs = {
@@ -25,8 +24,6 @@ export default function DetailProduct({ addCart }) {
 	};
 	const { pid } = useParams(); // url get 방식을 통해서 넘어오는 데이터.
 	const [product, setProduct] = useState({});
-	const [imgList, setImgList] = useState([]);
-	const [detailImgList, setDetailImgList] = useState([]);
 	const [size, setSize] = useState("XS");
 	const resetNavCss = () => {
 		Object.entries(navRefs).map((nav) => 
@@ -35,16 +32,11 @@ export default function DetailProduct({ addCart }) {
 	};
 	useEffect(() => {
 		axios
-		.post("http://localhost:9000/product/detail",{'pid':pid}) // 데이터는 오브젝트 리터럴 타입으로 넘긴다. 
+		.get("/data/product.json") // http://localhost:3000/data/products.json
 		.then((res) => {
-			// pid만 넘기면 하나의 데이터를 가져오기  때문에 filter 사용 x.
-			//console.log(res.data);	
-			setProduct(res.data);
-			//uploadFile 배열의 3개 이미지를 출력형태로 생성하여 배열에 저장	
-			//const imgList = res.data.uploadFile.filter((img, i) => (i < 3) && img );
-			//setImgList(imgList);
-			setImgList(res.data.imgList);
-			setDetailImgList(res.data.detailImgList);
+			res.data.filter((product) => {
+			if (product.pid === pid) setProduct(product);
+			});
 		})
 		.catch((error) => console.log(error));
 
@@ -67,31 +59,30 @@ export default function DetailProduct({ addCart }) {
 			})
 		}, 500);
 
-		// const handleNavScroll = () => {
-		// 	if(window.scrollY >= topList[0]){
-		// 		refs.tabNavRef.current.classList.add('fixed');
-		// 	}else{
-		// 		refs.tabNavRef.current.classList.remove('fixed');
-		// 	}
+		const handleNavScroll = () => {
+			if(window.scrollY >= topList[0]){
+				refs.tabNavRef.current.classList.add('fixed');
+			}else{
+				refs.tabNavRef.current.classList.remove('fixed');
+			}
 
-		// 	if(window.scrollY >= topList[1] && window.scrollY < topList[2]){
-		// 		resetNavCss();
-		// 		navRefs.nav1Ref.current.classList.add('on');
-		// 	}else if(window.scrollY >= topList[2] && window.scrollY < topList[3]){
-		// 		resetNavCss();
-		// 		navRefs.nav2Ref.current.classList.add('on');
-		// 	}else if(window.scrollY >= topList[3] && window.scrollY < topList[4]){
-		// 		resetNavCss();
-		// 		navRefs.nav3Ref.current.classList.add('on');
-		// 	}else if(window.scrollY >= topList[4]){
-		// 		resetNavCss();
-		// 		navRefs.nav4Ref.current.classList.add('on');
-		// 	}
-		// }
-		// window.addEventListener('scroll',handleNavScroll);
+			if(window.scrollY >= topList[1] && window.scrollY < topList[2]){
+				resetNavCss();
+				navRefs.nav1Ref.current.classList.add('on');
+			}else if(window.scrollY >= topList[2] && window.scrollY < topList[3]){
+				resetNavCss();
+				navRefs.nav2Ref.current.classList.add('on');
+			}else if(window.scrollY >= topList[3] && window.scrollY < topList[4]){
+				resetNavCss();
+				navRefs.nav3Ref.current.classList.add('on');
+			}else if(window.scrollY >= topList[4]){
+				resetNavCss();
+				navRefs.nav4Ref.current.classList.add('on');
+			}
+		}
+		window.addEventListener('scroll',handleNavScroll);
 	}, []);
 console.log('product',product);
-console.log('imgList->>',imgList);
 
 	//장바구니 추가 버튼 이벤트
 	const addCartItem = () => {
@@ -120,7 +111,17 @@ console.log('imgList->>',imgList);
 		<div className="product-detail-top">
 			<div className="product-detail-image-top">
 			<img src={product.image} />
-				<ImageList imgList={imgList} className="product-detail-image-top-list" />
+			<ul className="product-detail-image-top-list">
+				<li>
+				<img src={product.image} alt="" />
+				</li>
+				<li>
+				<img src={product.image} alt="" />
+				</li>
+				<li>
+				<img src={product.image} alt="" />
+				</li>
+			</ul>
 			</div>
 
 			<ul className="product-detail-info-top">
@@ -174,16 +175,16 @@ console.log('imgList->>',imgList);
 			{/* start cont */}
 			<div className="tab_content_area">
 				<div style={{height:'62px'}}>
-				{/* <div className="tab_nav" ref={refs.tabNavRef}>
+				<div className="tab_nav" ref={refs.tabNavRef}>
 					<ul>
 						<li ref={navRefs.nav1Ref} onClick={() => hancleClickScroll(navRefs.nav1Ref , refs.tabCont1Ref)} className="on">DETAIL</li>
 						<li ref={navRefs.nav2Ref} onClick={() => hancleClickScroll(navRefs.nav2Ref , refs.tabCont2Ref)}>REVIEW</li>
 						<li ref={navRefs.nav3Ref} onClick={() => hancleClickScroll(navRefs.nav3Ref , refs.tabCont3Ref)}>Q&A</li>
 						<li ref={navRefs.nav4Ref} onClick={() => hancleClickScroll(navRefs.nav4Ref , refs.tabCont4Ref)}>RETURN & DELIVERY</li>
 					</ul>
-				</div> */}
 				</div>
-				<div className="cont_tab_wrap" ref={refs.tabCont1Ref}><DetailProductList imgList={detailImgList} /></div>
+				</div>
+				<div className="cont_tab_wrap" ref={refs.tabCont1Ref}><DetailProductList /></div>
 				<div className="cont_tab_wrap" ref={refs.tabCont2Ref}><Detail /></div>
 				{/* <div className="cont_tab_wrap" ref={refs.tabCont3Ref}><Qna /></div> */}
 				<div className="cont_tab_wrap" ref={refs.tabCont4Ref}><ReturnDelivery /></div>
