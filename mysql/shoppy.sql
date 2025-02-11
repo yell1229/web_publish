@@ -143,7 +143,7 @@ select  pid,
 -- 컬리 테이블
 create table kurly_product(
 	pid				int 	primary key 	auto_increment,
-    name 			varchar(50) 	not null,
+    pname 			varchar(50) 	not null,
     brand 			varchar(30) 	not null,
     description 	varchar(100) ,
     originalPrice 	int,
@@ -155,4 +155,16 @@ create table kurly_product(
 	packaging 		varchar(10),
 	first_image		varchar(100)
 );
+-- test table
+create table img_test(
+	pid 	int 	primary key 	auto_increment,
+    upload_file 	varchar(100) 	not null,
+    org_file 		varchar(50) 	not null
+);
 
+desc img_test;
+
+insert into img_test(upload_file, org_file)
+	values('img1', 'img2');
+    
+select * from img_test;
