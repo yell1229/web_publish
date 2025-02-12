@@ -144,15 +144,17 @@ select  pid,
 create table kurly_product(
 	pid				int 			primary key 	auto_increment,
     name 			varchar(50) 	not null,
-    brend 			varchar(30) 	not null,
+    brand 			varchar(30) 	not null,
     description 	varchar(100) ,
-    originalPrice 	int,
-	discountRate 	varchar(3) ,
-	specialPrice 	varchar(10),
+    price 			int,
+	dc 				varchar(3) ,
 	delivery 		json,
 	seller 			varchar(10) ,
 	packaging 		varchar(10),
-	first_image		varchar(100)
+	first_image		varchar(100),
+    first_org_img   varchar(100),
+    event_live 		boolean,
+    event_price 	boolean
 );
 -- test table
 create table img_test(
