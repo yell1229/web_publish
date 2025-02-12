@@ -6,6 +6,7 @@ const router = express.Router();
 router
     .post('/new',controller.registerProduct)
     .get('/all',controller.getList)
-    .post('/detail', controller.getProduct);
+    .post('/detail', controller.getProduct)
+    .post('/cartItem', controller.getCartItems);
 
 export default router;

@@ -142,13 +142,12 @@ select  pid,
 
 -- 컬리 테이블
 create table kurly_product(
-	pid				int 	primary key 	auto_increment,
-    pname 			varchar(50) 	not null,
+	pid				int 			primary key 	auto_increment,
+    name 			varchar(50) 	not null,
     brand 			varchar(30) 	not null,
     description 	varchar(100) ,
     originalPrice 	int,
 	discountRate 	varchar(3) ,
-	discountedPrice int ,
 	specialPrice 	varchar(10),
 	delivery 		json,
 	seller 			varchar(10) ,
@@ -168,3 +167,12 @@ insert into img_test(upload_file, org_file)
 	values('img1', 'img2');
     
 select * from img_test;
+
+-- 장바구니 
+select  pid,
+		pname,
+        price,
+        description,
+        concat('http://localhost:9000/',upload_file->>'$[0]') as image
+	from shoppy_product;
+
