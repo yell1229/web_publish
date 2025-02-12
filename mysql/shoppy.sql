@@ -144,7 +144,7 @@ select  pid,
 create table kurly_product(
 	pid				int 			primary key 	auto_increment,
     name 			varchar(50) 	not null,
-    brand 			varchar(30) 	not null,
+    brend 			varchar(30) 	not null,
     description 	varchar(100) ,
     originalPrice 	int,
 	discountRate 	varchar(3) ,
@@ -174,5 +174,7 @@ select  pid,
         price,
         description,
         concat('http://localhost:9000/',upload_file->>'$[0]') as image
-	from shoppy_product;
+	from shoppy_product
+    where pid in (4,5) ; -- 조건이 여러개일 경우 
 
+-- 이벤트값은 오브젝트 로 만들어서 적용가능 or type boolean
