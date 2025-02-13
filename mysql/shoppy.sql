@@ -180,3 +180,36 @@ select  pid,
     where pid in (4,5) ; -- 조건이 여러개일 경우 
 
 -- 이벤트값은 오브젝트 로 만들어서 적용가능 or type boolean
+
+--
+select * from shoppy_member;
+select * from shoppy_product;
+
+-- 어떤 회원(pk: id)이 어떤 상품(pk: pid)을 장바구니에 넣었는지 명확하게 구분, 간단하게 
+-- shoppy_cart 
+-- 컬럼리스트 : cid(pk) auto_increment, id(shoppy_member: fk 참조키) , pid(shoppy_product: fk 참조키), size, qty, cdate(장바구니 등록날짜)
+--  fk는 type이 동일해야한다.
+desc shoppy_member;
+desc shoppy_product;
+
+create table shoppy_cart(
+	cid 	int 			primary key 	auto_increment ,
+    size	varchar(10) 	not null,
+    qty 	int 			not null,
+    cdate 	datetime,
+    id 		varchar(30) 	not null,
+    pid 	int 			not null,
+    constraint 	fk_id_shoppy_member_id		foreign key(id)
+											references shoppy_member(id),
+	constraint 	fk_id_shoppy_product_pid	foreign key(pid)
+											references shoppy_product(pid)
+);
+
+
+
+
+
+
+
+
+

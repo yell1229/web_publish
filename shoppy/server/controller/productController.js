@@ -25,7 +25,7 @@ export const getProduct = async (req,res) => {
 
 // 장바구니 상품 정보 조회
 export const getCartItems = async (req, res) => {
-    console.log('getCartItems-->>',req.body);
+    // console.log('getCartItems-->>',req.body);
     
     const result = await repository.getCartItems(req.body);
     res.json(result);

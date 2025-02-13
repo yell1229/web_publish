@@ -7,6 +7,7 @@ import testRouter from './router/testRouter.js';
 import memberRouter from './router/memberRouter.js';
 import uploadRouter from './router/uploadRouter.js';
 import productRouter from './router/productRouter.js';
+import cartRouter from './router/cartRouter.js';
 import cors from 'cors';
 import path from 'path';
 
@@ -49,6 +50,13 @@ server.use('/uploads', uploadRouter);
 
 //
 server.use('/product',productRouter);
+
+// cart
+server.use('/cart', cartRouter);
+
+
+
+
 
 server.listen(port,() =>{
     console.log(`start ===> ${port}`);   

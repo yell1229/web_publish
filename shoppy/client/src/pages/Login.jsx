@@ -61,6 +61,7 @@ export default function Login() {
                         if(res.data.result_rows === 1){
                             alert('로그인 성공');
                             localStorage.setItem("token",res.data.token);
+                            localStorage.setItem("userId",formData.id); // id 정보 저장
                             setIsLoggedIn(true);
                             navigate('/');
                         }else {

@@ -15,6 +15,7 @@ export default function Header({cartCount}) {
             if(select){
                 // 로컬스토리지 토큰 삭제
                 localStorage.removeItem("token");
+                localStorage.removeItem("userId");
                 setIsLoggedIn(false);
                 
                 navigate('/');
