@@ -8,3 +8,10 @@ export const addCart = async (req, res) => {
     res.json(result);
     res.end();
 }
+
+// DB에 있는 cart 전체 가져오기
+export const getITems = async (req, res) =>{
+    const result = await repository.getITems(req.body);
+    res.json(result);
+    res.end();
+}
