@@ -210,26 +210,28 @@ show tables;
 desc shoppy_cart;
 select * from shoppy_cart;
 insert into shoppy_cart(size, qty,cdate, id ,pid)
-	values('xs', 1,now(), 'hongs', '4');
+	values('xs', 1,now(), 'hongs2', '4');
 
 truncate table shoppy_cart;
 
 -- join : shoppy_cart, shoppy_member, shoppy_product
-select sc.cid,
+select  sc.cid,
 		sc.size,
         sc.qty,
+        sm.id,
         sm.zipcode,
         sm.address,
         sp.pid,
         sp.pname,
         sp.price,
         sp.description as info,
-        concat('http://localhost:9000/',sp.upload->>'$[0]') as image
+        concat('http://localhost:9000/',sp.upload_file->>'$[0]') as image
 	from 	shoppy_cart sc , 
 			shoppy_member sm , 
             shoppy_product sp
 		
-	where sc.id = sm.id and sc.pid = sp.pid;
-
+	where sc.id = sm.id 
+			and sc.pid = sp.pid
+			and sm.id='hongs';
 
 
