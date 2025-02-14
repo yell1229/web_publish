@@ -8,6 +8,7 @@ import Login from './pages/Login.jsx';
 import Signup from './pages/Signup.jsx';
 import NewProduct from './pages/NewProduct.jsx';
 import DetailProduct from './pages/DetailProduct.jsx';
+import CartsDB from './pages/CartsDB.jsx';
 import {AuthPrrovider} from './auth/AuthContext.js';
 import './styles/shoppy.css';
 
@@ -38,6 +39,12 @@ export default function App() {
 			console.log(error);	
 		}
 	});
+
+	// 로컬스토리지 재호출 => cartList, cartCount 재호출 (Cart.jsx에서 초기화된 값을 여기서도 적용)
+	const refreshStorage = (updateCart, updateCount) => {
+		setCartList(updateCart);
+		setCartCount(updateCount);
+	}
 
 
 	//cart count가 업데이트가 되면 localStorage에 cartList를 저장
@@ -86,11 +93,12 @@ export default function App() {
 						<Route path='/' element={<Layout cartCount={cartCount} />} >
 							<Route index element={<Home />} />
 							<Route path="/all" element={<Products />} />
-							<Route path="/cart" element={<Carts />} /> {/* localStorage에서 값을 가져오기 때문에 함수전달 X */}
+							<Route path="/cart" element={<Carts refreshStorage={refreshStorage} />} /> {/* localStorage에서 값을 가져오기 때문에 함수전달 X */}
 							<Route path="/login" element={<Login />} />
 							<Route path="/signup" element={<Signup />} />  
 							<Route path="/products/:pid" element={<DetailProduct addCart={addCart} />} />
 							<Route path="/products/new" element={<NewProduct />} />  
+							<Route path="/cartdb" element={<CartsDB />} />  
 						</Route>
 					</Routes>
 				</BrowserRouter>

@@ -192,6 +192,8 @@ select * from shoppy_product;
 desc shoppy_member;
 desc shoppy_product;
 
+drop table shoppy_cart;
+
 create table shoppy_cart(
 	cid 	int 			primary key 	auto_increment ,
     size	varchar(10) 	not null,
@@ -204,8 +206,9 @@ create table shoppy_cart(
 	constraint 	fk_id_shoppy_product_pid	foreign key(pid)
 											references shoppy_product(pid)
 );
-
-
+show tables;
+desc shoppy_cart;
+select * from shoppy_cart;
 
 
 
