@@ -4,15 +4,14 @@ import { PiGiftThin } from "react-icons/pi";
 
 import axios from "axios";
 import Detail from "../components/product/review/Review.jsx";
+import Qna from './qna/Qna.jsx';
 import ReturnDelivery from '../components/product/delivery/ReturnDelivery.jsx';
 import DetailProductList from '../components/product/productDetail/DetailProductList.jsx';
 import ImageList from "../components/ImageList.jsx";
 import { CartContext } from "../context/CartContext.js";
 import {AuthContext} from "../auth/AuthContext.js";
-import {useCart} from '../hooks/useCart.js';
 
 export default function DetailProduct() {
-	const { saveToCartList , updateCartList } = useCart();
 	const navigate = useNavigate();
 	const {isLoggedIn, setIsLoggedIn} = useContext(AuthContext);
 	const {cartList, setCartList, cartCount, setCartCount} = useContext(CartContext);
@@ -103,48 +102,47 @@ console.log('imgList->>',imgList);
 			if(findItem !== undefined){
 				//qty +1 ::update --> cid를가지고 update한다.
 				console.log('update');
-				const result = updateCartList(findItem.cid, 'increase');
-				result && alert('장바구니에 추가되었습니다.');
-				// axios	
-				// 	.put('http://localhost:9000/cart/updateQty',{'cid':findItem.cid}) // update 시 put 사용.
-				// 	.then(res => {
+				axios	
+					.put('http://localhost:9000/cart/updateQty',{'cid':findItem.cid}) // update 시 put 사용.
+					.then(res => {
 
-				// 		if(res.data.result_rows){
-				// 			alert('장바구니에 추가되었습니다.');
-				// 			// setCartCount(cartCount + 1); => qry 만 추가되어 row가 추가된것이 아니다.
-				// 			// DB에 가서 cartList 재호출 해야됨
-				// 			// const updateList = cartList.map((item) =>
-				// 			// 	(item.cid === findItem.cid) ?
-				// 			// 		{
-				// 			// 			...item, qty: item.qty+1
-				// 			// 		} : item
-				// 			// );
-				// 			// setCartList(updateList);
-				// 		} 
+						if(res.data.result_rows){
+							alert('장바구니에 추가되었습니다.');
+							// setCartCount(cartCount + 1); => qry 만 추가되어 row가 추가된것이 아니다.
+							// DB에 가서 cartList 재호출 해야됨
+							// const updateList = cartList.map((item) =>
+							// 	(item.cid === findItem.cid) ?
+							// 		{
+							// 			...item, qty: item.qty+1
+							// 		} : item
+							// );
+							// setCartList(updateList);
+						} 
 
-				// 	})
-				// 	.catch(err => console.log(err));
+					})
+					.catch(err => console.log(err));
 				
 			}else{
 				console.log('create');
-				const id = localStorage.getItem('user_id');
 				const formData = {id:id, cartList:[cartItem]};  // scope 고려하여 사용하는 위치에 만들어줌.
-				const result = saveToCartList(formData);
-				result && alert('장바구니에 추가되었습니다.');
-				// axios	
-				// 	.post('http://localhost:9000/cart/add',formData)
-				// 	.then(res => {
-				// 		// console.log('res.data------>> ',res.data)
-				// 		if(res.data.result_rows){
-				// 			alert('장바구니에 추가되었습니다.');
-				// 			setCartCount(cartCount + 1);
-				// 			setCartList([...cartList, cartItem]);
-				// 		} 
+				axios	
+					.post('http://localhost:9000/cart/add',formData)
+					.then(res => {
+						// console.log('res.data------>> ',res.data)
+						if(res.data.result_rows){
+							alert('장바구니에 추가되었습니다.');
+							setCartCount(cartCount + 1);
+							setCartList([...cartList, cartItem]);
+						} 
 
-				// 	})
-				// 	.catch(err => console.log(err));
+					})
+					.catch(err => console.log(err));
 			}
 
+			
+			
+			
+			
 		}else{
 			const select = window.confirm("로그인 서비스가 필요합니다. \n로그인 하시겠습니까?");
 			if(select){

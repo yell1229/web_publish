@@ -1,38 +1,38 @@
-import React,{useContext, useEffect,useRef} from "react";
+import React,{useContext, useEffect} from "react";
 import "../styles/cart.css";
 import { AuthContext } from "../auth/AuthContext";
 import { CartContext } from "../context/CartContext";
-import { useNavigate } from "react-router-dom";
-import { useCart } from "../hooks/useCart.js";
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
+
 
 
 export default function Carts() {
-    const {getCartList, updateCartList, deleteCartItem} = useCart();
     const navigate = useNavigate();
     const {isLoggedIn, setIsLoggedIn} = useContext(AuthContext);
-    const{cartList} =useContext(CartContext);
-    const hasCheckedLogin = useRef(false); //브라우저에 저장되는 기본 값
+    const{cartList, setCartList} =useContext(CartContext);
 
     useEffect(() => {
-        if(hasCheckedLogin.current) return; // 로그인 상태면 하단내용 무시. -> 리턴하여 빠져나옴.
-            hasCheckedLogin.current = true;
-
         if(isLoggedIn){
-            getCartList();
+            // DB에가서 해당 id에 맞는 데이터를 가져와서 뿌린다.
+            const id = localStorage.getItem('userId');
+            axios.post('http://localhost:9000/cart/items',{'id':id})
+                .then(res => {
+                    console.log('list ====>', res.data);
+                    setCartList(res.data);
+                })
+                .catch(err => console.log(err));
         }else{
             const select = window.confirm("로그인 서비스가 필요합니다. \n로그인 하시겠습니까?");
-			(select) ? navigate('/login') : navigate('/'); 
-            setIsLoggedIn([]);
+			if(select){
+				navigate('/login');
+			}
+            //setIsLoggedIn([]);
         }
     },[isLoggedIn]);
+
+    console.log('cartList------>', cartList);
     
-    // 수량 업데이트
-    const handleQtyUpdate = (cid, type) => {
-        const result = updateCartList(cid, type);
-        console.log(type, 'result::>>>', result);
-        
-    }
 
     return (
         <div className="cart-container">
@@ -49,15 +49,17 @@ export default function Carts() {
                             </p>
                         </div>
                         <div className="cart-quantity">
-                            <button onClick={() => handleQtyUpdate(item.cid, 'decrease')}>
+                            <button >
                             -
                             </button>
                             <input type="text" value={item.qty} readOnly />
-                            <button onClick={() => handleQtyUpdate(item.cid, 'increase')}>
+                            <button >
                             +
                             </button>
                         </div>
-                        <button className="cart-remove" onClick={() => deleteCartItem(item.cid)}>
+                        <button
+                            className="cart-remove"
+                        >
                             🗑
                         </button>
                     </div> 

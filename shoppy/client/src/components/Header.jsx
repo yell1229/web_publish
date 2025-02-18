@@ -3,9 +3,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import { FiShoppingBag } from "react-icons/fi";
 import { AuthContext } from '../auth/AuthContext.js';
 import { CartContext } from "../context/CartContext.js";
-import axios from 'axios';
+import { useCart } from '../hooks/useCart.js';
 
 export default function Header() {
+    const {getCartList, getCount, setCount} = useCart();
     const {cartCount, setCartCount, cartList, setCartList} = useContext(CartContext);
     const {isLoggedIn, setIsLoggedIn} = useContext(AuthContext);
     const navigate = useNavigate();
@@ -13,23 +14,26 @@ export default function Header() {
     // console.log('isLoggedIn --> ', isLoggedIn);
     // 로그인 상태에 따라 cartCount 값 변경.
     useEffect(() =>{
-        if(isLoggedIn){
-            // DB연동하여 해당 id의 장바구니 갯수 가져옴.
-            const id = localStorage.getItem('userId');
-            axios.post('http://localhost:9000/cart/count',{"id": id})
-                .then(res => setCartCount(res.data.count))
-                .catch(err => console.log(err));
+        isLoggedIn ? getCount() : setCount(0);
+        // if(isLoggedIn){
+        //     // DB연동하여 해당 id의 장바구니 갯수 가져옴.
+        //     getCount();
+        //     // const id = localStorage.getItem('userId');
+        //     // axios.post('http://localhost:9000/cart/count',{"id": id})
+        //     //     .then(res => setCartCount(res.data.count))
+        //     //     .catch(err => console.log(err));
 
-            axios.post('http://localhost:9000/cart/items',{"id": id})
-            .then(res => {
-                console.log('Header:: list =>',res.data);
-                setCartList(res.data);
-            })
-            .catch(err => console.log(err));
+        //     getCartList();
+        //     // axios.post('http://localhost:9000/cart/items',{"id": id})
+        //     // .then(res => {
+        //     //     console.log('Header:: list =>',res.data);
+        //     //     setCartList(res.data);
+        //     // })
+        //     // .catch(err => console.log(err));
 
-        }else{
-            setCartCount(0);
-        }
+        // }else{
+        //     setCount(0);
+        // }
     } ,[isLoggedIn]);
     console.log('Header :: cartList',cartList);
     console.log('Header :: cartCount',cartCount);

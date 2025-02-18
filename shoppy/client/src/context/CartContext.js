@@ -16,8 +16,8 @@ export const CartProvider = ({children}) => { // 프로바이더 : 범위설정
     )
 
     {/* 
-        <AuthPrrovider>
+        <CartProvider>
             children
-        </AuthPrrovider> 
+        </CartProvider> 
     */}
 }
