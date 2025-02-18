@@ -9,8 +9,9 @@ import Signup from './pages/Signup.jsx';
 import NewProduct from './pages/NewProduct.jsx';
 import DetailProduct from './pages/DetailProduct.jsx';
 import CartsDB from './pages/CartsDB.jsx';
-import {AuthPrrovider} from './auth/AuthContext.js';
+import {AuthProvider} from './auth/AuthContext.js';
 import './styles/shoppy.css';
+import { CartProvider } from './context/CartContext.js';
 
 export default function App() {
 
@@ -87,22 +88,24 @@ export default function App() {
 	
 	return (
 		<div>
-			<AuthPrrovider>
+			<CartProvider>
+			<AuthProvider>
 				<BrowserRouter>
 					<Routes>
-						<Route path='/' element={<Layout cartCount={cartCount} />} >
+						<Route path='/' element={<Layout />} >
 							<Route index element={<Home />} />
 							<Route path="/all" element={<Products />} />
 							<Route path="/cart" element={<Carts refreshStorage={refreshStorage} />} /> {/* localStorage에서 값을 가져오기 때문에 함수전달 X */}
 							<Route path="/login" element={<Login />} />
 							<Route path="/signup" element={<Signup />} />  
-							<Route path="/products/:pid" element={<DetailProduct addCart={addCart} />} />
+							<Route path="/products/:pid" element={<DetailProduct />} />
 							<Route path="/products/new" element={<NewProduct />} />  
 							<Route path="/cartdb" element={<CartsDB />} />  
 						</Route>
 					</Routes>
 				</BrowserRouter>
-			</AuthPrrovider>
+			</AuthProvider>
+			</CartProvider>
 		</div>
 	);
 }

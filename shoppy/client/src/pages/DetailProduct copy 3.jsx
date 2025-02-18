@@ -1,5 +1,5 @@
 import React, { useState, useEffect , useRef, useContext} from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { PiGiftThin } from "react-icons/pi";
 
 import axios from "axios";
@@ -9,11 +9,8 @@ import ReturnDelivery from '../components/product/delivery/ReturnDelivery.jsx';
 import DetailProductList from '../components/product/productDetail/DetailProductList.jsx';
 import ImageList from "../components/ImageList.jsx";
 import { CartContext } from "../context/CartContext.js";
-import {AuthContext} from "../auth/AuthContext.js";
 
 export default function DetailProduct() {
-	const navigate = useNavigate();
-	const {isLoggedIn, setIsLoggedIn} = useContext(AuthContext);
 	const {cartList, setCartList, cartCount, setCartCount} = useContext(CartContext);
 	const refs = {
 		"tabNavRef":useRef(null),
@@ -72,87 +69,46 @@ export default function DetailProduct() {
 			})
 		}, 500);
 
+		// const handleNavScroll = () => {
+		// 	if(window.scrollY >= topList[0]){
+		// 		refs.tabNavRef.current.classList.add('fixed');
+		// 	}else{
+		// 		refs.tabNavRef.current.classList.remove('fixed');
+		// 	}
+
+		// 	if(window.scrollY >= topList[1] && window.scrollY < topList[2]){
+		// 		resetNavCss();
+		// 		navRefs.nav1Ref.current.classList.add('on');
+		// 	}else if(window.scrollY >= topList[2] && window.scrollY < topList[3]){
+		// 		resetNavCss();
+		// 		navRefs.nav2Ref.current.classList.add('on');
+		// 	}else if(window.scrollY >= topList[3] && window.scrollY < topList[4]){
+		// 		resetNavCss();
+		// 		navRefs.nav3Ref.current.classList.add('on');
+		// 	}else if(window.scrollY >= topList[4]){
+		// 		resetNavCss();
+		// 		navRefs.nav4Ref.current.classList.add('on');
+		// 	}
+		// }
+		// window.addEventListener('scroll',handleNavScroll);
 	}, []);
 console.log('product',product);
 console.log('imgList->>',imgList);
 
 	//장바구니 추가 버튼 이벤트
 	const addCartItem = () => {
-
-		if(isLoggedIn){
-			const cartItem = {
-				pid: product.pid,
-				size: size,
-				qty: 1
-			};
-
-			// addCart(cartItem); // App.js의 addCart 함수 호출
-			// cartItem => 서버전송 => shoppy_cart 추가
-			const id = localStorage.getItem("userId");
-			
-			//console.log('formData ====>> ', formData);
-
-			// cartItem에 있는 pid, size를 cartList(로그인 성공시 준비)의 item과 비교해서 있으면, qty + 1, 없으면 새로추가
-			console.log('DetailProduct::cartList ->', cartList);
-			const findItem = cartList && cartList.find(item => item.pid === product.pid && item.size === product.size);
-			// some -->> boolean
-			// find -->> item 요소
-
-			
-			if(findItem !== undefined){
-				//qty +1 ::update --> cid를가지고 update한다.
-				console.log('update');
-				axios	
-					.put('http://localhost:9000/cart/updateQty',{'cid':findItem.cid}) // update 시 put 사용.
-					.then(res => {
-
-						if(res.data.result_rows){
-							alert('장바구니에 추가되었습니다.');
-							// setCartCount(cartCount + 1); => qry 만 추가되어 row가 추가된것이 아니다.
-							// DB에 가서 cartList 재호출 해야됨
-							// const updateList = cartList.map((item) =>
-							// 	(item.cid === findItem.cid) ?
-							// 		{
-							// 			...item, qty: item.qty+1
-							// 		} : item
-							// );
-							// setCartList(updateList);
-						} 
-
-					})
-					.catch(err => console.log(err));
-				
-			}else{
-				console.log('create');
-				const formData = {id:id, cartList:[cartItem]};  // scope 고려하여 사용하는 위치에 만들어줌.
-				axios	
-					.post('http://localhost:9000/cart/add',formData)
-					.then(res => {
-						// console.log('res.data------>> ',res.data)
-						if(res.data.result_rows){
-							alert('장바구니에 추가되었습니다.');
-							setCartCount(cartCount + 1);
-							setCartList([...cartList, cartItem]);
-						} 
-
-					})
-					.catch(err => console.log(err));
-			}
-
-			
-			
-			
-			
-		}else{
-			const select = window.confirm("로그인 서비스가 필요합니다. \n로그인 하시겠습니까?");
-			if(select){
-				navigate('/login');
-			}
-		}
-		
-		
+		//장바구니 추가 항목 : { pid, size,qty }
+		// alert(`${pid} --> 장바구니 추가 완료!`);
+		// console.log(product.pid, product.price, size, 1);
+		const cartItem = {
+		pid: product.pid,
+		size: size,
+		qty: 1
+		};
+		// addCart(cartItem); // App.js의 addCart 함수 호출
+		setCartCount(cartCount + 1);
 	};
-
+	console.log('cartCount--->> ',cartCount);
 	
 	// tab 버튼을 클릭하면, 해당 컨텐츠로 스크롤 이동한다.
 	const hancleClickScroll = (btn, targetRef) => {

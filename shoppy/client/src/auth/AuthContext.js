@@ -3,7 +3,7 @@ import { createContext, useState, useEffect } from "react";
 export const AuthContext = createContext();
 
 // 로그인 여부
-export const AuthPrrovider = ({children}) => {
+export const AuthProvider = ({children}) => {
     const [isLoggedIn, setIsLoggedIn] = useState(()=> { // 기본값을 boolean 값이 아니라,localStorage에서 가져온다.(비동기 : try~catch)
         try {
             const token = localStorage.getItem("token");

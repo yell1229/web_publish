@@ -15,3 +15,17 @@ export const getITems = async (req, res) =>{
     res.json(result);
     res.end();
 }
+
+// 장바구니 카운트
+export const getCount = async (req, res) => {
+    const result = await repository.getCount(req.body);
+    res.json(result);
+    res.end();
+;}
+
+// 장바구니 상품 수량 업데이트 (QTY)
+export const updateQty = async (req, res) => {
+    const result = await repository.updateQty(req.body);
+    res.json(result);
+    res.end();
+;}

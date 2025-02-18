@@ -19,7 +19,7 @@ export default function ProductList() {
             .then(res => setList(res.data))
             .catch(error => console.log(error));
     },[]);
-    console.log('list',list);
+    //console.log('list',list);
     
     // 출력 리스트 생성 [ [{},{},{}], [{},{},{}], [{}] ]
     const rows = []; // outer array

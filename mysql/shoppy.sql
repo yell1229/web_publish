@@ -234,4 +234,10 @@ select  sc.cid,
 			and sc.pid = sp.pid
 			and sm.id='hongs';
 
+select * from shoppy_cart;
+truncate table shoppy_cart;
 
+-- 장바구니에 담긴 갯수
+select count(*)
+	from shoppy_cart
+    where id='hongs'; -- [[{count:2}], [count 필드정보]]
