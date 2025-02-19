@@ -8,6 +8,7 @@ import memberRouter from './router/memberRouter.js';
 import uploadRouter from './router/uploadRouter.js';
 import productRouter from './router/productRouter.js';
 import cartRouter from './router/cartRouter.js';
+import orderRouter from './router/orderRouter.js';
 import cors from 'cors';
 import path from 'path';
 
@@ -54,7 +55,8 @@ server.use('/product',productRouter);
 // cart
 server.use('/cart', cartRouter);
 
-
+// order
+server.use('/order', orderRouter);
 
 
 

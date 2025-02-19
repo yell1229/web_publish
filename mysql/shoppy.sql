@@ -238,6 +238,104 @@ select * from shoppy_cart;
 truncate table shoppy_cart;
 
 -- 장바구니에 담긴 갯수
-select count(*)
+select *
 	from shoppy_cart
     where id='hongs'; -- [[{count:2}], [count 필드정보]]
+    
+update shoppy_cart
+	set qty = qty+1
+    where cid=1;
+
+delete from shoppy_cart
+	where cid =1;
+    
+use hrdb2019;
+select * from shoppy_cart where id='hongs';
+
+-- 주문/ 결제페이지 : 출력
+select  sc.cid,
+		sc.size,
+		sc.qty,
+		sm.id,
+		sm.name,
+		sm.phone,
+		concat(sm.emailname,'@',sm.emaildomain) as email,
+		sm.zipcode,
+		sm.address,
+		sp.pid,
+		sp.pname,
+		sp.price,
+		sp.description as info,
+		concat('http://localhost:9000/',sp.upload_file->>'$[0]') as image
+	from 	shoppy_cart sc , 
+			shoppy_member sm , 
+			shoppy_product sp
+		
+	where sc.id = sm.id 
+			and sc.pid = sp.pid;
+			and sm.id='hongs';
+           
+-- 전체 주문 리스트 뷰 생성
+create view view_order_list
+as
+select  sc.cid,
+		sc.size,
+		sc.qty,
+		sm.id,
+		sm.name,
+		sm.phone,
+		concat(sm.emailname,'@',sm.emaildomain) as email,
+		sm.zipcode,
+		sm.address,
+		sp.pid,
+		sp.pname,
+		sp.price,
+		sp.description as info,
+		concat('http://localhost:9000/',sp.upload_file->>'$[0]') as image
+	from 	shoppy_cart sc , 
+			shoppy_member sm , 
+			shoppy_product sp
+		
+	where sc.id = sm.id 
+			and sc.pid = sp.pid;
+-- vie test
+select * from view_order_list;
+-- where test
+select * from view_order_list
+	where id='hongs';
+
+create view view_get_item
+as
+select  sc.cid,
+		sc.size,
+		sc.qty,
+		sm.id,
+		sm.zipcode,
+		sm.address,
+		sp.pid,
+		sp.pname,
+		sp.price,
+		sp.description as info,
+		concat('http://localhost:9000/',sp.upload_file->>'$[0]') as image
+	from 	shoppy_cart sc , 
+			shoppy_member sm , 
+			shoppy_product sp
+		
+	where sc.id = sm.id 
+			and sc.pid = sp.pid;
+
+select * from view_get_item
+			 where id= 'hongs';
+
+
+
+
+
+
+
+
+
+
+
+
+
