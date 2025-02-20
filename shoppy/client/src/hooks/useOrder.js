@@ -16,8 +16,31 @@ export function useOrder(){
         
         setOrderList(result.data);
         setMember(result.data[0]);
-        calculateTotalPrice(result.data);
+        calculateTotalPrice('orderList -------------------------->>',result.data);
+
+        return result.data;
     }
 
-    return{ getOrderList };
+    const saveToOrder = async(orderList, totalPrice, tid, type) =>{
+        //getOrderList : 비동기 안에 비동기는 넣을 수 없다.
+        console.log('orderList',orderList);
+        console.log('orderPrice',orderPrice);
+        const id = localStorage.getItem('userId');
+        const formData = {
+            "id": id,
+            "tid": tid,
+            "type":type,
+            "totalPrice":totalPrice,
+            "orderList": orderList
+
+        };
+
+        const result = await axios.post('http://localhost:9000/order/add',{'id':id});
+        console.log('result.data--->',result.data);
+        
+        // setOrderList(result.data);
+        // setMember(result.data[0]);
+    }
+
+    return{ getOrderList, saveToOrder };
 }

@@ -89,9 +89,9 @@ console.log('imgList->>',imgList);
 
 			// addCart(cartItem); // App.js의 addCart 함수 호출
 			// cartItem => 서버전송 => shoppy_cart 추가
-			const id = localStorage.getItem("userId");
+			//const id = localStorage.getItem("userId");
 			
-			//console.log('formData ====>> ', formData);
+			//console.log('formData??? ====>> ', formData);
 
 			// cartItem에 있는 pid, size를 cartList(로그인 성공시 준비)의 item과 비교해서 있으면, qty + 1, 없으면 새로추가
 			console.log('DetailProduct::cartList ->', cartList);
@@ -127,7 +127,7 @@ console.log('imgList->>',imgList);
 				
 			}else{
 				console.log('create');
-				const id = localStorage.getItem('user_id');
+				const id = localStorage.getItem('userId');
 				const formData = {id:id, cartList:[cartItem]};  // scope 고려하여 사용하는 위치에 만들어줌.
 				const result = saveToCartList(formData);
 				result && alert('장바구니에 추가되었습니다.');

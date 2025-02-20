@@ -9,6 +9,7 @@ import uploadRouter from './router/uploadRouter.js';
 import productRouter from './router/productRouter.js';
 import cartRouter from './router/cartRouter.js';
 import orderRouter from './router/orderRouter.js';
+import paymentsRouter from './router/paymentsRouter.js';
 import cors from 'cors';
 import path from 'path';
 
@@ -58,6 +59,8 @@ server.use('/cart', cartRouter);
 // order
 server.use('/order', orderRouter);
 
+// payment
+server.use('/payment', paymentsRouter);
 
 
 server.listen(port,() =>{

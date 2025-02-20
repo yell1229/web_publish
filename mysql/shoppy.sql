@@ -327,8 +327,22 @@ select  sc.cid,
 select * from view_get_item
 			 where id= 'hongs';
 
-
-
+-- order table
+create table shoppy_order(
+	oid 	int 			primary key 	auto_increment ,
+    size	varchar(10) 	not null,
+    qty 	int 			not null,
+    tprice 	int 			not null,
+    odate 	date,
+    type 	varchar(30) 	not null,
+    tid 	varchar(50) 	not null,
+    id 		varchar(30) 	not null,
+    pid 	int 			not null,
+    constraint 	fk_order_id_shoppy_member_id		foreign key(id)
+													references shoppy_member(id),
+	constraint 	fk_order_id_shoppy_product_pid	foreign key(pid)
+												references shoppy_product(pid)
+);
 
 
 

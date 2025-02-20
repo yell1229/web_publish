@@ -49,7 +49,7 @@ export const getCount = async ({id}) => {
                     where id= ?
     `;
     const [result] = await db.execute(sql,[id]);
-    console.log('장바구니 갯수 result',result); // [[{count:2}], [count 필드정보]]
+    //console.log('장바구니 갯수 result',result); // [[{count:2}], [count 필드정보]]
     
     return result[0];
 }

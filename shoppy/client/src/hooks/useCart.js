@@ -18,6 +18,8 @@ export function useCart(){ // 커스텀 훅
 
     // 장바구니에 새로운 아이템 DB 저장
     const saveToCartList = async (formData) => {
+        console.log('check',formData);
+        
         const result = await axios.post('http://localhost:9000/cart/add',formData); // res.data로 결과를 받아야됨.
         // if(result.result_rows){
         //    //  alert('장바구니에 추가되었습니다.'); // 알림은 브라우저 화면과 연결된 jsx에서 사용하도록한다.
@@ -57,15 +59,16 @@ export function useCart(){ // 커스텀 훅
         const result = await axios.delete('http://localhost:9000/cart/deleteITem',{data :{'cid':cid}});
         result.data.result_rows && getCartList();
     }
+    
 
     // 장바구니 총 주문금액 계산하기
     const calculateTotalPrice = (cartList) => { // 내부에서만 사용하면 리턴할 필요 없음.
         
-        const totalPrice = cartList.reduce((sum, item) => sum + item.price * item.qty, 0);
+        const totalPrice = cartList.reduce((sum, item) => sum + parseInt(item.price * item.qty), 0);
         console.log('check totalPrice', totalPrice);
         
         setTotalPrice(totalPrice);
     }
 
-    return { saveToCartList , updateCartList, getCartList, getCount, setCount, deleteCartItem ,calculateTotalPrice};
+    return { saveToCartList , updateCartList, getCartList, getCount, setCount, deleteCartItem , calculateTotalPrice};
 }

@@ -3,6 +3,7 @@ import { useOrder } from "../hooks/useOrder.js";
 import { AuthContext } from "../auth/AuthContext.js";
 import { OrderContext } from "../context/OrderContext.js";
 import {CartContext} from '../context/CartContext.js';
+import axios from 'axios';
 
 import DaumPostcode from "react-daum-postcode";
 
@@ -64,7 +65,26 @@ const closeHandler = (state) => {
     }
 };
 //---- DaumPostcode 관련 디자인 및 이벤트 종료 ----//
+const handlePayment = async () => {
 
+    const id= localStorage.getItem('userId');
+    try{
+        const res = await axios.post('http://localhost:9000/payment/qr',{
+                                    'id':id,
+                                    'item_name': '테스트 상품',
+                                    'total_amount':1000
+                                });
+        console.log('res.data',res.data);
+        if(res.data.next_redirect_pc_url        ){
+            window.location.href = res.data.next_redirect_pc_url;
+            localStorage.setItem('tid',res.data.tid);
+        }
+    }catch(err){
+        console.log('카카오페이 QR 결제 시 에러 발생');
+        
+    }
+
+} //handlePayment
 
 return (
     <div className="cart-container">
@@ -223,7 +243,7 @@ return (
         <label for="privacy">개인정보 국외 이전 동의</label>
     </div>
 
-    <button className="pay-button">결제하기</button>
+    <button type="button" className="pay-button" onClick={handlePayment}>결제하기?</button>
     </div>
 );
 }
